@@ -97,4 +97,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_saved_item">SavedItemActivity</string>
+    <string name="title_activity_view_nutrition">ViewNutritionActivity</string>
+    <string name="title_activity_shopping_list">ShoppingListActivity</string>
 </resources>
