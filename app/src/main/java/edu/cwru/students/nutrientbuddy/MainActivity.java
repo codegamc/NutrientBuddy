@@ -156,6 +156,21 @@ public class MainActivity extends AppCompatActivity
                     String protein = "Protein: " + foodField.getString("nf_protein") + " g";
                     Log.v(TAG,protein);
 
+
+                    // Using Food object:
+                    Food f = new Food(foodName, calories, tot_fat, sodium, carbs, tot_sugars, protein);
+
+                    Log.v(TAG, "****************");
+                    Log.v(TAG, "Created new food object!");
+                    Log.v(TAG, f.getName());
+                    Log.v(TAG, f.getCalories());
+                    Log.v(TAG, f.getTotalFat());
+                    Log.v(TAG, f.getSugar());
+                    Log.v(TAG, f.getSodium());
+                    Log.v(TAG, f.getCarbs());
+                    Log.v(TAG, f.getProtein());
+                    Log.v(TAG, "****************");
+
                     foodName = "";
                     calories = "";
                     tot_fat = "";
