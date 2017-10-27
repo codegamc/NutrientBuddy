@@ -10,6 +10,16 @@ public class Food {
             total_sugar,
             protein;
 
+    public Food(){
+        name = "";
+        total_calories = "";
+        total_fat = "";
+        sodium = "";
+        total_carbs = "";
+        total_sugar = "";
+        protein = "";
+    }
+
     public Food(String foodName, String cals, String fat, String sod, String carbs, String sugar, String prot){
 
         name = foodName;
@@ -19,6 +29,28 @@ public class Food {
         total_carbs = carbs;
         total_sugar = sugar;
         protein = prot;
+    }
+
+    public void setName(String foodName){
+        name = foodName;
+    }
+    public void setTotalCalories(String calories){
+        total_calories = calories;
+    }
+    public void setTotalFat(String fat){
+        total_fat = fat;
+    }
+    public void setSodium(String sodiumAmt){
+        sodium = sodiumAmt;
+    }
+    public void setTotalCarbs(String carbs){
+        total_carbs = carbs;
+    }
+    public void setTotalSugar(String sugar){
+        total_sugar = sugar;
+    }
+    public void setProtein(String proteinAmt){
+        protein = proteinAmt;
     }
 
     public String getName(){
