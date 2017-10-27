@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.os.StrictMode;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,9 +50,6 @@ public class MainActivity extends AppCompatActivity
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-
-        Nutritionix n = new Nutritionix();
-        n.searchFood("apple");
 
         Intent intent = new Intent(this, SearchScreenActivity.class);
         startActivity(intent);
