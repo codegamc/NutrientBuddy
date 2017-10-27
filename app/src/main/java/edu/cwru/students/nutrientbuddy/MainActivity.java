@@ -1,5 +1,6 @@
 package edu.cwru.students.nutrientbuddy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity
 
         StrictMode.setThreadPolicy(policy);
 
+        Intent intent = new Intent(this, SearchScreenActivity.class);
+        startActivity(intent);
 
 
         InputStream in = null;
@@ -236,7 +239,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
