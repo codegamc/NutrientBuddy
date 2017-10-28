@@ -92,9 +92,11 @@ public class Nutritionix {
                 // Basic items (like "apple") can result in over 1000.
                 int numResults = 10;
 
-                f = new Food();
+
 
                 for (int i = 0; i < numResults; i++) {
+
+                    f = new Food();
 
                     JSONObject food = hits.getJSONObject(i);
                     JSONObject foodField = food.getJSONObject("fields");
@@ -133,6 +135,16 @@ public class Nutritionix {
         }
 
         return searchResults;
+    }
+
+    public ArrayList<String> returnFoodListString(){
+        ArrayList<String> stringList = new ArrayList<String>();
+
+        for(Food f : searchResults){
+            stringList.add(f.getName());
+        }
+
+        return stringList;
     }
 
 
