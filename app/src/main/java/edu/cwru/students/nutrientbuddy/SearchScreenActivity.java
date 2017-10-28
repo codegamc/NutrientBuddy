@@ -18,6 +18,13 @@ import java.util.List;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
+   /* private Context context;
+
+    public SearchScreenActivity(Context context) {
+        this.context = context;
+        super(context);
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +34,18 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
         final ArrayList<Food> items = new ArrayList<Food>();
-        final SearchAdapter adapter = new SearchAdapter(this, android.R.layout.list_content, items);
 
-        listview.setAdapter(adapter);
+
+        Nutritionix n = new Nutritionix();
+        ArrayList<Food> foods = n.searchFood("apple");
+        ArrayList<String> foodString = n.returnFoodListString();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
+
+      //  final SearchAdapter adapter = new SearchAdapter(this, android.R.layout.list_content, foods);
+        // Set The Adapter
+
+        listview.setAdapter(arrayAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
