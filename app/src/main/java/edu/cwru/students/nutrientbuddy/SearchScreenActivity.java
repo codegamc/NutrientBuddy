@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,11 @@ import java.util.List;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
+    private Nutritionix n;
+    private ArrayList<Food> foods;
+    private SearchAdapter adapter;
+    private ArrayList<Food> items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +31,30 @@ public class SearchScreenActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        this.n = new Nutritionix();
+
+        final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                queryNutritionix(query);
+                return true;
+                //this is where there should be the nutritionix called
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         final ListView listview = (ListView) findViewById(R.id.search_results);
-        final ArrayList<Food> items = new ArrayList<Food>();
-        final SearchAdapter adapter = new SearchAdapter(this, android.R.layout.list_content, items);
+        this.items = new ArrayList<Food>();
+        this.adapter = new SearchAdapter(this, android.R.layout.list_content, items);
+        
+        //todo move the GUI to global values
+
+        //todo restructure the oncreate for clarity
 
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -44,6 +71,14 @@ public class SearchScreenActivity extends AppCompatActivity {
     protected void startNutritionView(Food food){
         Intent intent = new Intent(this, ViewNutritionActivity.class);
         startActivity(intent);
+    }
+
+    protected void queryNutritionix(String queryText){
+        this.foods = this.n.searchFood(queryText);
+
+        for(Food f: this.foods){
+            this.adapter.add(f);
+        }
     }
 
 
