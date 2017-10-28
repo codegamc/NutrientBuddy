@@ -38,6 +38,7 @@
 
                 <SearchView
                     android:layout_width="match_parent"
+                    android:id="@+id/search_text_area"
                     android:layout_height="80dp"
                     android:layout_weight="1" />
 
