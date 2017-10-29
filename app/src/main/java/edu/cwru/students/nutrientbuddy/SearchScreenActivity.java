@@ -56,9 +56,8 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
-
-
-        this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);
+        this.items = new ArrayList<Food>();
+        this.adapter = new SearchAdapter(this, android.R.layout.list_content, items);
         
         //todo move the GUI to global values
 
@@ -67,6 +66,7 @@ public class SearchScreenActivity extends AppCompatActivity {
        // final ArrayList<Food> items = new ArrayList<Food>();
 
         //final ListView listview = (ListView) findViewById(R.id.search_results);
+        final ArrayList<Food> items = new ArrayList<Food>();
 
 
         //Nutritionix n = new Nutritionix();
