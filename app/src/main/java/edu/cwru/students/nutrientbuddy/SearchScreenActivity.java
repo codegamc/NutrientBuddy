@@ -40,7 +40,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         this.foods = new ArrayList<Food>();
         this.items = new ArrayList<Food>();
 
-        final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
+        /*final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -58,32 +58,36 @@ public class SearchScreenActivity extends AppCompatActivity {
         final ListView listview = (ListView) findViewById(R.id.search_results);
 
 
-        this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);
+        this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);*/
         
         //todo move the GUI to global values
 
         //todo restructure the oncreate for clarity
-/*
-       // final ArrayList<Food> items = new ArrayList<Food>();
 
-        //final ListView listview = (ListView) findViewById(R.id.search_results);
+        final ArrayList<Food> items = new ArrayList<Food>();
+
+        final ListView listview = (ListView) findViewById(R.id.search_results);
+
+        Log.v(TAG, "Hello!");
 
 
         //Nutritionix n = new Nutritionix();
-      // this.foods = this.n.searchFood("apple");
-      //  ArrayList<String> foodString = n.returnFoodListString();
+       this.foods = this.n.searchFood("apple");
+        ArrayList<String> foodString = this.n.returnFoodListString();
 
-       // ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
 
-      // final SearchAdapter adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List) foods); */
+      // final SearchAdapter adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List) foods);
 
-        listview.setAdapter(adapter);
+        listview.setAdapter(arrayAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //this needs to call the Nutrition Activity
-                startNutritionView(items.get(position));
+                //startNutritionView(items.get(position));
+                Intent intent = new Intent(SearchScreenActivity.this, ViewNutritionActivity.class);
+                startActivity(intent);
             }
         });
 
