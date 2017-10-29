@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
+//import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.app.SearchManager;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +23,7 @@ import java.util.List;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
+    private static final String TAG = "MyActivity";
     private Nutritionix n;
     private ArrayList<Food> foods;
     private SearchAdapter adapter;
@@ -32,14 +37,16 @@ public class SearchScreenActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         this.n = new Nutritionix();
+        this.foods = new ArrayList<Food>();
+        this.items = new ArrayList<Food>();
 
         final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Log.v(TAG, query);
                 queryNutritionix(query);
                 return true;
-                //this is where there should be the nutritionix called
             }
 
             @Override
@@ -49,28 +56,28 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
-<<<<<<< HEAD
-        this.items = new ArrayList<Food>();
-        this.adapter = new SearchAdapter(this, android.R.layout.list_content, items);
+
+
+        this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);
         
         //todo move the GUI to global values
 
         //todo restructure the oncreate for clarity
-=======
-        final ArrayList<Food> items = new ArrayList<Food>();
->>>>>>> origin/master
+/*
+       // final ArrayList<Food> items = new ArrayList<Food>();
+
+        //final ListView listview = (ListView) findViewById(R.id.search_results);
 
 
-        Nutritionix n = new Nutritionix();
-        ArrayList<Food> foods = n.searchFood("apple");
-        ArrayList<String> foodString = n.returnFoodListString();
+        //Nutritionix n = new Nutritionix();
+      // this.foods = this.n.searchFood("apple");
+      //  ArrayList<String> foodString = n.returnFoodListString();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
+       // ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
 
-      //  final SearchAdapter adapter = new SearchAdapter(this, android.R.layout.list_content, foods);
-        // Set The Adapter
+      // final SearchAdapter adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List) foods); */
 
-        listview.setAdapter(arrayAdapter);
+        listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -91,7 +98,9 @@ public class SearchScreenActivity extends AppCompatActivity {
         this.foods = this.n.searchFood(queryText);
 
         for(Food f: this.foods){
-            this.adapter.add(f);
+            Log.v(TAG, f.getName());
+            //this.adapter.add(f);
+            this.items.add(f);
         }
     }
 
