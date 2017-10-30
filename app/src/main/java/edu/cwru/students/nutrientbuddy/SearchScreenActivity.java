@@ -71,7 +71,7 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         Log.v(TAG, "Hello!");
         //final ListView listview = (ListView) findViewById(R.id.search_results);
-        final ArrayList<Food> items = new ArrayList<Food>();
+        this.items = new ArrayList<Food>();
 
 
         //Nutritionix n = new Nutritionix();
