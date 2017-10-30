@@ -56,29 +56,22 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
-<<<<<<< HEAD
-
 
         this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);*/
-=======
         this.items = new ArrayList<Food>();
         this.adapter = new SearchAdapter(this, android.R.layout.list_content, items);
->>>>>>> 3ef8392ebf6a6353a7752f84ae0db365ab9f57d6
         
         //todo move the GUI to global values
 
         //todo restructure the oncreate for clarity
 
-<<<<<<< HEAD
         final ArrayList<Food> items = new ArrayList<Food>();
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
 
         Log.v(TAG, "Hello!");
-=======
         //final ListView listview = (ListView) findViewById(R.id.search_results);
         final ArrayList<Food> items = new ArrayList<Food>();
->>>>>>> 3ef8392ebf6a6353a7752f84ae0db365ab9f57d6
 
 
         //Nutritionix n = new Nutritionix();
