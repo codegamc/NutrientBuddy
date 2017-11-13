@@ -6,8 +6,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.util.Log;
 
 public class ViewNutritionActivity extends AppCompatActivity {
+
+    private static final String TAG = "MyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,28 @@ public class ViewNutritionActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        String s = getIntent().getStringExtra("foodName");
+        Log.v(TAG, "Inside ViewNutrition. Food name = " + s);
+
+        s = getIntent().getStringExtra("foodCalories");
+        Log.v(TAG, "Inside ViewNutrition. Food calories = " + s);
+
+        s = getIntent().getStringExtra("foodTotalFat");
+        Log.v(TAG, "Inside ViewNutrition. Food total fat = " + s);
+
+        s = getIntent().getStringExtra("foodTotalCarbs");
+        Log.v(TAG, "Inside ViewNutrition. Food total carbs = " + s);
+
+        s = getIntent().getStringExtra("foodProtein");
+        Log.v(TAG, "Inside ViewNutrition. Food protein = " + s);
+
+        s = getIntent().getStringExtra("foodSugar");
+        Log.v(TAG, "Inside ViewNutrition. Food sugar = " + s);
+
+        s = getIntent().getStringExtra("foodSodium");
+        Log.v(TAG, "Inside ViewNutrition. Food sodium = " + s);
+
     }
 
 }

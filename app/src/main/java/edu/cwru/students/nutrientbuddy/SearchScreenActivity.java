@@ -31,6 +31,8 @@ public class SearchScreenActivity extends AppCompatActivity {
     private ArrayList<Food> foods;
     private SearchAdapter adapter;
     private ArrayList<Food> items;
+    private ListView listview;
+    private ArrayList<String> foodString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +42,33 @@ public class SearchScreenActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        this.n = new Nutritionix();
-        this.foods = new ArrayList<Food>();
-        this.items = new ArrayList<Food>();
+        n = new Nutritionix();
+        foods = new ArrayList<Food>();
+        items = new ArrayList<Food>();
+        foodString = new ArrayList<String>();
+        listview = new ListView(getApplicationContext());
 
-        /*final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
+        final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Log.v(TAG, query);
                 queryNutritionix(query);
+                foods = n.searchFood(query);
+
+                listview = (ListView) findViewById(R.id.search_results);
+
+                Log.v(TAG, "About to log for the foods!!");
+
+
+                foodString = n.returnFoodListString();
+
+                Log.v(TAG, "Got here.");
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
+
+                listview.setAdapter(arrayAdapter);
+
                 return true;
             }
 
@@ -59,34 +78,7 @@ public class SearchScreenActivity extends AppCompatActivity {
             }
         });
 
-        final ListView listview = (ListView) findViewById(R.id.search_results);
 
-        this.adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List)items);*/
-        this.items = new ArrayList<Food>();
-        this.adapter = new SearchAdapter(this, android.R.layout.list_content, items);
-        
-        //todo move the GUI to global values
-
-        //todo restructure the oncreate for clarity
-
-        final ArrayList<Food> items = new ArrayList<Food>();
-
-        final ListView listview = (ListView) findViewById(R.id.search_results);
-
-        Log.v(TAG, "Hello!");
-        //final ListView listview = (ListView) findViewById(R.id.search_results);
-        this.items = new ArrayList<Food>();
-
-
-        //Nutritionix n = new Nutritionix();
-       this.foods = this.n.searchFood("apple");
-        ArrayList<String> foodString = this.n.returnFoodListString();
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
-
-      // final SearchAdapter adapter = new SearchAdapter(getApplicationContext(), android.R.layout.list_content, (List) foods);
-
-        listview.setAdapter(arrayAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -94,6 +86,22 @@ public class SearchScreenActivity extends AppCompatActivity {
                 //this needs to call the Nutrition Activity
                 //startNutritionView(items.get(position));
                 Intent intent = new Intent(SearchScreenActivity.this, ViewNutritionActivity.class);
+
+                Log.v(TAG, "Selected position " + position);
+                Log.v(TAG, "Selected food: " + foodString.get(position));
+                Log.v(TAG, "Selected food from items: " + foods.get(position).getName());
+
+               //intent.putExtra("foodName", foodString.get(position));
+
+                intent.putExtra("foodName", foods.get(position).getName());
+                intent.putExtra("foodCalories", foods.get(position).getCalories());
+                intent.putExtra("foodTotalFat", foods.get(position).getTotalFat());
+                intent.putExtra("foodTotalCarbs", foods.get(position).getCarbs());
+                intent.putExtra("foodSodium", foods.get(position).getSodium());
+                intent.putExtra("foodSugar", foods.get(position).getSugar());
+                intent.putExtra("foodProtein", foods.get(position).getProtein());
+
+
                 startActivity(intent);
             }
         });
@@ -106,6 +114,7 @@ public class SearchScreenActivity extends AppCompatActivity {
     }
 
     protected void queryNutritionix(String queryText){
+        Log.v(TAG, "Inside queryNutritionix()");
         this.foods = this.n.searchFood(queryText);
 
         for(Food f: this.foods){
