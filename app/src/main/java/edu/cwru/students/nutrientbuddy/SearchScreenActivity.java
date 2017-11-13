@@ -76,7 +76,7 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         //Nutritionix n = new Nutritionix();
        this.foods = this.n.searchFood("apple");
-        ArrayList<String> foodString = this.n.returnFoodListString();
+        final ArrayList<String> foodString = this.n.returnFoodListString();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
 
@@ -90,6 +90,22 @@ public class SearchScreenActivity extends AppCompatActivity {
                 //this needs to call the Nutrition Activity
                 //startNutritionView(items.get(position));
                 Intent intent = new Intent(SearchScreenActivity.this, ViewNutritionActivity.class);
+
+                Log.v(TAG, "Selected position " + position);
+                Log.v(TAG, "Selected food: " + foodString.get(position));
+                Log.v(TAG, "Selected food from items: " + foods.get(position).getName());
+
+               //intent.putExtra("foodName", foodString.get(position));
+
+                intent.putExtra("foodName", foods.get(position).getName());
+                intent.putExtra("foodCalories", foods.get(position).getCalories());
+                intent.putExtra("foodTotalFat", foods.get(position).getTotalFat());
+                intent.putExtra("foodTotalCarbs", foods.get(position).getCarbs());
+                intent.putExtra("foodSodium", foods.get(position).getSodium());
+                intent.putExtra("foodSugar", foods.get(position).getSugar());
+                intent.putExtra("foodProtein", foods.get(position).getProtein());
+
+
                 startActivity(intent);
             }
         });

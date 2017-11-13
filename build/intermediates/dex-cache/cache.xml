@@ -3,12 +3,11 @@
 
     <item
         is-multidex="true"
-<<<<<<< HEAD
         jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="bb671d98e0c5279ec53a382c68bfda64461c5858">
+        sha1="d254fb0a755adf940dfe66ab9b9b421cc4fdcdf6">
         <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f692971e918083e857412fd0d27dbfdecd080518/classes.dex" />
     </item>
     <item
@@ -19,23 +18,6 @@
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_638d671213806149f156bf3ee970bcd9a1a76cc2/classes.dex" />
-=======
-        jar="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_da3aecc4a75697b50d9e1466b6fb7fa8418d4ccc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="272b9d2b18d295d62e4b0da3ac38e47e13d984de">
-        <dex dex="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_67ba3a31e589fee3058c641f589396119819b8c7\classes.dex" />
->>>>>>> af5a2f18d0b0c589d195dfc57d353868cd800c86
     </item>
 
 </items>
