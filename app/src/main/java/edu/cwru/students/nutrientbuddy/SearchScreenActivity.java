@@ -65,7 +65,7 @@ public class SearchScreenActivity extends AppCompatActivity {
 
         //todo restructure the oncreate for clarity
 
-        final ArrayList<Food> items = new ArrayList<Food>();
+       // final ArrayList<Food> items = new ArrayList<Food>();
 
         final ListView listview = (ListView) findViewById(R.id.search_results);
 

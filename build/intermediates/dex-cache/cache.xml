@@ -3,156 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/michael/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_f266853381e7b6f4be5f9a4b3e4def1ee03cafc3/classes.dex" />
+        sha1="bb671d98e0c5279ec53a382c68bfda64461c5858">
+        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f692971e918083e857412fd0d27dbfdecd080518/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/michael/.android/build-cache/a9b97dd93a5ea09777710b10ce9213eabeab9d0c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_17ea14e273dec553afb7c418bfd99d95c105ee02/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d44a7414258b84d1997ff2189b5dd735151e3e00">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2fd1a44579fd3c9d706b4439a908e25ade60dba1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/75950ed9ec7cec8ba8a535bbbc7ed0553edf4efc/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_68b1dcfac884f0e7a9a21f4bad6ee3a90ddcbbfd/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_774562ba40d321383b0cb319626bdde49071715d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/771813ee88d91cbf2dc8311946ea4860163d5c03/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e2994ef1179d140a700d4b4aba72770c5b0fd319/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/89353a574cef8edcb4226268e701b9c8e1cd4e2c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b311ccc03343b326484d6c52aa5f869b2b22cd90/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/549834be001cdaaab41eb5458fab104a3db9020e/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_58f6fbfa675f854a11305291e812e21b21beb0fe/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/17cbdb65c8e59159d5222539207793636c9191bf/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7b9c7299c54a0396b4d4b00d6094da67eea75d01/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/f7b21c59fdcf53cdbdbacbc733956f78d10f91f1/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_65573633f0897facede932f5e766641881cfb4be/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/ca2001cbaad523a96efc57d451c4823c3d6e879f/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_72db941482295c1eeb0efeb7e9f2d39e48eff412/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/cc0215fed7ebab6f42c075c3835b84131325d0bb/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f6c7df5d094e8c151786252378ebcd11f7c7af3c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/7cd0c8af11e3403ecbafe0246a94b9ac7cad1611/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0a9eac5bb66ea1db0b77aa2bd873507fe94405b8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/cbcdecb503334e6d121b3e0497748d099b3dc790/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_23db2a6479ea3245dbce2c4ceb94540fb61a313e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/1f884e88dca9f41ac27576e82af6c1c8f8b333bb/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_151b1b8715c08e3667f2b0eadaef078b3b7a7df3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/.android/build-cache/e56c38cb08ae6c1f6ab27ee85f563ed15277db9c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="95519720620b553f63afc789beba9ad582807f7c">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d82450f8343b3ddb98aa0c0e96700dcf0b87cfa3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_f4903175a35915db7fa0aeaf08f9d07da1fe9095/classes.dex" />
+        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_638d671213806149f156bf3ee970bcd9a1a76cc2/classes.dex" />
     </item>
 
 </items>
