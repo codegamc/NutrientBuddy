@@ -23,7 +23,7 @@
         android:onClick="addRecipe" />
 
     <ListView
-        android:id="@+id/search_results"
+        android:id="@+id/recipe_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp"/>
@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin" />
-
 
 </android.support.design.widget.CoordinatorLayout>
 

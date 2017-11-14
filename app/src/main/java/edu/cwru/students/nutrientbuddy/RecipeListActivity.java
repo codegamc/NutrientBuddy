@@ -13,6 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,7 +32,9 @@ public class RecipeListActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
 
-    private RecipeList list;
+    private RecipeList recipeList;
+
+    ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +43,22 @@ public class RecipeListActivity extends AppCompatActivity {
         Button button = (Button)findViewById(R.id.button_send);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        listview = (ListView) findViewById(R.id.recipe_list);
 
-        list = new RecipeList();  // Currently will probably override whatever previous list we made.
+        recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
 
+        recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
+        recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
+        recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
+
+        ArrayList<String> recipeNames = recipeList.getRecipeNames();
+
+        if(!recipeNames.isEmpty()) {
+            Log.v(TAG, "Inside the statement");
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+
+            listview.setAdapter(arrayAdapter);
+        }
 
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -72,6 +91,18 @@ public class RecipeListActivity extends AppCompatActivity {
         Log.v(TAG, "Recipe name found: " + recipeName);
         Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
         Log.v(TAG, "Recipe directions found: " + recipeDirections);
+
+        recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
+
+        ArrayList<String> recipeNames = recipeList.getRecipeNames();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+
+        listview.setAdapter(arrayAdapter);
+
+
+
+
 
     }
 }
