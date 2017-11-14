@@ -42,7 +42,6 @@ public class RecipeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
-        Button button = (Button)findViewById(R.id.button_send);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listview = (ListView) findViewById(R.id.recipe_list);
@@ -62,8 +61,6 @@ public class RecipeListActivity extends AppCompatActivity {
 
             listview.setAdapter(arrayAdapter);
         }
-
-
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -86,14 +83,14 @@ public class RecipeListActivity extends AppCompatActivity {
         });
 
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "ADD A NEW RECIPE", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
     }
 
     public void addRecipe(View view) {
@@ -101,7 +98,6 @@ public class RecipeListActivity extends AppCompatActivity {
 
         Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
         startActivityForResult(nextScreen,1000);
-
     }
 
     @Override
@@ -124,12 +120,31 @@ public class RecipeListActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
         listview.setAdapter(arrayAdapter);
-
-
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_home :
+                Intent intent = new Intent(RecipeListActivity.this, SearchScreenActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_shoppingList :
+                Intent intent2 = new Intent(RecipeListActivity.this, ShoppingListActivity.class);
+                startActivity(intent2);
+                return true;
+
+            default :
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
 }

@@ -124,36 +124,25 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.main, menu);
-        getMenuInflater().inflate(R.menu.menu_search_screen, menu);
+         //Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.menu_search_screen, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
         switch(item.getItemId()) {
-<<<<<<< HEAD
             case R.id.action_shoppingList :
                 Intent intent = new Intent(SearchScreenActivity.this, ShoppingListActivity.class);
                 startActivity(intent);
                 return true;
 
-=======
-            case R.id.action_shopping:
-                intent = new Intent(this, ShoppingListActivity.class);
-                startActivity(intent);
+            case R.id.action_recipe:
+                Intent intent3 = new Intent(SearchScreenActivity.this, RecipeListActivity.class);
+                startActivity(intent3);
                 return true;
-            case R.id.action_recipes:
-                intent = new Intent(this, RecipeListActivity.class);
-                startActivity(intent);
-                return true;
-//            case R.id.action_home :
-//                Intent intent = new Intent(FirstActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                return true;
->>>>>>> e81e49f0e18a6e21d6a2fdad78ee10d6646a8caf
+
             default :
                 return super.onOptionsItemSelected(item);
         }

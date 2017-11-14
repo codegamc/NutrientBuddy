@@ -27,6 +27,14 @@ public class ShoppingList {
         }
     }
 
+    public ArrayList<String> getItemNames(){
+        ArrayList<String> array = new ArrayList<String>();
+        for(Food item : list){
+            array.add(item.getName());
+        }
+        return array;
+    }
+
     public boolean clearList(){
         list.clear();
         return true;
