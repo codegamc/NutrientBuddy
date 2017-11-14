@@ -5,42 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.cwru.students.nutrientbuddy.ShoppingListActivity">
+    tools:context="edu.cwru.students.nutrientbuddy.ShoppingListActivity"
+    android:id="@+id/layoutId2">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="@color/colorPrimary"/>
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:orientation="vertical"
+        android:layout_marginTop="55dp">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <TextView
+            android:id="@+id/shopping_label"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:text="Your Shoppping List"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+    </RelativeLayout>
 
-    <include layout="@layout/content_shopping_list" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/list_results"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_marginTop="130dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

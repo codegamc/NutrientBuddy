@@ -80,7 +80,6 @@ public class SearchScreenActivity extends AppCompatActivity {
 
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //this needs to call the Nutrition Activity
@@ -134,10 +133,11 @@ public class SearchScreenActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-//            case R.id.action_home :
-//                Intent intent = new Intent(FirstActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                return true;
+            case R.id.action_shoppingList :
+                Intent intent = new Intent(SearchScreenActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+
             default :
                 return super.onOptionsItemSelected(item);
         }
