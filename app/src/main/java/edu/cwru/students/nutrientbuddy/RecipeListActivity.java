@@ -100,9 +100,5 @@ public class RecipeListActivity extends AppCompatActivity {
 
         listview.setAdapter(arrayAdapter);
 
-
-
-
-
     }
 }

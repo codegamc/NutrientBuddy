@@ -48,6 +48,11 @@
             android:label="EditRecipeActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".ViewRecipeActivity"
+            android:label="ViewRecipeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
