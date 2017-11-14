@@ -19,7 +19,6 @@ import android.widget.ListView;
 import android.app.SearchManager;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -127,13 +126,18 @@ public class SearchScreenActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+       // getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_search_screen, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
+            case R.id.action_shopping:
+                Intent intent = new Intent(this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
 //            case R.id.action_home :
 //                Intent intent = new Intent(FirstActivity.this, MainActivity.class);
 //                startActivity(intent);
