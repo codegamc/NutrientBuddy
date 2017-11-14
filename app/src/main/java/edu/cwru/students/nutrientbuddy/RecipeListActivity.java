@@ -23,7 +23,10 @@ import android.widget.SearchView.OnQueryTextListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.app.Activity;
 public class RecipeListActivity extends AppCompatActivity {
+
+    private static final String TAG = "MyActivity";
 
     private RecipeList list;
 
@@ -50,7 +53,25 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     public void addRecipe(View view) {
-        Intent intent = new Intent(this, EditRecipeActivity.class);
-        startActivity(intent);
+        //startActivityForResult(new Intent(this, EditRecipeActivity.class), 0);
+
+        Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
+        startActivityForResult(nextScreen,1000);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        String recipeName = data.getStringExtra("recipeName");
+        String recipeIngredients = data.getStringExtra("recipeIngredients");
+        String recipeDirections = data.getStringExtra("recipeDirections");
+
+        Log.v(TAG, "Recipe name found: " + recipeName);
+        Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
+        Log.v(TAG, "Recipe directions found: " + recipeDirections);
+
     }
 }

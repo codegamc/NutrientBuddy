@@ -45,6 +45,13 @@
             android:textSize="30dp"
             android:textStyle="bold">
         </EditText>
+        <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/create_recipe"
+            android:layout_below="@id/recipe_directions_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:onClick="addRecipeToList" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
