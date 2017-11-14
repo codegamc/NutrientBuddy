@@ -45,4 +45,8 @@ public class RecipeList {
         }
         return names;
     }
+
+    public ArrayList<Recipe> getRecipeItems(){
+        return list;
+    }
 }

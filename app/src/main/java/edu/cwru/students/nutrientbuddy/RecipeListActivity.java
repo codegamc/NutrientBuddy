@@ -33,6 +33,8 @@ public class RecipeListActivity extends AppCompatActivity {
     private static final String TAG = "MyActivity";
 
     private RecipeList recipeList;
+    private ArrayList<String> recipeNames;
+    private ArrayList<Recipe> recipes;
 
     ListView listview;
 
@@ -46,12 +48,13 @@ public class RecipeListActivity extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.recipe_list);
 
         recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
+        recipes = new ArrayList<Recipe>();
 
         recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
         recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
         recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
 
-        ArrayList<String> recipeNames = recipeList.getRecipeNames();
+        recipeNames = recipeList.getRecipeNames();
 
         if(!recipeNames.isEmpty()) {
             Log.v(TAG, "Inside the statement");
@@ -59,6 +62,28 @@ public class RecipeListActivity extends AppCompatActivity {
 
             listview.setAdapter(arrayAdapter);
         }
+
+
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(RecipeListActivity.this, ViewRecipeActivity.class);
+
+                Log.v(TAG, "Selected position " + position);
+                Log.v(TAG, "Selected food: " + recipeNames.get(position));
+                Log.v(TAG, "Selected food from items: " + recipeList.getRecipeItems().get(position).getName());
+
+
+                intent.putExtra("recipeName", recipeList.getRecipeItems().get(position).getName());
+                intent.putExtra("recipeIngredients", recipeList.getRecipeItems().get(position).getIngredients());
+                intent.putExtra("recipeDirections", recipeList.getRecipeItems().get(position).getDirections());
+
+                startActivity(intent);
+            }
+        });
 
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -94,11 +119,17 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
 
-        ArrayList<String> recipeNames = recipeList.getRecipeNames();
+        recipeNames = recipeList.getRecipeNames();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
         listview.setAdapter(arrayAdapter);
 
+
+
     }
+
+
+
+
 }

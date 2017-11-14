@@ -27,7 +27,17 @@ public class ViewRecipeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        
+
+
+        String s = getIntent().getStringExtra("recipeName");
+        Log.v(TAG, "Inside ViewRecipeActivity. Recipe name = " + s);
+
+        s = getIntent().getStringExtra("recipeIngredients");
+        Log.v(TAG, "Inside ViewRecipeActivity. Recipe ingredients = " + s);
+
+        s = getIntent().getStringExtra("recipeDirections");
+        Log.v(TAG, "Inside ViewRecipeActivity. Recipe directions = " + s);
+
     }
 
 }
