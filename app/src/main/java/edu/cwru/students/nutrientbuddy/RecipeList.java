@@ -37,4 +37,16 @@ public class RecipeList {
             Log.v(TAG, recipeItem.getName());
         }
     }
+
+    public ArrayList<String> getRecipeNames(){
+        ArrayList<String> names = new ArrayList<String>();
+        for(Recipe recipeItem : list){
+            names.add(recipeItem.getName());
+        }
+        return names;
+    }
+
+    public ArrayList<Recipe> getRecipeItems(){
+        return list;
+    }
 }
