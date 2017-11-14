@@ -10,6 +10,11 @@
     <item
         android:id="@+id/action_shopping"
         android:orderInCategory="100"
-        android:title="Shopping"
+        android:title="Shopping List"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_recipes"
+        android:orderInCategory="100"
+        android:title="Recipes"
         app:showAsAction="never" />
 </menu>

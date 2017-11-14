@@ -133,9 +133,14 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch(item.getItemId()) {
             case R.id.action_shopping:
-                Intent intent = new Intent(this, ShoppingListActivity.class);
+                intent = new Intent(this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipes:
+                intent = new Intent(this, RecipeListActivity.class);
                 startActivity(intent);
                 return true;
 //            case R.id.action_home :
