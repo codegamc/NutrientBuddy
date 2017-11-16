@@ -29,7 +29,7 @@ public class RecipeBuilderTest {
 
         // fill in strings
 
-        // 
+        // Click add recipe
     }
 
     @Test
