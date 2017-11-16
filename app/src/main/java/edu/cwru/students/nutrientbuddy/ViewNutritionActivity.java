@@ -7,17 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.util.Log;
+import android.widget.TextView;
 
 public class ViewNutritionActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_nutrition);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        text = (TextView) findViewById(R.id.textView);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            //text.setText("changit");
+            //append(bundle.getString("searchResult"));
+            //setTitle(bundle.getString("searchResult"));
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
