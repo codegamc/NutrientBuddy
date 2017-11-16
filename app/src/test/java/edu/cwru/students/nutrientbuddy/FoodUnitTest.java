@@ -63,4 +63,5 @@ public class FoodUnitTest {
         assertEquals("50", f.getSugar());
         assertEquals("100", f.getProtein());
     }
+
 }

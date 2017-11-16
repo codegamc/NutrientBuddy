@@ -5,21 +5,32 @@ import android.util.Log;
 
 public class RecipeList {
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "RecipeList";
 
     private ArrayList<Recipe> list;
 
     public RecipeList(){
-        list = new ArrayList<Recipe>();
+        this.list = new ArrayList<Recipe>();
     }
 
-    public void addItem(Recipe item){
-        list.add(item);
+    public void addItem(Recipe recipe){
+        this.list.add(recipe);
     }
 
-    public boolean removeItem(Recipe item){
-        if(list.contains(item)){
-            list.remove(item);
+    //todo remove this in favor of removeRecipe()
+    public boolean removeItem(Recipe recipe){
+        if(this.list.contains(recipe)){
+            this.list.remove(recipe);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean removeRecipe(Recipe recipe){
+        if(this.list.contains(recipe)){
+            this.list.remove(recipe);
             return true;
         }
         else{
@@ -28,25 +39,26 @@ public class RecipeList {
     }
 
     public boolean clearList(){
-        list.clear();
+        this.list.clear();
+        //there is no need to give it a return value if it *always* returns true
         return true;
     }
 
     public void printListContents(){
-        for(Recipe recipeItem : list){
+        for(Recipe recipeItem : this.list){
             Log.v(TAG, recipeItem.getName());
         }
     }
 
     public ArrayList<String> getRecipeNames(){
         ArrayList<String> names = new ArrayList<String>();
-        for(Recipe recipeItem : list){
+        for(Recipe recipeItem : this.list){
             names.add(recipeItem.getName());
         }
         return names;
     }
 
     public ArrayList<Recipe> getRecipeItems(){
-        return list;
+        return this.list;
     }
 }

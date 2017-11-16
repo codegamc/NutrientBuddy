@@ -101,6 +101,8 @@ public class Nutritionix {
                     JSONObject food = hits.getJSONObject(i);
                     JSONObject foodField = food.getJSONObject("fields");
 
+                    Log.v(TAG,foodField.toString());
+
                     f.setName(foodField.getString("item_name"));
                     f.setTotalCalories(foodField.getString("nf_calories"));
                     f.setTotalFat(foodField.getString("nf_total_fat"));
