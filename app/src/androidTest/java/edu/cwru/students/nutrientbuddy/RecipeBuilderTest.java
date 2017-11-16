@@ -23,6 +23,13 @@ public class RecipeBuilderTest {
     @Test
     public void verifyCreateNewRecipe() throws Exception {
         //// TODO: 11/16/17
+        // navigate to the selection bar
+
+        // press the "new recipe" button
+
+        // fill in strings
+
+        // 
     }
 
     @Test

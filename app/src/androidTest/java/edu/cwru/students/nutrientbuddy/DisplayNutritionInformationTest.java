@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -21,13 +22,13 @@ import static org.junit.Assert.*;
 public class DisplayNutritionInformationTest {
 
     @Rule
-    public ActivityTestRule<ViewNutritionActivity> mActivityRule = new ActivityTestRule<>(
-            ViewNutritionActivity.class);
+    public ActivityTestRule<SearchScreenActivity> mActivityRule = new ActivityTestRule<>(
+            SearchScreenActivity.class);
 
     @Test
     public void verifySelectionOfSearchResults() throws Exception {
         // Make search
-        onView(withId(R.id.search_text_area)).perform(typeText("apple"), closeSoftKeyboard());
+        //onView(withId(R.id.search_text_area)).perform(typeText("apple"), closeSoftKeyboard());
         // Click the selection (somehow?)
 
         // Verify contents // this should be in a different Activity?
@@ -36,6 +37,9 @@ public class DisplayNutritionInformationTest {
         // Hit back button and return
 
         // verify existing list
+        onView(withId(R.id.list_results)).perform();
+
+        onView(withId(R.id.list_results)).perform(click());
 
         //// TODO: 11/16/17
 
@@ -46,7 +50,8 @@ public class DisplayNutritionInformationTest {
     @Test
     public void verifyBackFunctionality() throws Exception {
         // Make search
-        onView(withId(R.id.search_text_area)).perform(typeText("apple"), closeSoftKeyboard());
+        onView(withId(R.id.list_results)).perform();
+
         // Click the selection (somehow?)
 
         // Verify contents // this should be in a different Activity?
@@ -60,5 +65,8 @@ public class DisplayNutritionInformationTest {
     @Test
     public void verifyButtonShowsUpInUI() throws Exception {
         //// TODO: 11/16/17
+
+        // no idea how to do this?
+
     }
 }

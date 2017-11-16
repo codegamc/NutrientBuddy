@@ -21,7 +21,7 @@ import java.util.List;
 public class ShoppingListActivity extends AppCompatActivity {
 
     private ShoppingList list;
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "ShoppingListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +31,15 @@ public class ShoppingListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId2);
 
-        list = new ShoppingList();  // Currently will probably override whatever previous list we made.
+        this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
         Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
         Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
         Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
-        list.addItem(apple);
-        list.addItem(banana);
-        list.addItem(pear);
+        this.list.addItem(apple);
+        this.list.addItem(banana);
+        this.list.addItem(pear);
 
-        ArrayList<String> shopListNames = list.getItemNames();
+        ArrayList<String> shopListNames = this.list.getItemNames();
 
         ListView listView = new ListView(getApplicationContext());
         listView = (ListView)findViewById(R.id.list_results);

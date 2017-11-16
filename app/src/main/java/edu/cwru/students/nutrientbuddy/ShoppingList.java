@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class ShoppingList {
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "ShoppingList";
 
     private ArrayList<Food> list;
 
