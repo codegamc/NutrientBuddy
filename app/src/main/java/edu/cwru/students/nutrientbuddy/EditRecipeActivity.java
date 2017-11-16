@@ -45,7 +45,7 @@ public class EditRecipeActivity extends AppCompatActivity {
         previousScreen.putExtra("recipeName", recipeNameText.getText()+"");
         previousScreen.putExtra("recipeIngredients", recipeIngrText.getText()+"");
         previousScreen.putExtra("recipeDirections", recipeDirText.getText()+"");
-        setResult(1000, previousScreen);
+        setResult(2000, previousScreen);
 
         finish();
     }

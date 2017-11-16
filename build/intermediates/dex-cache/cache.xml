@@ -2,6 +2,15 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
+        is-multidex="true"
+        jar="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="56e23ec24fcb251f8af567ea77ad534585af9c13">
+        <dex dex="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_67ba3a31e589fee3058c641f589396119819b8c7\classes.dex" />
+=======
         is-multidex="false"
         jar="/Users/michael/.android/build-cache/e56c38cb08ae6c1f6ab27ee85f563ed15277db9c/output/jars/classes.jar"
         jumboMode="false"
@@ -270,6 +279,7 @@
         revision="25.0.3"
         sha1="5de0c73fef18917cd85d0ab70bb23818685e4dfd">
         <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/pre-dexed/androidTest/debug/hamcrest-integration-1.3_b03070aaa25f019d9a43372308a4c0e144b89dea.jar" />
+>>>>>>> 73dba9f053dbcb50c38400a8458b89f77ebd4948
     </item>
 
 </items>

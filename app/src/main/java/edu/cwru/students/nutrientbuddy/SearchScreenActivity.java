@@ -25,7 +25,7 @@ import java.util.List;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
-    private static final String TAG = "SearchActivity";
+    private static final String TAG = "MyActivity";
     private Nutritionix n;
     private ArrayList<Food> foods;
     private SearchAdapter adapter;
@@ -46,6 +46,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         items = new ArrayList<Food>();
         foodString = new ArrayList<String>();
         listview = new ListView(getApplicationContext());
+        listview = (ListView) findViewById(R.id.search_results);
 
         final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -55,7 +56,7 @@ public class SearchScreenActivity extends AppCompatActivity {
                 queryNutritionix(query);
                 foods = n.searchFood(query);
 
-                listview = (ListView) findViewById(R.id.search_results);
+
 
                 Log.v(TAG, "About to log for the foods!!");
 
@@ -75,7 +76,7 @@ public class SearchScreenActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 queryNutritionix(newText);
                 //foods = n.searchFood(query);
-                listview = (ListView) findViewById(R.id.search_results);
+
                 foodString = n.returnFoodListString();
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
                 listview.setAdapter(arrayAdapter);
@@ -96,7 +97,8 @@ public class SearchScreenActivity extends AppCompatActivity {
                 Log.v(TAG, "Selected food: " + foodString.get(position));
                 Log.v(TAG, "Selected food from items: " + foods.get(position).getName());
 
-               //intent.putExtra("foodName", foodString.get(position));
+                //intent.putExtra("foodName", foodString.get(position));
+                intent.putExtra("searchResult",listview.getItemAtPosition(position).toString());
 
                 intent.putExtra("foodName", foods.get(position).getName());
                 intent.putExtra("foodCalories", foods.get(position).getCalories());
@@ -109,7 +111,11 @@ public class SearchScreenActivity extends AppCompatActivity {
 
                 startActivity(intent);
             }
+
+
+
         });
+
 
     }
 
@@ -132,7 +138,7 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-         //Inflate the menu; this adds items to the action bar if it is present.
+        //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         //getMenuInflater().inflate(R.menu.menu_search_screen, menu);
         return true;
