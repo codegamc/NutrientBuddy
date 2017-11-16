@@ -21,14 +21,14 @@ import java.util.List;
 public class ShoppingListActivity extends AppCompatActivity {
 
     private ShoppingList list;
-<<<<<<< HEAD
-    private static final String TAG = "MyActivity";
+
+   // private static final String TAG = "MyActivity";
     private ArrayList<String> shopListNames;
 
     ListView listView;
-=======
+
     private static final String TAG = "ShoppingListActivity";
->>>>>>> 73dba9f053dbcb50c38400a8458b89f77ebd4948
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +46,8 @@ public class ShoppingListActivity extends AppCompatActivity {
         this.list.addItem(banana);
         this.list.addItem(pear);
 
-<<<<<<< HEAD
         shopListNames = list.getItemNames();
-=======
         ArrayList<String> shopListNames = this.list.getItemNames();
->>>>>>> 73dba9f053dbcb50c38400a8458b89f77ebd4948
 
         listView = new ListView(getApplicationContext());
         listView = (ListView)findViewById(R.id.list_results);
@@ -63,7 +60,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                 Intent intent = new Intent(ShoppingListActivity.this, ViewShopListItemActivity.class);
 
                 Log.v(TAG, "Selected position " + position);
-                Log.v(TAG, "Selected food: " + shopListNames.get(position));
+                Log.v(TAG, "Selected food: " + list.getShopItems().get(position));
                 Log.v(TAG, "Selected food from items: " + list.getShopItems().get(position).getName());
 
 
