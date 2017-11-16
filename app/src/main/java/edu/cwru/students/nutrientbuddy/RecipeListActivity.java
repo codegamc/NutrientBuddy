@@ -44,22 +44,22 @@ public class RecipeListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        listview = (ListView) findViewById(R.id.recipe_list);
+        this.listview = (ListView) findViewById(R.id.recipe_list);
 
-        recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
-        recipes = new ArrayList<Recipe>();
+        this.recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
+        this.recipes = new ArrayList<Recipe>();
 
-        recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
-        recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
-        recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
+        this.recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
+        this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
+        this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
 
-        recipeNames = recipeList.getRecipeNames();
+        this.recipeNames = recipeList.getRecipeNames();
 
-        if(!recipeNames.isEmpty()) {
+        if(!this.recipeNames.isEmpty()) {
             Log.v(TAG, "Inside the statement");
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
-            listview.setAdapter(arrayAdapter);
+            this.listview.setAdapter(arrayAdapter);
         }
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -116,13 +116,13 @@ public class RecipeListActivity extends AppCompatActivity {
         Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
         Log.v(TAG, "Recipe directions found: " + recipeDirections);
 
-        recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
+        this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
 
-        recipeNames = recipeList.getRecipeNames();
+        this.recipeNames = this.recipeList.getRecipeNames();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
-        listview.setAdapter(arrayAdapter);
+        this.listview.setAdapter(arrayAdapter);
     }
 
     @Override

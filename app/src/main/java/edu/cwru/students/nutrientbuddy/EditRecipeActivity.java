@@ -15,7 +15,7 @@ import android.view.View;
 
 public class EditRecipeActivity extends AppCompatActivity {
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "EditRecipeActivity";
 
     private EditText recipeNameText;
     private EditText recipeIngrText;
@@ -28,9 +28,9 @@ public class EditRecipeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recipeNameText = (EditText) findViewById(R.id.recipe_name_text);
-        recipeIngrText = (EditText) findViewById(R.id.recipe_ingredients_text);
-        recipeDirText = (EditText) findViewById(R.id.recipe_directions_text);
+        this.recipeNameText = (EditText) findViewById(R.id.recipe_name_text);
+        this.recipeIngrText = (EditText) findViewById(R.id.recipe_ingredients_text);
+        this.recipeDirText = (EditText) findViewById(R.id.recipe_directions_text);
 
         Button button = (Button) findViewById(R.id.create_recipe);
 

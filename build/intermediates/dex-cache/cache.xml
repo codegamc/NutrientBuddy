@@ -128,6 +128,15 @@
         <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/pre-dexed/debug/classes_17ea14e273dec553afb7c418bfd99d95c105ee02.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5ec3a15d4909bb6f1f0041f020070afdba8b21d5">
+        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2fd1a44579fd3c9d706b4439a908e25ade60dba1/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/michael/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
         jumboMode="false"
@@ -234,6 +243,15 @@
         revision="25.0.3"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
         <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/pre-dexed/debug/classes_b311ccc03343b326484d6c52aa5f869b2b22cd90.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/michael/Workspaces/AndroidStudio/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_f4903175a35915db7fa0aeaf08f9d07da1fe9095/classes.dex" />
     </item>
     <item
         is-multidex="false"
