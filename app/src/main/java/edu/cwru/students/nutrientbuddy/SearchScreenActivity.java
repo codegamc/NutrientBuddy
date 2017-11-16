@@ -73,7 +73,14 @@ public class SearchScreenActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                queryNutritionix(newText);
+                //foods = n.searchFood(query);
+                listview = (ListView) findViewById(R.id.search_results);
+                foodString = n.returnFoodListString();
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List)foodString);
+                listview.setAdapter(arrayAdapter);
+
+                return true;
             }
         });
 
@@ -112,6 +119,7 @@ public class SearchScreenActivity extends AppCompatActivity {
     }
 
     protected void queryNutritionix(String queryText){
+        foods.clear();
         Log.v(TAG, "Inside queryNutritionix()");
         this.foods = this.n.searchFood(queryText);
 

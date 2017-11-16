@@ -8,36 +8,12 @@ public class Recipe {
     private String ingredients;
     private String directions;
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = " RECIPE";
 
-    public Recipe(String n, String ing, String dir){
-        name = n;
-        ingredients = ing;
-        directions = dir;
-    }
-
-    public void setName(String n){
-        name = n;
-    }
-
-    public void setIngredients(String ing){
-        ingredients = ing;
-    }
-
-    public void setDirections(String dir){
-        directions = dir;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getIngredients(){
-        return ingredients;
-    }
-
-    public String getDirections(){
-        return directions;
+    public Recipe(String name, String ingredients, String directions){
+        this.name = name;
+        this.ingredients = ingredients;
+        this.directions = directions;
     }
 
     public void printRecipe(){
@@ -47,5 +23,33 @@ public class Recipe {
         Log.v(TAG, "Recipe directions: " + directions);
 
     }
+
+    //////// GETTER SETTER METHODS ///////
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setIngredients(String ingredients){
+        this.ingredients = ingredients;
+    }
+
+    public String getIngredients(){
+        return this.ingredients;
+    }
+
+    public void setDirections(String directions){
+        this.directions = directions;
+    }
+
+    public String getDirections(){
+        return this.directions;
+    }
+
+
 
 }
