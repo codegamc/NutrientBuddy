@@ -89,6 +89,9 @@ public class RecipeListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "ADD A NEW RECIPE", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
+                startActivityForResult(nextScreen,1000);
             }
         });
     }
