@@ -45,4 +45,8 @@ public class ShoppingList {
             Log.v(TAG, foodItem.getName());
         }
     }
+
+    public ArrayList<Food> getShopItems(){
+        return this.list;
+    }
 }

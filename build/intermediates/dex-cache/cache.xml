@@ -3,21 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="922214009eac095e50cab2073fe2a6b1b377167d">
-        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f692971e918083e857412fd0d27dbfdecd080518/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_638d671213806149f156bf3ee970bcd9a1a76cc2/classes.dex" />
+        sha1="56e23ec24fcb251f8af567ea77ad534585af9c13">
+        <dex dex="C:\Users\hls60\Documents\GitHub\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_67ba3a31e589fee3058c641f589396119819b8c7\classes.dex" />
     </item>
 
 </items>
