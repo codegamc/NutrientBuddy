@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -56,12 +57,12 @@
             android:id="@+id/recipe_ingr_received"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/directions_text"
+            android:layout_below="@+id/directions_text"
+            android:layout_marginTop="13dp"
             android:text="Test!!"
             android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/directions_text"
-            android:layout_alignStart="@+id/directions_text"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/directions_text"
@@ -78,12 +79,12 @@
             android:id="@+id/recipe_dir_received"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ingredients_text"
+            android:layout_below="@+id/ingredients_text"
+            android:layout_marginTop="20dp"
             android:text="Test!!"
             android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/ingredients_text"
-            android:layout_alignStart="@+id/ingredients_text"
-            android:layout_marginTop="20dp" />
+            android:textStyle="bold" />
 
 
         <Button xmlns:android="http://schemas.android.com/apk/res/android"
