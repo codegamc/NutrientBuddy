@@ -28,26 +28,22 @@ public class RecipeBuilderTest {
 
     @Test
     public void verifyCreateNewRecipe() throws Exception {
-        navToRecipeview();
         this.createRecipe("name", "ingredients", "directions");
     }
 
     @Test
     public void verifyNavigateToRecipe() throws Exception {
         //// TODO: 11/16/17
-        navToRecipeview();
-        // This has to start at a different activity, then nav
     }
 
     @Test
     public void verifyNavigateBackToRecipeView() throws Exception {
         //// TODO: 11/16/17
-        navToRecipeview();
     }
 
     @Test
     public void verifyUserCanDeleteRecipe() throws Exception {
-        navToRecipeview();
+        //// TODO: 11/16/17
         this.createRecipe("name", "ingredients", "directions");
 
         // How to delete a recipe?
@@ -56,17 +52,9 @@ public class RecipeBuilderTest {
 
     @Test
     public void verifyCreateNewRecipeValidation() throws Exception {
-        navToRecipeview();
-        this.createRecipe("name", "ingredients", "directions");
-
-        //what next?
-
-
+        //// TODO: 11/16/17
     }
 
-    public void navToRecipeview(){
-        onView(withId()).perform();
-    }
 
     public void createRecipe(String name, String ingredients, String directions){
         // Trigger the recipe builder
