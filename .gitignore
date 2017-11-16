@@ -1,6 +1,39 @@
+# Local configuration file (sdk path, etc)
 local.properties
-.DS_Store
-.idea/
-build/
-.idea/
+
+# Log Files
+*.log
+
+# IntelliJ
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/libraries
+
+# Gradle files
 .gradle/
+build/
+
+# Generated files
+bin/
+gen/
+out/
+
+# Built application files
+*.apk
+*.ap_
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
