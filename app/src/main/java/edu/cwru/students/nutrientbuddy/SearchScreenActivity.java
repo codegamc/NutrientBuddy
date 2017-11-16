@@ -25,7 +25,7 @@ import java.util.List;
 
 public class SearchScreenActivity extends AppCompatActivity {
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "SearchActivity";
     private Nutritionix n;
     private ArrayList<Food> foods;
     private SearchAdapter adapter;
