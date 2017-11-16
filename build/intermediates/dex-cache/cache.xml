@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Ben\Desktop\NutrientBuddy\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="82bba30410ef917a7f8a8a62be1147df96cc4a20">
-        <dex dex="C:\Users\Ben\Desktop\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0b73a8d59dc9fac9d583fb65edd8f2faa138c9b3\classes.dex" />
+        sha1="922214009eac095e50cab2073fe2a6b1b377167d">
+        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f692971e918083e857412fd0d27dbfdecd080518/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Ben\Desktop\NutrientBuddy\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\Ben\Desktop\NutrientBuddy\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cf841c7c97c45dc66b9557c6645244552cb6129f\classes.dex" />
+        <dex dex="/Users/liz/Documents/Software_Engineering/NutrientBuddy/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_638d671213806149f156bf3ee970bcd9a1a76cc2/classes.dex" />
     </item>
 
 </items>
