@@ -35,16 +35,33 @@ public class ShoppingListTest {
 
     @Test
     public void userCannotAddEmptyItem() throws Exception {
-        //// TODO: 11/16/17
+        createFood();
+        // this should throw an error
+
     }
 
     @Test
     public void foodDeletedGoesAway() throws Exception {
         //// TODO: 11/16/17
+
+        // Create a food item
+        createFood();
+        // locate the food item
+
+        // delete the food item
+
+        // check that food item no longer locatable
+
     }
 
     @Test
     public void shoppingListSavesLocally() throws Exception {
-        //// TODO: 11/16/17  
+        //// TODO: 11/16/17
+
+        // not really sure how to test this, probably close app and re open? Is that supported
+    }
+
+    public void createFood() {
+        //there is no add food button
     }
 }
