@@ -100,13 +100,13 @@ public class SearchScreenActivity extends AppCompatActivity {
                 //intent.putExtra("foodName", foodString.get(position));
                 intent.putExtra("searchResult",listview.getItemAtPosition(position).toString());
 
-                //intent.putExtra("foodName", foods.get(position).getName());
-                //intent.putExtra("foodCalories", foods.get(position).getCalories());
-                //intent.putExtra("foodTotalFat", foods.get(position).getTotalFat());
-                //intent.putExtra("foodTotalCarbs", foods.get(position).getCarbs());
-                //intent.putExtra("foodSodium", foods.get(position).getSodium());
-                //intent.putExtra("foodSugar", foods.get(position).getSugar());
-                //intent.putExtra("foodProtein", foods.get(position).getProtein());
+                intent.putExtra("foodName", foods.get(position).getName());
+                intent.putExtra("foodCalories", foods.get(position).getCalories());
+                intent.putExtra("foodTotalFat", foods.get(position).getTotalFat());
+                intent.putExtra("foodTotalCarbs", foods.get(position).getCarbs());
+                intent.putExtra("foodSodium", foods.get(position).getSodium());
+                intent.putExtra("foodSugar", foods.get(position).getSugar());
+                intent.putExtra("foodProtein", foods.get(position).getProtein());
 
 
                 startActivity(intent);

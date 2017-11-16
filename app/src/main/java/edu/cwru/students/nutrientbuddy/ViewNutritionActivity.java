@@ -13,6 +13,7 @@ public class ViewNutritionActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     TextView text;
+    private TextView foodName, foodCalories, foodTotalFat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,21 @@ public class ViewNutritionActivity extends AppCompatActivity {
             }
         });
 
+        foodName = (TextView) findViewById(R.id.food_name_received);
+        foodCalories = (TextView) findViewById(R.id.calories_received);
+        foodTotalFat = (TextView) findViewById(R.id.total_fat_received);
+
         String s = getIntent().getStringExtra("foodName");
         Log.v(TAG, "Inside ViewNutrition. Food name = " + s);
+        foodName.setText(s);
 
         s = getIntent().getStringExtra("foodCalories");
         Log.v(TAG, "Inside ViewNutrition. Food calories = " + s);
+        foodCalories.setText(s + "kcal");
 
         s = getIntent().getStringExtra("foodTotalFat");
         Log.v(TAG, "Inside ViewNutrition. Food total fat = " + s);
+        foodTotalFat.setText(s + "g");
 
         s = getIntent().getStringExtra("foodTotalCarbs");
         Log.v(TAG, "Inside ViewNutrition. Food total carbs = " + s);
