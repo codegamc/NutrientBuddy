@@ -137,10 +137,11 @@ public class SearchScreenActivity extends AppCompatActivity {
         Nutritionix nutritionix = new Nutritionix(10);
         nutritionix.loadFoodSearch(query);
         Log.v("search", "ended search");
-        foodString = nutritionix.returnFoodListAsString();
-
+        //foodString = nutritionix.returnFoodListAsString();
+        this.foods = nutritionix.returnFoodListAsFood();
+        
         //todo make this private
-        this.foodString = this.sortList(foodString);
+        this.foodString = Nutritionix.convertFoodListToString(this.sortList(foods));
 
         // todo change name from simple_list_view
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) foodString);
@@ -150,7 +151,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         Log.v("search", "ended search1");
     }
 
-    private ArrayList<String> sortList(ArrayList<String> list){
+    private ArrayList<Food> sortList(ArrayList<Food> list){
         // do something in place to the list of it should change
         return this.searchMetric.sort(list);
     }

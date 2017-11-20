@@ -6,12 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de6337c5-4b33-487c-bae0-8e1d87a54b70" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/NoSort.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/NoSort.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchMetric.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchMetric.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -37,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SearchScreenActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchScreenActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="144" column="49" lean-forward="true" selection-start-line="144" selection-start-column="49" selection-end-line="144" selection-end-column="49" />
+            <state relative-caret-position="226">
+              <caret line="141" column="8" lean-forward="false" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
               <folding>
                 <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
                 <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
@@ -50,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoSort.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NoSort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/NoSort.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -76,9 +72,16 @@
       <file leaf-file-name="Nutritionix.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="80" column="46" lean-forward="true" selection-start-line="80" selection-start-column="46" selection-end-line="80" selection-end-column="46" />
+            <state relative-caret-position="436">
+              <caret line="137" column="82" lean-forward="false" selection-start-line="137" selection-start-column="82" selection-end-line="137" selection-end-column="82" />
               <folding>
+                <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
+                <element signature="method#loadFoodSearch#0;class#Nutritionix#0" expanded="false" />
+                <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
+                <element signature="e#3653#3661#0" expanded="true" />
+                <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
+                <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
+                <element signature="e#4315#4323#0" expanded="true" />
                 <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
               </folding>
             </state>
@@ -1833,11 +1836,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Food.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchMetric.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/NoSort.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java" />
       </list>
     </option>
   </component>
@@ -2065,7 +2068,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511215696374" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511216077880" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2165,7 +2168,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511215696374" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511216077881" />
       </method>
     </configuration>
     <list size="1">
@@ -2256,7 +2259,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2277,6 +2280,13 @@
         <state relative-caret-position="1125">
           <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
           <folding>
+            <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#loadFoodSearch#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3653#3661#0" expanded="true" />
+            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#4315#4323#0" expanded="true" />
             <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
           </folding>
         </state>
@@ -2322,35 +2332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="102" column="38" lean-forward="false" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="80" column="46" lean-forward="true" selection-start-line="80" selection-start-column="46" selection-end-line="80" selection-end-column="46" />
-          <folding>
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="144" column="49" lean-forward="true" selection-start-line="144" selection-start-column="49" selection-end-line="144" selection-end-column="49" />
-          <folding>
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchMetric.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -2366,6 +2347,42 @@
           <folding>
             <element signature="e#179#180#0" expanded="true" />
             <element signature="e#206#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="102" column="38" lean-forward="false" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="137" column="82" lean-forward="false" selection-start-line="137" selection-start-column="82" selection-end-line="137" selection-end-column="82" />
+          <folding>
+            <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#loadFoodSearch#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3653#3661#0" expanded="true" />
+            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
+            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#4315#4323#0" expanded="true" />
+            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="141" column="8" lean-forward="false" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
+          <folding>
+            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
+            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>

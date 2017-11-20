@@ -135,6 +135,21 @@ public class Nutritionix {
         return foodList;
     }
 
+    public static ArrayList<String> convertFoodListToString(ArrayList<Food> foods){
+        ArrayList<String> stringList = new ArrayList<String>();
+        try{
+            for(Food f : foods){
+                stringList.add(f.get(Food.name));
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+        return stringList;
+    }
+
     ///////////// PRIVATE METHODS
 
     private ArrayList<Food> buildJSON(String data){
