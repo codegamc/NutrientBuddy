@@ -65,7 +65,7 @@ public class RecipeBuilderTest {
     }
 
     public void navToRecipeview(){
-        onView(withId()).perform();
+        //onView(withId()).perform();
     }
 
     public void createRecipe(String name, String ingredients, String directions){

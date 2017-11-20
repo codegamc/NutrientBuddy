@@ -44,12 +44,6 @@ public class RecipeList {
         return true;
     }
 
-    public void printListContents(){
-        for(Recipe recipeItem : this.list){
-            Log.v(TAG, recipeItem.getName());
-        }
-    }
-
     public ArrayList<String> getRecipeNames(){
         ArrayList<String> names = new ArrayList<String>();
         for(Recipe recipeItem : this.list){

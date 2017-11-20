@@ -39,9 +39,11 @@ public class ShoppingListActivity extends AppCompatActivity {
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId2);
 
         this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
+
         Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
         Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
         Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
+
         this.list.addItem(apple);
         this.list.addItem(banana);
         this.list.addItem(pear);

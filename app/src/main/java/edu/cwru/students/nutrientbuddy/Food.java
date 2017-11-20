@@ -43,7 +43,7 @@ public class Food {
         return this.data.get(nutritionalField);
     }
 
-    /////////// Getter Setters ////////////
+    /////////// Getter Setters //////////// todo depreciate these
 
     public void setName(String foodName){
         this.data.put(this.name, foodName);

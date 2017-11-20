@@ -35,7 +35,10 @@ public class SearchScreenActivity extends AppCompatActivity {
 
     // Global Fields related to Sorting
     private String sortMethod;
-    private SearchMetric seachMetric = new NoSort();
+    private SearchMetric searchMetric = new NoSort();
+
+    //Fields for Global User Interface
+    private OpenItemsMenuHandler openItemsMenuHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,18 @@ public class SearchScreenActivity extends AppCompatActivity {
         //todo update the name here too
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /////////// Initialize the application stuff ///////////
+        /*
+        This stuff should get moved to the start activity, when it becomes a thing...
+         */
+
+
+
+        /*
+        End Initialization stuff
+         */
+        //////////////// Menu Bar Stuff
+        this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
         /////////// LIST VIEW STUFF ///////////
         //todo check names
@@ -85,8 +100,7 @@ public class SearchScreenActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 search(query);
-
-                //todo make this reflect actual state?
+                //make this reflect actual state?
                 return true;
             }
 
@@ -98,73 +112,61 @@ public class SearchScreenActivity extends AppCompatActivity {
                     //do nothing at the moment
                 }
 
-                //todo make this reflect actual state?
+                //make this reflect actual state?
                 return true;
             }
 
         });
 
         /////////// SORTING STUFF ///////////
-        this.setSeachMetric("NoSort");
+        this.setSearchMetric("NoSort");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_shoppingList :
-                Intent intent = new Intent(SearchScreenActivity.this, ShoppingListActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.action_recipe:
-                Intent intent3 = new Intent(SearchScreenActivity.this, RecipeListActivity.class);
-                startActivity(intent3);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
         }
     }
 
     /////// PRIVATE METHODS
 
     private void search(String query){
+        Log.v("search", "started search");
         Nutritionix nutritionix = new Nutritionix(10);
         nutritionix.loadFoodSearch(query);
+        Log.v("search", "ended search");
         foodString = nutritionix.returnFoodListAsString();
 
+        //todo make this private
         this.foodString = this.sortList(foodString);
 
         // todo change name from simple_list_view
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) foodString);
+
         listview.setAdapter(arrayAdapter);
+
+        Log.v("search", "ended search1");
     }
 
     private ArrayList<String> sortList(ArrayList<String> list){
         // do something in place to the list of it should change
-        return this.seachMetric.sort(list);
+        return this.searchMetric.sort(list);
     }
 
-    public void setSeachMetric(String seachMetric) {
+    public void setSearchMetric(String seachMetric) {
         //todo there should be a better way to implement this
         if(seachMetric.equals("NoSort")){
-            this.seachMetric = new NoSort();
-        }
-    }
-
-    private class NoSort implements SearchMetric {
-
-        @Override
-        public ArrayList sort(ArrayList list) {
-            return list;
+            this.searchMetric = new NoSort();
         }
     }
 

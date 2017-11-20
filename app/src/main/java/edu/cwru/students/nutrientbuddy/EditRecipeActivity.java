@@ -18,8 +18,8 @@ public class EditRecipeActivity extends AppCompatActivity {
     private static final String TAG = "EditRecipeActivity";
 
     private EditText recipeNameText;
-    private EditText recipeIngrText;
-    private EditText recipeDirText;
+    private EditText recipeIngredientsText;
+    private EditText recipeDirectionsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +29,30 @@ public class EditRecipeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         this.recipeNameText = (EditText) findViewById(R.id.recipe_name_text);
-        this.recipeIngrText = (EditText) findViewById(R.id.recipe_ingredients_text);
-        this.recipeDirText = (EditText) findViewById(R.id.recipe_directions_text);
+        this.recipeIngredientsText = (EditText) findViewById(R.id.recipe_ingredients_text);
+        this.recipeDirectionsText = (EditText) findViewById(R.id.recipe_directions_text);
 
         Button button = (Button) findViewById(R.id.create_recipe);
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //this happens when the button is clicked
+            }
+        });
     }
 
+    //todo call this internally
     /** Called when the user touches the button */
     public void addRecipeToList(View view) {
 
-        Intent previousScreen = new Intent(getApplicationContext(), RecipeList.class);
+        // this is not the best way to handle this
+
+        Intent intent = new Intent(getApplicationContext(), RecipeList.class);
         //Sending the data to RecipeList
-        Log.v(TAG, "About to pass text: " + recipeNameText.getText());
-        previousScreen.putExtra("recipeName", recipeNameText.getText()+"");
-        previousScreen.putExtra("recipeIngredients", recipeIngrText.getText()+"");
-        previousScreen.putExtra("recipeDirections", recipeDirText.getText()+"");
-        setResult(2000, previousScreen);
+        intent.putExtra("recipeName", recipeNameText.getText()+"");
+        intent.putExtra("recipeIngredients", recipeIngredientsText.getText()+"");
+        intent.putExtra("recipeDirections", recipeDirectionsText.getText()+"");
+        setResult(2000, intent);
 
         finish();
     }

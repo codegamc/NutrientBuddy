@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class EditShoppingListActivity extends AppCompatActivity {
-    private static final String TAG = "MyActivity";
 
     private EditText foodNameText;
     private EditText foodCalText;
@@ -27,16 +26,24 @@ public class EditShoppingListActivity extends AppCompatActivity {
         foodCalText = (EditText) findViewById(R.id.food_calories_text);
         foodCarbText = (EditText) findViewById(R.id.food_carbs_text);
 
+        // Return
         Button button = (Button) findViewById(R.id.add_fooditem);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //todo
+            }
+        });
 
     }
 
     /** Called when the user touches the button */
     public void addItemToList(View view) {
 
+        //todo make this add to a global state to save
+
         Intent previousScreen = new Intent(getApplicationContext(), ShoppingList.class);
         //Sending the data to RecipeList
-        Log.v(TAG, "About to pass text: " + foodNameText.getText());
         previousScreen.putExtra("foodName", foodNameText.getText()+"");
         previousScreen.putExtra("foodCalories", foodCalText.getText()+"");
         previousScreen.putExtra("foodCarbs", foodCarbText.getText()+"");
