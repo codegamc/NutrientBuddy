@@ -111,10 +111,16 @@ public class Nutritionix {
 
     public ArrayList<String> returnFoodListAsString(){
         ArrayList<String> stringList = new ArrayList<String>();
-
-        for(Food f : this.searchResults){
-            stringList.add(f.getName());
+        Log.e("Mikes Error", "It is right here");
+        try{
+            for(Food f : this.searchResults){
+                stringList.add(f.get(Food.name));
+            }
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
 
         return stringList;
     }

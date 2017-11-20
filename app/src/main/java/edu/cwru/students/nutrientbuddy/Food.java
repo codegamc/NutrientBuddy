@@ -8,13 +8,13 @@ public class Food {
     private Map<String, String> data;
 
     //todo these should probs be enums
-    private String name = "name";
-    private String totalCalories = "nf_calories";
-    private String totalFat = "nf_total_fat";
-    private String sodium = "nf_sodium";
-    private String totalCarbs = "nf_total_carbohydrate";
-    private String totalSugar = "nf_sugars";
-    private String protein = "nf_protein";
+    public static String name = "name";
+    public static String totalCalories = "nf_calories";
+    public static String totalFat = "nf_total_fat";
+    public static String sodium = "nf_sodium";
+    public static String totalCarbs = "nf_total_carbohydrate";
+    public static String totalSugar = "nf_sugars";
+    public static String protein = "nf_protein";
 
     public Food(){
         this.data = new HashMap<String, String>();
