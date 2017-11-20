@@ -22,6 +22,8 @@ public class EditShoppingListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ////////////////////// UI Stuff
+        // Collecting Views
         foodNameText = (EditText) findViewById(R.id.food_name_text);
         foodCalText = (EditText) findViewById(R.id.food_calories_text);
         foodCarbText = (EditText) findViewById(R.id.food_carbs_text);

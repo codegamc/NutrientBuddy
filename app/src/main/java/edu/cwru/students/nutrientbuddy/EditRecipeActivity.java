@@ -28,10 +28,14 @@ public class EditRecipeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //////////////////////
+        // Collecting the Views
         this.recipeNameText = (EditText) findViewById(R.id.recipe_name_text);
         this.recipeIngredientsText = (EditText) findViewById(R.id.recipe_ingredients_text);
         this.recipeDirectionsText = (EditText) findViewById(R.id.recipe_directions_text);
 
+        // Collecting and setting the button
         Button button = (Button) findViewById(R.id.create_recipe);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

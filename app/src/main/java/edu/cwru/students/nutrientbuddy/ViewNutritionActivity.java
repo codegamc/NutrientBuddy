@@ -61,10 +61,6 @@ public class ViewNutritionActivity extends AppCompatActivity {
         foodCaloriesView.setText(foodCalories + "kcal");
         foodTotalFatView.setText(foodTotalFat + "g");
         foodNameView.setText(foodName);
-
-
-
-
     }
 
 }

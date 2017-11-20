@@ -30,13 +30,13 @@ import java.util.List;
 import android.app.Activity;
 public class RecipeListActivity extends AppCompatActivity {
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "RecipeListActivity";
 
     private RecipeList recipeList;
     private ArrayList<String> recipeNames;
     private ArrayList<Recipe> recipes;
 
-    ListView listview;
+    ListView recipeListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,45 +44,43 @@ public class RecipeListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.listview = (ListView) findViewById(R.id.recipe_list);
 
-        this.recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
+        ///////////////// UI Stuff
+        // Recipe List View
         this.recipes = new ArrayList<Recipe>();
+        this.recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
+        this.recipeListView = (ListView) findViewById(R.id.recipe_list);
 
-        this.recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
-        this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
-        this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
+        if(false){ //todo use the savedUserPreferences to toggle a debug mode
+            this.recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
+            this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
+            this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
+        }
 
         this.recipeNames = recipeList.getRecipeNames();
 
         if(!this.recipeNames.isEmpty()) {
-            Log.v(TAG, "Inside the statement");
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
-
-            this.listview.setAdapter(arrayAdapter);
+            ArrayAdapter<String> recipeListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+            this.recipeListView.setAdapter(recipeListAdapter);
         }
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(RecipeListActivity.this, ViewRecipeActivity.class);
 
-                Log.v(TAG, "Selected position " + position);
-                Log.v(TAG, "Selected food: " + recipeNames.get(position));
-                Log.v(TAG, "Selected food from items: " + recipeList.getRecipeItems().get(position).getName());
-
-
-                intent.putExtra("recipeName", recipeList.getRecipeItems().get(position).getName());
-                intent.putExtra("recipeIngredients", recipeList.getRecipeItems().get(position).getIngredients());
-                intent.putExtra("recipeDirections", recipeList.getRecipeItems().get(position).getDirections());
+                intent.putExtra("recipeName",           recipeList.getRecipeItems().get(position).getName());
+                intent.putExtra("recipeIngredients",    recipeList.getRecipeItems().get(position).getIngredients());
+                intent.putExtra("recipeDirections",     recipeList.getRecipeItems().get(position).getDirections());
 
                 startActivity(intent);
             }
         });
 
 
+        //todo rename all this
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +120,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
-        this.listview.setAdapter(arrayAdapter);
+        this.recipeListView.setAdapter(arrayAdapter);
     }
 
     @Override

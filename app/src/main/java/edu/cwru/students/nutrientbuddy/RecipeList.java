@@ -17,17 +17,6 @@ public class RecipeList {
         this.list.add(recipe);
     }
 
-    //todo remove this in favor of removeRecipe()
-    public boolean removeItem(Recipe recipe){
-        if(this.list.contains(recipe)){
-            this.list.remove(recipe);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
     public boolean removeRecipe(Recipe recipe){
         if(this.list.contains(recipe)){
             this.list.remove(recipe);

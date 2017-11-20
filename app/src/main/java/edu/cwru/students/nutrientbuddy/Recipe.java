@@ -16,14 +16,6 @@ public class Recipe {
         this.directions = directions;
     }
 
-    public void printRecipe(){
-
-        Log.v(TAG, "Recipe name: " + name);
-        Log.v(TAG, "Recipe ingredients: " + ingredients);
-        Log.v(TAG, "Recipe directions: " + directions);
-
-    }
-
     //////// GETTER SETTER METHODS ///////
 
     public void setName(String name){
