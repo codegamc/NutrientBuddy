@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface SearchMetric {
 
-    ArrayList sort(ArrayList list);
+    ArrayList<Food> sort(ArrayList<Food> list);
 
 }

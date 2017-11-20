@@ -5,7 +5,7 @@ import java.util.ArrayList;
 class NoSort implements SearchMetric {
 
     @Override
-    public ArrayList sort(ArrayList list) {
+    public ArrayList<Food> sort(ArrayList<Food> list) {
         return list;
     }
 }

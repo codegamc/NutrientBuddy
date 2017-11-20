@@ -48,19 +48,11 @@ public class SearchScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_screen);
         //todo rename the layoutId variable
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId);
-        //todo update the name here too
+
+        //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /////////// Initialize the application stuff ///////////
-        /*
-        This stuff should get moved to the start activity, when it becomes a thing...
-         */
 
-
-
-        /*
-        End Initialization stuff
-         */
         //////////////// Menu Bar Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
@@ -76,14 +68,14 @@ public class SearchScreenActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchScreenActivity.this, ViewNutritionActivity.class);
 
                 // todo make food serializable to simplify this + future changes (eg. image?)
-                intent.putExtra("searchResult",listview.getItemAtPosition(position).toString());
-                intent.putExtra("foodName", foods.get(position).getName());
-                intent.putExtra("foodCalories", foods.get(position).getCalories());
-                intent.putExtra("foodTotalFat", foods.get(position).getTotalFat());
-                intent.putExtra("foodTotalCarbs", foods.get(position).getCarbs());
-                intent.putExtra("foodSodium", foods.get(position).getSodium());
-                intent.putExtra("foodSugar", foods.get(position).getSugar());
-                intent.putExtra("foodProtein", foods.get(position).getProtein());
+                intent.putExtra("searchResult",     listview.getItemAtPosition(position).toString());
+                intent.putExtra("foodName",             foods.get(position).getName());
+                intent.putExtra("foodCalories",         foods.get(position).getCalories());
+                intent.putExtra("foodTotalFat",         foods.get(position).getTotalFat());
+                intent.putExtra("foodTotalCarbs",       foods.get(position).getCarbs());
+                intent.putExtra("foodSodium",           foods.get(position).getSodium());
+                intent.putExtra("foodSugar",            foods.get(position).getSugar());
+                intent.putExtra("foodProtein",          foods.get(position).getProtein());
 
                 startActivity(intent);
             }
