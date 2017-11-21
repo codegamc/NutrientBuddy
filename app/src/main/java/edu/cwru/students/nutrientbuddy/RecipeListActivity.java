@@ -1,5 +1,6 @@
 package edu.cwru.students.nutrientbuddy;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +60,11 @@ public class RecipeListActivity extends AppCompatActivity {
             this.recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
             this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
             this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
+
+           // addNewRecipeDB(null, null, 0);
+            addNewRecipeDB("Name1", "Ingredients1", "Directions1");
+            addNewRecipeDB("Name2", "Ingredients2", "Directions2");
+            addNewRecipeDB("Name3", "Ingredients3", "Directions3");
         }
 
         this.recipeNames = recipeList.getRecipeNames();
@@ -103,6 +109,23 @@ public class RecipeListActivity extends AppCompatActivity {
 
         Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
         startActivityForResult(nextScreen,1000);
+    }
+
+    private void addNewRecipeDB(String name, String ingredients, String directions){
+        ContentValues values = new ContentValues();
+        if(name != null) {
+            values.put(DatabaseHelper.COL_NAME, name);
+        }
+        if(ingredients != null){
+            values.put(DatabaseHelper.COL_INGREDIENTS, ingredients);
+        }
+
+        if(directions != null){
+            values.put(DatabaseHelper.COL_DIRECTIONS, directions);
+        }
+
+        recipeDatabaseHelper.insert(DatabaseHelper.TABLE_USERS, values);
+
     }
 
     @Override
