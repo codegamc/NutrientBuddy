@@ -1,6 +1,8 @@
 package edu.cwru.students.nutrientbuddy;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +24,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     private ShoppingList list;
 
+    private ShoppingDatabaseHelper shoppingDatabaseHelper;
+
     //Fields for displaying the Shopping List
     ListView shoppingListView;
 
@@ -36,6 +40,8 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
 
+        shoppingDatabaseHelper = new ShoppingDatabaseHelper(this);
+
         //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,8 +54,23 @@ public class ShoppingListActivity extends AppCompatActivity {
         this.list = new ShoppingList();
 
         //////// Testing add item
-        ShoppingListItem s = new ShoppingListItem("1", "2", "3");
-        this.list.addItem(s);
+       // ShoppingListItem shop = new ShoppingListItem("1", "2", "3");
+        //this.list.addItem(shop);
+
+
+        // DB stuff
+        Cursor c = shoppingDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+
+        while(c.moveToNext()){
+            String col_name = c.getString(c.getColumnIndex("name"));
+            String col_quantity = c.getString(c.getColumnIndex("quantity"));
+            String col_cost = c.getString((c.getColumnIndex("cost")));
+
+            ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+
+            list.addItem(s);
+        }
 
 
         //////////////// UI Stuff
@@ -114,7 +135,11 @@ public class ShoppingListActivity extends AppCompatActivity {
         String foodQuantity = data.getStringExtra("foodQuantity");
         String foodCost = data.getStringExtra("foodCost");
 
+        addNewListItemDB(foodName, foodQuantity, foodCost);
+
         list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+
+
 
        //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
 
@@ -126,6 +151,23 @@ public class ShoppingListActivity extends AppCompatActivity {
         ArrayList<String> shoppingListNames = this.list.getItemNames();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shoppingListNames);
         this.shoppingListView.setAdapter(arrayAdapter);
+    }
+
+    private void addNewListItemDB(String name, String quantity, String cost){
+        ContentValues values = new ContentValues();
+        if(name != null) {
+            values.put(ShoppingDatabaseHelper.COL_NAME, name);
+        }
+        if(quantity != null){
+            values.put(ShoppingDatabaseHelper.COL_QUANTITY, quantity);
+        }
+
+        if(cost != null){
+            values.put(ShoppingDatabaseHelper.COL_COST, cost);
+        }
+
+        shoppingDatabaseHelper.insert(DatabaseHelper.TABLE_USERS, values);
+
     }
 
     @Override
