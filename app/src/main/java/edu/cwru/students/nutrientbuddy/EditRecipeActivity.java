@@ -41,6 +41,7 @@ public class EditRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //this happens when the button is clicked
+                addRecipeToList(v);
             }
         });
     }

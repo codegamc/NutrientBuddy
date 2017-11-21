@@ -113,7 +113,7 @@ public class RecipeListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 
                 Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
-                startActivityForResult(nextScreen,1000);
+                startActivityForResult(nextScreen,2000);
             }
         });
     }
@@ -122,7 +122,7 @@ public class RecipeListActivity extends AppCompatActivity {
         //startActivityForResult(new Intent(this, EditRecipeActivity.class), 0);
 
         Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
-        startActivityForResult(nextScreen,1000);
+        startActivityForResult(nextScreen,2000);
     }
 
     private void addNewRecipeDB(String name, String ingredients, String directions){
