@@ -53,40 +53,64 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recipeDatabaseHelper = new DatabaseHelper(this);
 
+
+
+            // Testing purposes: clear the database:
+          //   recipeDatabaseHelper.removeAll(DatabaseHelper.TABLE_USERS);
+
+
+
+
+
         ///////////////// UI Stuff
         // Recipe List View
         this.recipes = new ArrayList<Recipe>();
-        this.recipeList = new RecipeList();  // Currently will probably override whatever previous list we made.
+        this.recipeList = new RecipeList();
         this.recipeListView = (ListView) findViewById(R.id.recipe_list);
 
-        if(false){ //todo use the savedUserPreferences to toggle a debug mode
+
+       /* if(false){ //todo use the savedUserPreferences to toggle a debug mode
             this.recipeList.addItem(new Recipe("Name1", "Ingredients1", "Directions1"));
             this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
             this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
 
 
-        }
+        }*/
 
         // addNewRecipeDB(null, null, 0);
-        addNewRecipeDB("NAME!", "Ingredients1", "Directions1");
-        addNewRecipeDB("Name2", "Ingredients2", "Directions2");
-        addNewRecipeDB("Name3", "Ingredients3", "Directions3");
+       // addNewRecipeDB("NAME!", "Ingredients1", "Directions1");
+       // addNewRecipeDB("Name2", "Ingredients2", "Directions2");
+       // addNewRecipeDB("Name3", "Ingredients3", "Directions3");
+
+
 
 
         Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
-        String[] from = new String[]{DatabaseHelper.COL_NAME};
+
+
+        while(c.moveToNext()){
+            String col_name = c.getString(c.getColumnIndex("name"));
+            String col_ingredients = c.getString(c.getColumnIndex("ingredients"));
+            String col_directions = c.getString((c.getColumnIndex("directions")));
+
+            Recipe r = new Recipe(col_name, col_ingredients, col_directions);
+
+            recipeList.addItem(r);
+        }
+
+        /*String[] from = new String[]{DatabaseHelper.COL_NAME};
         int[] to = {android.R.id.text1};
         SimpleCursorAdapter adapter1 = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, c, from, to, 0);
         recipeListView.setAdapter(adapter1);
-
+        */
 
 
         this.recipeNames = recipeList.getRecipeNames();
 
-      /*  if(!this.recipeNames.isEmpty()) {
+        if(!this.recipeNames.isEmpty()) {
             ArrayAdapter<String> recipeListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
             this.recipeListView.setAdapter(recipeListAdapter);
-        }*/
+        }
 
         recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -155,15 +179,21 @@ public class RecipeListActivity extends AppCompatActivity {
         Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
         Log.v(TAG, "Recipe directions found: " + recipeDirections);
 
-        this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
-
         addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
+
+        this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
 
         this.recipeNames = this.recipeList.getRecipeNames();
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
 
         this.recipeListView.setAdapter(arrayAdapter);
+
+        /*Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+        String[] from = new String[]{DatabaseHelper.COL_NAME};
+        int[] to = {android.R.id.text1};
+        SimpleCursorAdapter adapter1 = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, c, from, to, 0);
+        recipeListView.setAdapter(adapter1);*/
     }
 
     @Override

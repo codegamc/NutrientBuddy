@@ -67,6 +67,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return getWritableDatabase().delete(tableName, selection, selectionArgs);
     }
 
+    public int removeAll(String tableName){
+        return getWritableDatabase().delete(tableName, null, null);
+    }
+
     public Cursor query (String tableName, String orderedBy){
         String[] projection = {COL_ID, COL_NAME, COL_INGREDIENTS, COL_DIRECTIONS};
 
