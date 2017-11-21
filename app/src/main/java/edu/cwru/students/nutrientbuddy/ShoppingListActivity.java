@@ -44,6 +44,14 @@ public class ShoppingListActivity extends AppCompatActivity {
         //////////////// Menu Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
+
+        this.list = new ShoppingList();
+
+        //////// Testing add item
+        ShoppingListItem s = new ShoppingListItem("1", "2", "3");
+        this.list.addItem(s);
+
+
         //////////////// UI Stuff
         this.shoppingListView = new ListView(getApplicationContext());
         this.shoppingListView = (ListView)findViewById(R.id.list_results);
@@ -59,8 +67,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
 
                 intent.putExtra("foodName", list.getShopItems().get(position).getName());
-                intent.putExtra("foodCalories", list.getShopItems().get(position).getCalories());
-                intent.putExtra("foodCarbs", list.getShopItems().get(position).getCarbs());
+                intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
+                intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
                 startActivity(intent);
             }
@@ -78,9 +86,9 @@ public class ShoppingListActivity extends AppCompatActivity {
         });
 
         //////////////// Shopping List Stuff
-        this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
+        //this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
 
-        if(false){ //todo access shared preferences to toggle debug
+       /* if(false){ //todo access shared preferences to toggle debug
             Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
             Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
             Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
@@ -88,7 +96,8 @@ public class ShoppingListActivity extends AppCompatActivity {
             this.list.addItem(apple);
             this.list.addItem(banana);
             this.list.addItem(pear);
-        }
+        }*/
+
 
 
         // Setting the list view to be the shopping list
@@ -102,10 +111,12 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         //todo move this to debug only
         String foodName = data.getStringExtra("foodName");
-        String foodCalories = data.getStringExtra("foodCalories");
-        String foodCarbs = data.getStringExtra("foodCarbs");
+        String foodQuantity = data.getStringExtra("foodQuantity");
+        String foodCost = data.getStringExtra("foodCost");
 
-        list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+        list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+
+       //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
 
         setShoppingListView();
     }
