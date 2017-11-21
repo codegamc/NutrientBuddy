@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import android.app.Activity;
+import android.database.Cursor;
+import android.widget.SimpleCursorAdapter;
+
 public class RecipeListActivity extends AppCompatActivity {
 
     private static final String TAG = "RecipeListActivity";
@@ -61,18 +64,29 @@ public class RecipeListActivity extends AppCompatActivity {
             this.recipeList.addItem(new Recipe("Name2", "Ingredients2", "Directions2"));
             this.recipeList.addItem(new Recipe("Name3", "Ingredients3", "Directions3"));
 
-           // addNewRecipeDB(null, null, 0);
-            addNewRecipeDB("Name1", "Ingredients1", "Directions1");
-            addNewRecipeDB("Name2", "Ingredients2", "Directions2");
-            addNewRecipeDB("Name3", "Ingredients3", "Directions3");
+
         }
+
+        // addNewRecipeDB(null, null, 0);
+        addNewRecipeDB("NAME!", "Ingredients1", "Directions1");
+        addNewRecipeDB("Name2", "Ingredients2", "Directions2");
+        addNewRecipeDB("Name3", "Ingredients3", "Directions3");
+
+
+        Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+        String[] from = new String[]{DatabaseHelper.COL_NAME};
+        int[] to = {android.R.id.text1};
+        SimpleCursorAdapter adapter1 = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, c, from, to, 0);
+        recipeListView.setAdapter(adapter1);
+
+
 
         this.recipeNames = recipeList.getRecipeNames();
 
-        if(!this.recipeNames.isEmpty()) {
+      /*  if(!this.recipeNames.isEmpty()) {
             ArrayAdapter<String> recipeListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
             this.recipeListView.setAdapter(recipeListAdapter);
-        }
+        }*/
 
         recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -142,6 +156,8 @@ public class RecipeListActivity extends AppCompatActivity {
         Log.v(TAG, "Recipe directions found: " + recipeDirections);
 
         this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
+
+        addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
 
         this.recipeNames = this.recipeList.getRecipeNames();
 

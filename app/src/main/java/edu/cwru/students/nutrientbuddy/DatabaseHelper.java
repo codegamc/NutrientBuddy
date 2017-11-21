@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.content.Context;
+import android.database.Cursor;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -64,6 +65,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String[] selectionArgs = {String.valueOf(id)};
 
         return getWritableDatabase().delete(tableName, selection, selectionArgs);
+    }
+
+    public Cursor query (String tableName, String orderedBy){
+        String[] projection = {COL_ID, COL_NAME, COL_INGREDIENTS, COL_DIRECTIONS};
+
+        return getReadableDatabase().query(tableName, projection, null, null, null, null, orderedBy);
     }
 
 
