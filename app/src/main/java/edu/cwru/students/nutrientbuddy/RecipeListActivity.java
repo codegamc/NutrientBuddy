@@ -36,6 +36,8 @@ public class RecipeListActivity extends AppCompatActivity {
     private ArrayList<String> recipeNames;
     private ArrayList<Recipe> recipes;
 
+    private DatabaseHelper recipeDatabaseHelper;
+
     ListView recipeListView;
 
     @Override
@@ -44,6 +46,8 @@ public class RecipeListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        recipeDatabaseHelper = new DatabaseHelper(this);
 
         ///////////////// UI Stuff
         // Recipe List View
