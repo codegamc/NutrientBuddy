@@ -10,13 +10,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -54,8 +54,11 @@
                 <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
                 <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-                <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-                <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+                <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+                <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+                <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+                <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+                <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -94,14 +97,14 @@
       <file leaf-file-name="Nutritionix.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="-327">
+              <caret line="78" column="12" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="12" />
               <folding>
                 <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-                <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-                <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-                <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-                <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+                <element signature="e#3655#3663#0" expanded="true" />
+                <element signature="e#4056#4062#0" expanded="true" />
+                <element signature="e#4317#4325#0" expanded="true" />
+                <element signature="e#4688#4694#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,7 +116,7 @@
             <state relative-caret-position="1710">
               <caret line="132" column="38" lean-forward="false" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
               <folding>
-                <marker date="1511845453000" expanded="true" signature="6188:6194" ph="{...}" />
+                <marker date="1511975051000" expanded="true" signature="6188:6194" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -1871,7 +1874,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Food.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchMetric.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/NoSort.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/SearchScreenActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/EditRecipeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/DatabaseHelper.java" />
@@ -1882,6 +1884,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingDatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/ShoppingListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/EditShoppingListActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java" />
       </list>
     </option>
   </component>
@@ -1904,23 +1907,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NutrientBuddy" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2019,6 +2005,23 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NutrientBuddy" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2109,7 +2112,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511973960519" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511975529818" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2157,7 +2160,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511973960519" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511975529819" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2319,7 +2322,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511973960520" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1511975529821" />
       </method>
     </configuration>
     <list size="1">
@@ -2391,9 +2394,9 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22455573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2457,8 +2460,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2493,10 +2499,10 @@
           <caret line="88" column="31" lean-forward="false" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2512,8 +2518,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2548,10 +2557,10 @@
           <caret line="88" column="31" lean-forward="false" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2567,8 +2576,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2603,10 +2615,10 @@
           <caret line="137" column="82" lean-forward="false" selection-start-line="137" selection-start-column="82" selection-end-line="137" selection-end-column="82" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2622,8 +2634,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2634,10 +2649,10 @@
           <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2715,8 +2730,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2735,7 +2753,7 @@
         <state relative-caret-position="1290">
           <caret line="102" column="38" lean-forward="false" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
           <folding>
-            <marker date="1511845453000" expanded="true" signature="6188:6194" ph="{...}" />
+            <marker date="1511975051000" expanded="true" signature="6188:6194" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2746,10 +2764,10 @@
           <caret line="88" column="31" lean-forward="false" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2765,8 +2783,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2777,10 +2798,10 @@
           <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2790,7 +2811,7 @@
         <state relative-caret-position="1290">
           <caret line="102" column="38" lean-forward="false" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
           <folding>
-            <marker date="1511845453000" expanded="true" signature="6188:6194" ph="{...}" />
+            <marker date="1511975051000" expanded="true" signature="6188:6194" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2806,8 +2827,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2818,10 +2842,10 @@
           <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2876,8 +2900,11 @@
             <element signature="method#onCreateOptionsMenu#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#SearchScreenActivity#0" expanded="false" />
             <element signature="method#search#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="method#setSearchMetric#0;class#SearchScreenActivity#0" expanded="false" />
-            <element signature="class#SearchAdapter#0;class#SearchScreenActivity#0" expanded="false" />
+            <marker date="1511975086000" expanded="true" signature="5742:5859" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="5913:6080" ph="{...}" />
+            <marker date="1511975086000" expanded="false" signature="6141:6531" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6300:6366" ph="{...}" />
+            <marker date="1511975086000" expanded="true" signature="6429:6524" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2961,21 +2988,21 @@
         <state relative-caret-position="1710">
           <caret line="132" column="38" lean-forward="false" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
           <folding>
-            <marker date="1511845453000" expanded="true" signature="6188:6194" ph="{...}" />
+            <marker date="1511975051000" expanded="true" signature="6188:6194" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/cwru/students/nutrientbuddy/Nutritionix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        <state relative-caret-position="-327">
+          <caret line="78" column="12" lean-forward="false" selection-start-line="78" selection-start-column="12" selection-end-line="78" selection-end-column="12" />
           <folding>
             <element signature="method#Nutritionix#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#returnFoodListAsFood#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#convertFoodListToString#0;class#Nutritionix#0" expanded="false" />
-            <element signature="method#buildJSON#0;class#Nutritionix#0" expanded="false" />
+            <element signature="e#3655#3663#0" expanded="true" />
+            <element signature="e#4056#4062#0" expanded="true" />
+            <element signature="e#4317#4325#0" expanded="true" />
+            <element signature="e#4688#4694#0" expanded="true" />
           </folding>
         </state>
       </provider>
