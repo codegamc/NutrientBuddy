@@ -44,3 +44,5 @@ out/
 *.bin
 
 *.bin
+*.bin
+*.lock

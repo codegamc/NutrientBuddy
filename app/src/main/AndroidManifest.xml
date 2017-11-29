@@ -26,10 +26,6 @@
             android:label="@string/title_activity_search_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SavedItemActivity"
-            android:label="@string/title_activity_saved_item"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ViewNutritionActivity"
             android:label="@string/title_activity_view_nutrition"
             android:theme="@style/AppTheme.NoActionBar" />

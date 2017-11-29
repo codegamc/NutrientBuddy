@@ -72,7 +72,7 @@ public class Nutritionix {
     }
 
     public boolean loadFoodSearch(String queryText){
-        //init vals
+        //init values
         URL url;
 
         // Build the URL to query against

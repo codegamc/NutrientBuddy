@@ -139,7 +139,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         Log.v("search", "ended search");
         //foodString = nutritionix.returnFoodListAsString();
         this.foods = nutritionix.returnFoodListAsFood();
-        
+
         //todo make this private
         this.foodString = Nutritionix.convertFoodListToString(this.sortList(foods));
 
