@@ -19,11 +19,14 @@ import android.widget.ListView;
 import android.app.SearchManager;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SearchScreenActivity extends AppCompatActivity {
+public class SearchScreenActivity extends AppCompatActivity{
 
     // Related to List View
     private ListView listview;
@@ -34,11 +37,13 @@ public class SearchScreenActivity extends AppCompatActivity {
     private ArrayList<String> foodString;
 
     // Global Fields related to Sorting
-    private String sortMethod;
-    private SearchMetric searchMetric = new NoSort();
+    private int sortMethod;
+    private SearchMetric searchMetric;
 
     //Fields for Global User Interface
     private OpenItemsMenuHandler openItemsMenuHandler;
+
+    private Spinner sortingSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +116,27 @@ public class SearchScreenActivity extends AppCompatActivity {
         });
 
         /////////// SORTING STUFF ///////////
-        this.setSearchMetric("NoSort");
+        /////////// Setting up Spinner
+        sortingSpinner = (Spinner) findViewById(R.id.sort_spinner);
+        ArrayAdapter<String> sortingAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sort));
+        sortingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortingSpinner.setAdapter(sortingAdapter);
+
+        ////////////// Spinner response on item click
+        sortingSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                sortMethod = pos;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        searchMetric = new Sort();
     }
 
     @Override
@@ -152,16 +177,19 @@ public class SearchScreenActivity extends AppCompatActivity {
     }
 
     private ArrayList<Food> sortList(ArrayList<Food> list){
-        // do something in place to the list of it should change
-        return this.searchMetric.sort(list);
+        switch (sortMethod){
+            case 0: list = searchMetric.noSort(list); break;
+            case 1: list = searchMetric.nameSort(list,true); break;
+            case 2: list = searchMetric.nameSort(list,false); break;
+            case 3: list = searchMetric.Caloriessort(list, true); break;
+            case 4: list = searchMetric.Carbssort(list, true); break;
+            case 5: list = searchMetric.TotalFatsort(list, true);break;
+        }
+
+        return list;
     }
 
-    public void setSearchMetric(String seachMetric) {
-        //todo there should be a better way to implement this
-        if(seachMetric.equals("NoSort")){
-            this.searchMetric = new NoSort();
-        }
-    }
+
 
     private class SearchAdapter extends ArrayAdapter<Food> {
         HashMap<Food, Integer> idMap = new HashMap<Food, Integer>();
@@ -177,5 +205,7 @@ public class SearchScreenActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 }
