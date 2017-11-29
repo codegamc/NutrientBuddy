@@ -11,10 +11,6 @@ import java.util.List;
 
 public interface SearchMetric {
 
-    ArrayList<Food> noSort(ArrayList<Food> list);
-    ArrayList<Food> nameSort(ArrayList<Food> list, boolean ascending);
-    ArrayList<Food> Caloriessort(ArrayList<Food> list, boolean increasing);
-    ArrayList<Food> TotalFatsort(ArrayList<Food> list, boolean increasing);
-    ArrayList<Food> Carbssort(ArrayList<Food> list, boolean increasing);
+    ArrayList<Food> sort(ArrayList<Food> list);
 
 }

@@ -8,7 +8,7 @@ public class Food {
     private Map<String, String> data;
 
     //todo these should probs be enums
-    public static String name = "name";
+    public static String name = "item_name";
     public static String totalCalories = "nf_calories";
     public static String totalFat = "nf_total_fat";
     public static String sodium = "nf_sodium";

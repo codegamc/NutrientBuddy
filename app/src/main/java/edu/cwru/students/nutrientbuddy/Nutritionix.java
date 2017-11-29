@@ -52,8 +52,8 @@ public class Nutritionix {
 
     // Fields related to Configuration
     private int numberOfResults;
-    private String[] nutritionValues = {"item_name", "nf_calories","nf_total_fat","nf_sodium",
-            "nf_total_carbohydrate","nf_sugars","nf_protein"};
+    private String[] nutritionValues = {Food.name, Food.totalCalories,Food.totalFat,Food.sodium,
+            Food.totalCarbs,Food.totalCalories,Food.protein};
 
     // do not keep this - its for testing
     private Food f;
@@ -72,6 +72,8 @@ public class Nutritionix {
 
         //setting the config info
         this.numberOfResults = numberOfResults;
+
+        this.searchResults = new ArrayList<Food>();
     }
 
     public ArrayList<Food> searchFood(String foodSearched) {
@@ -137,17 +139,18 @@ public class Nutritionix {
     }
 
     public boolean loadFoodSearch(String queryText){
-        this.searchResults = this.searchFood(queryText);
-
-        /*
+        Log.v(TAG, "Starting food search");
         //init values
         URL url;
 
         // Build the URL to query against
         try{
             url = new URL(baseURL + queryText + searchFilters + searchTags + apiInfo);
-        } catch (MalformedURLException mfURLe) {
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
             return false;
+        } finally {
+            //
         }
 
         InputStream in = null;
@@ -169,30 +172,18 @@ public class Nutritionix {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        } finally {
+            Log.v(TAG, "Finally...");
+            Log.v(TAG, dataString);
         }
 
         // Parse JSON
         ArrayList<Food> foods = buildJSON(dataString);
         this.searchResults = foods;
 
-        */
+        Log.v(TAG, foods.toString());
+
         return true;
-    }
-
-    public ArrayList<String> returnFoodListAsString(){
-        ArrayList<String> stringList = new ArrayList<String>();
-        Log.e("Mikes Error", "It is right here");
-        try{
-            for(Food f : this.searchResults){
-                stringList.add(f.get(Food.name));
-            }
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-
-        return stringList;
     }
 
     public ArrayList<Food> returnFoodListAsFood(){
@@ -242,26 +233,16 @@ public class Nutritionix {
 
                 for(String nutritionValue: this.nutritionValues){
                     food.set(nutritionValue, foodField.getString(nutritionValue));
-
+                    foods.add(food);
                 }
-
-                /*  This should be good now, but...
-                food.setName(foodField.getString("item_name"));
-                food.setTotalCalories(foodField.getString("nf_calories"));
-                food.setTotalFat(foodField.getString("nf_total_fat"));
-                food.setSodium(foodField.getString("nf_sodium"));
-                food.setTotalCarbs(foodField.getString("nf_total_carbohydrate"));
-                food.setTotalSugar(foodField.getString("nf_sugars"));
-                food.setProtein(foodField.getString("nf_protein"));
-
-                foods.add(food);
-                */
             }
 
 
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
+        } finally {
+            Log.v(TAG, foods.toString());
         }
 
         return foods;

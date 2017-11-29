@@ -1,7 +1,10 @@
 package edu.cwru.students.nutrientbuddy;
 
+import edu.cwru.students.nutrientbuddy.Sorting.*;
+
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -30,20 +33,20 @@ public class SearchScreenActivity extends AppCompatActivity{
 
     // Related to List View
     private ListView listview;
-    private ArrayList<Food> foods;
 
     // Global Fields related to Search
     private boolean dynamicUpdate = false;      //Defaults to false  //todo add a way to make it true in oncreate()
+    private ArrayList<Food> foods;
     private ArrayList<String> foodString;
 
     // Global Fields related to Sorting
-    private int sortMethod;
     private SearchMetric searchMetric;
 
     //Fields for Global User Interface
     private OpenItemsMenuHandler openItemsMenuHandler;
 
-    private Spinner sortingSpinner;
+    // Fields for the spinner
+    //...
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,6 @@ public class SearchScreenActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         //setting the context
         setContentView(R.layout.activity_search_screen);
-        //todo rename the layoutId variable
-        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId);
 
         //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -106,7 +107,7 @@ public class SearchScreenActivity extends AppCompatActivity{
                 if(dynamicUpdate){
                     search(query);
                 }else{
-                    //do nothing at the moment
+                    //do nothing at the moment, since we don't want the thing running
                 }
 
                 //make this reflect actual state?
@@ -116,27 +117,55 @@ public class SearchScreenActivity extends AppCompatActivity{
         });
 
         /////////// SORTING STUFF ///////////
+        this.searchMetric = (SearchMetric) (new NoSort());
+
         /////////// Setting up Spinner
-        sortingSpinner = (Spinner) findViewById(R.id.sort_spinner);
+        Spinner sortingSpinner = (Spinner) findViewById(R.id.sort_spinner);
+
         ArrayAdapter<String> sortingAdapter = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sort));
+
         sortingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sortingSpinner.setAdapter(sortingAdapter);
-
-        ////////////// Spinner response on item click
         sortingSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
-                sortMethod = pos;
+                switch (pos){
+                    case 0: // No Sort
+                        searchMetric = new NoSort();
+                        break;
+                    case 1: // Alphabetical Sorting
+                        searchMetric = new AlphabeticSorting();
+                        break;
+                    case 2: // Reverse Alphabetical Sorting
+                        CompositeSort metric = new CompositeSort();
+
+                        metric.addStep(new AlphabeticSorting());
+                        metric.addStep(new ReverseSort());
+
+                        searchMetric = metric;
+                        break;
+                    case 3: // Caloric Sorting
+                        searchMetric = new CalorySort();
+                        break;
+                    case 4: //Carbohydrate Sorting
+                        searchMetric = new CarbohydrateSorting();
+                        break;
+                    case 5: //Fat Content Sorting
+                        searchMetric = new FatSorting();
+                        break;
+                }
+
+                updateDisplay();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                //searchMetric = new NoSort();
             }
         });
 
-        searchMetric = new Sort();
+        //
     }
 
     @Override
@@ -158,54 +187,47 @@ public class SearchScreenActivity extends AppCompatActivity{
     /////// PRIVATE METHODS
 
     private void search(String query){
-        Log.v("search", "started search");
-        Nutritionix nutritionix = new Nutritionix(10);
-        nutritionix.loadFoodSearch(query);
-        Log.v("search", "ended search");
-        //foodString = nutritionix.returnFoodListAsString();
-        this.foods = nutritionix.returnFoodListAsFood();
+        // Even though this is only a single executed line, im keeping this hear, since it is way
+        // more apparent what "Search()" does compared to the single line, also this enables faster
+        // changes should we want to add more data pipe-lining in the search method - such as data
+        // validation or something like that (we should do that)
+        new FoodSearchAgent().execute(query);
+    }
 
-        //todo make this private
-        this.foodString = Nutritionix.convertFoodListToString(this.sortList(foods));
+    private void updateDisplay(){
+        Log.v("SearchActivity","UpdateDisplay Gunna run");
 
-        // todo change name from simple_list_view
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) foodString);
+        if(this.foods != null){
 
-        listview.setAdapter(arrayAdapter);
+            this.foodString = Nutritionix.convertFoodListToString(sortList(foods));
+            // todo change name from simple_list_view
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) foodString);
+            this.listview.setAdapter(arrayAdapter);
 
-        Log.v("search", "ended search1");
+        }
+
+        Log.v("SearchActivity","UpdateDisplay has ran");
+
     }
 
     private ArrayList<Food> sortList(ArrayList<Food> list){
-        switch (sortMethod){
-            case 0: list = searchMetric.noSort(list); break;
-            case 1: list = searchMetric.nameSort(list,true); break;
-            case 2: list = searchMetric.nameSort(list,false); break;
-            case 3: list = searchMetric.Caloriessort(list, true); break;
-            case 4: list = searchMetric.Carbssort(list, true); break;
-            case 5: list = searchMetric.TotalFatsort(list, true);break;
-        }
-
-        return list;
+        return this.searchMetric.sort(list);
     }
 
-
-
-    private class SearchAdapter extends ArrayAdapter<Food> {
-        HashMap<Food, Integer> idMap = new HashMap<Food, Integer>();
-
-        public SearchAdapter(Context context, int textViewResourceId, List<Food> foods){
-            super(context, textViewResourceId, foods);
-        }
+    private class FoodSearchAgent extends AsyncTask<String, Void, Void> {
 
         @Override
-        public long getItemId(int position){
-            Food item = getItem(position);
-            return this.idMap.get(item);
+        protected Void doInBackground(String... strings) {
+            Nutritionix nutritionix = new Nutritionix(10);
+            nutritionix.loadFoodSearch(strings[0]);
+            foods = nutritionix.returnFoodListAsFood();
+
+            return null;
         }
 
+        protected void onPostExecute(Void v) {
+            updateDisplay();
+        }
     }
-
-
 
 }
