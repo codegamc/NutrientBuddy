@@ -55,6 +55,9 @@ public class Nutritionix {
     private String[] nutritionValues = {"item_name", "nf_calories","nf_total_fat","nf_sodium",
             "nf_total_carbohydrate","nf_sugars","nf_protein"};
 
+    // do not keep this - its for testing
+    private Food f;
+
     public Nutritionix(int numberOfResults){
 
         baseURL = "https://api.nutritionix.com/v1_1/search/";
@@ -71,7 +74,72 @@ public class Nutritionix {
         this.numberOfResults = numberOfResults;
     }
 
+    public ArrayList<Food> searchFood(String foodSearched) {
+
+        InputStream in = null;
+        try {
+
+            URL url = new URL(baseURL + foodSearched + searchFilters + searchTags + apiInfo);
+
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            in = urlConnection.getInputStream();
+            InputStreamReader isw = new InputStreamReader(in);
+
+            int data = isw.read();
+            String s = "";
+            while (data != -1) {
+                char current = (char) data;
+                data = isw.read();
+                s = s.concat(Character.toString(current));
+            }
+
+            // Parse JSON
+            JSONArray hits = null;
+            try {
+                JSONObject reader = new JSONObject(s);
+                hits = reader.getJSONArray("hits");
+
+                // How many results do we want to display to the user?
+                // Basic items (like "apple") can result in over 1000.
+                int numResults = 10;
+
+                f = new Food();
+
+                for (int i = 0; i < numResults; i++) {
+
+                    JSONObject food = hits.getJSONObject(i);
+                    JSONObject foodField = food.getJSONObject("fields");
+
+                    f.setName(foodField.getString("item_name"));
+                    f.setTotalCalories(foodField.getString("nf_calories"));
+                    f.setTotalFat(foodField.getString("nf_total_fat"));
+                    f.setSodium(foodField.getString("nf_sodium"));
+                    f.setTotalCarbs(foodField.getString("nf_total_carbohydrate"));
+                    f.setTotalSugar(foodField.getString("nf_sugars"));
+                    f.setProtein(foodField.getString("nf_protein"));
+
+                    searchResults.add(f);
+
+
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return searchResults;
+    }
+
     public boolean loadFoodSearch(String queryText){
+        this.searchResults = this.searchFood(queryText);
+
+        /*
         //init values
         URL url;
 
@@ -106,6 +174,8 @@ public class Nutritionix {
         // Parse JSON
         ArrayList<Food> foods = buildJSON(dataString);
         this.searchResults = foods;
+
+        */
         return true;
     }
 

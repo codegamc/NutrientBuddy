@@ -1,6 +1,8 @@
 package edu.cwru.students.nutrientbuddy;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +24,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     private ShoppingList list;
 
+    private ShoppingDatabaseHelper shoppingDatabaseHelper;
+
     //Fields for displaying the Shopping List
     ListView shoppingListView;
 
@@ -36,6 +40,8 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
 
+        shoppingDatabaseHelper = new ShoppingDatabaseHelper(this);
+
         //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,6 +49,29 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         //////////////// Menu Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
+
+
+        this.list = new ShoppingList();
+
+        //////// Testing add item
+       // ShoppingListItem shop = new ShoppingListItem("1", "2", "3");
+        //this.list.addItem(shop);
+
+
+        // DB stuff
+        Cursor c = shoppingDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+
+        while(c.moveToNext()){
+            String col_name = c.getString(c.getColumnIndex("name"));
+            String col_quantity = c.getString(c.getColumnIndex("quantity"));
+            String col_cost = c.getString((c.getColumnIndex("cost")));
+
+            ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+
+            list.addItem(s);
+        }
+
 
         //////////////// UI Stuff
         this.shoppingListView = new ListView(getApplicationContext());
@@ -59,8 +88,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
 
                 intent.putExtra("foodName", list.getShopItems().get(position).getName());
-                intent.putExtra("foodCalories", list.getShopItems().get(position).getCalories());
-                intent.putExtra("foodCarbs", list.getShopItems().get(position).getCarbs());
+                intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
+                intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
                 startActivity(intent);
             }
@@ -78,9 +107,9 @@ public class ShoppingListActivity extends AppCompatActivity {
         });
 
         //////////////// Shopping List Stuff
-        this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
+        //this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
 
-        if(false){ //todo access shared preferences to toggle debug
+       /* if(false){ //todo access shared preferences to toggle debug
             Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
             Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
             Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
@@ -88,7 +117,8 @@ public class ShoppingListActivity extends AppCompatActivity {
             this.list.addItem(apple);
             this.list.addItem(banana);
             this.list.addItem(pear);
-        }
+        }*/
+
 
 
         // Setting the list view to be the shopping list
@@ -102,10 +132,16 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         //todo move this to debug only
         String foodName = data.getStringExtra("foodName");
-        String foodCalories = data.getStringExtra("foodCalories");
-        String foodCarbs = data.getStringExtra("foodCarbs");
+        String foodQuantity = data.getStringExtra("foodQuantity");
+        String foodCost = data.getStringExtra("foodCost");
 
-        list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+        addNewListItemDB(foodName, foodQuantity, foodCost);
+
+        list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+
+
+
+       //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
 
         setShoppingListView();
     }
@@ -115,6 +151,23 @@ public class ShoppingListActivity extends AppCompatActivity {
         ArrayList<String> shoppingListNames = this.list.getItemNames();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shoppingListNames);
         this.shoppingListView.setAdapter(arrayAdapter);
+    }
+
+    private void addNewListItemDB(String name, String quantity, String cost){
+        ContentValues values = new ContentValues();
+        if(name != null) {
+            values.put(ShoppingDatabaseHelper.COL_NAME, name);
+        }
+        if(quantity != null){
+            values.put(ShoppingDatabaseHelper.COL_QUANTITY, quantity);
+        }
+
+        if(cost != null){
+            values.put(ShoppingDatabaseHelper.COL_COST, cost);
+        }
+
+        shoppingDatabaseHelper.insert(DatabaseHelper.TABLE_USERS, values);
+
     }
 
     @Override

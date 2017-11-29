@@ -16,8 +16,8 @@ public class ViewShopListItemActivity extends AppCompatActivity {
 
     // Fields for UI stuff
     private TextView foodNameText;
-    private TextView foodCalText;
-    private TextView foodCarbText;
+    private TextView foodQuantityText;
+    private TextView foodCostText;
 
     //Fields for Global User Interface
     private OpenItemsMenuHandler openItemsMenuHandler;
@@ -36,16 +36,16 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         //////////////// UI stuff
         // Collect references to UI objects
         foodNameText = (TextView) findViewById(R.id.food_name_received);
-        foodCalText = (TextView) findViewById(R.id.food_calories_received);
-        foodCarbText = (TextView) findViewById(R.id.food_carbs_received);
+        foodQuantityText = (TextView) findViewById(R.id.food_calories_received);
+        foodCostText = (TextView) findViewById(R.id.food_carbs_received);
         // Collect data
         String foodName = getIntent().getStringExtra("foodName");
-        String foodCalories = getIntent().getStringExtra("foodCalories");
-        String foodCarbs = getIntent().getStringExtra("foodCarbs");
+        String foodQuantity = getIntent().getStringExtra("foodQuantity");
+        String foodCost = getIntent().getStringExtra("foodCost");
         // push to UI
         foodNameText.setText(foodName);
-        foodCalText.setText(foodCalories);
-        foodCarbText.setText(foodCarbs);
+        foodQuantityText.setText(foodQuantity);
+        foodCostText.setText(foodCost);
         // Button stuff
         Button doneButton = (Button)findViewById(R.id.add_fooditem);
         doneButton.setOnClickListener(new View.OnClickListener() {

@@ -7,13 +7,13 @@ public class ShoppingList {
 
     private static final String TAG = "ShoppingList";
 
-    private ArrayList<Food> list;
+    private ArrayList<ShoppingListItem> list;
 
     public ShoppingList(){
-        list = new ArrayList<Food>();
+        list = new ArrayList<ShoppingListItem>();
     }
 
-    public void addItem(Food item){
+    public void addItem(ShoppingListItem item){
         list.add(item);
     }
 
@@ -29,7 +29,7 @@ public class ShoppingList {
 
     public ArrayList<String> getItemNames(){
         ArrayList<String> array = new ArrayList<String>();
-        for(Food item : list){
+        for(ShoppingListItem item : list){
             array.add(item.getName());
         }
         return array;
@@ -41,12 +41,12 @@ public class ShoppingList {
     }
 
     public void printListContents(){
-        for(Food foodItem : list){
+        for(ShoppingListItem foodItem : list){
             Log.v(TAG, foodItem.getName());
         }
     }
 
-    public ArrayList<Food> getShopItems(){
+    public ArrayList<ShoppingListItem> getShopItems(){
         return this.list;
     }
 }
