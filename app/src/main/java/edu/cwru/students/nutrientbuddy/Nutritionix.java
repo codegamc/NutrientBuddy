@@ -223,9 +223,11 @@ public class Nutritionix {
             JSONArray json = reader.getJSONArray("hits");
 
             //Build a food object to hold results
-            Food food = new Food();
+            Food food;
             //iterate across the results a specific number of times
             for (int i = 0; i < this.numberOfResults; i++) {
+                food = new Food();
+
                 //This is the food as a JSON object
                 JSONObject foodJSON = json.getJSONObject(i);
                 // This is the fields we want
@@ -233,8 +235,15 @@ public class Nutritionix {
 
                 for(String nutritionValue: this.nutritionValues){
                     food.set(nutritionValue, foodField.getString(nutritionValue));
-                    foods.add(food);
                 }
+
+                /*if(checkForRepeat(foods, food)){
+                    i--;
+                }else{
+                    foods.add(food);
+                }*/
+
+                foods.add(food);
             }
 
 
@@ -242,11 +251,23 @@ public class Nutritionix {
             e.printStackTrace();
             return null;
         } finally {
-            Log.v(TAG, foods.toString());
+            for (Food f: foods) {
+                Log.v(TAG, f.get(Food.name) + "");
+            }
         }
 
         return foods;
 
+    }
+
+    private boolean checkForRepeat(ArrayList<Food> foods, Food food){
+        for(Food f: foods){
+            if(f.get(Food.name).equals(food.get(Food.name))){
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

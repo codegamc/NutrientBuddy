@@ -19,7 +19,15 @@ public class CarbohydrateSorting implements SearchMetric {
             public int compare(Food food1, Food food2) {
                 float first = Float.parseFloat(food1.getCarbs()+"");
                 float second = Float.parseFloat(food2.getCarbs()+"");
-                    return (first<second ?-1:(first==second? 0:1));
+                if(first==second){
+                    return 0;
+                }else{
+                    if(first < second){
+                        return -1;
+                    }else{
+                        return 1;
+                    }
+                }
             }
         };
         Collections.sort(list, comp);
