@@ -186,6 +186,7 @@ public class SearchScreenActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0: // No filter
+                        filterMetric = new NoFilter();
                         break;
                     case 1: // Calories Filtering
                         filterMetric = new CaloryFilter();
