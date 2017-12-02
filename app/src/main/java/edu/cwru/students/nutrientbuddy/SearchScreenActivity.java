@@ -266,7 +266,7 @@ public class SearchScreenActivity extends AppCompatActivity{
 
         @Override
         protected Void doInBackground(String... strings) {
-            Nutritionix nutritionix = new Nutritionix(10);
+            Nutritionix nutritionix = new Nutritionix(75);
             nutritionix.loadFoodSearch(strings[0]);
             foods = nutritionix.returnFoodListAsFood();
 
