@@ -5,6 +5,8 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,15 +43,22 @@ public class Nutritionix {
         The specific fields we want to fetch must be appended to the URL.
      */
 
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "NutritionixApiWrapper";
     private String baseURL;
     private String searchFilters;
     private String searchTags;
     private String apiInfo;
-    private Food f;
     private ArrayList<Food> searchResults;
 
-    public Nutritionix(){
+    // Fields related to Configuration
+    private int numberOfResults;
+    private String[] nutritionValues = {Food.name, Food.totalCalories,Food.totalFat,Food.sodium,
+            Food.totalCarbs,Food.totalCalories,Food.protein};
+
+    // do not keep this - its for testing
+    private Food f;
+
+    public Nutritionix(int numberOfResults){
 
         baseURL = "https://api.nutritionix.com/v1_1/search/";
         searchFilters = "?results=0%3A20&cal_min=0&cal_max=50000";
@@ -60,7 +69,11 @@ public class Nutritionix {
             * appKey = 6df2595ea6849f2ee25f34569992fa4c
          */
         apiInfo = "&appId=abc59008&appKey=6df2595ea6849f2ee25f34569992fa4c";
-        searchResults = new ArrayList<Food>();
+
+        //setting the config info
+        this.numberOfResults = numberOfResults;
+
+        this.searchResults = new ArrayList<Food>();
     }
 
     public ArrayList<Food> searchFood(String foodSearched) {
@@ -92,16 +105,12 @@ public class Nutritionix {
                 // Basic items (like "apple") can result in over 1000.
                 int numResults = 10;
 
-
+                f = new Food();
 
                 for (int i = 0; i < numResults; i++) {
 
-                    f = new Food();
-
                     JSONObject food = hits.getJSONObject(i);
                     JSONObject foodField = food.getJSONObject("fields");
-
-                    Log.v(TAG,foodField.toString());
 
                     f.setName(foodField.getString("item_name"));
                     f.setTotalCalories(foodField.getString("nf_calories"));
@@ -113,16 +122,6 @@ public class Nutritionix {
 
                     searchResults.add(f);
 
-                    Log.v(TAG, "****************");
-                    Log.v(TAG, "Created new food object!");
-                    Log.v(TAG, f.getName());
-                    Log.v(TAG, f.getCalories());
-                    Log.v(TAG, f.getTotalFat());
-                    Log.v(TAG, f.getSugar());
-                    Log.v(TAG, f.getSodium());
-                    Log.v(TAG, f.getCarbs());
-                    Log.v(TAG, f.getProtein());
-                    Log.v(TAG, "****************");
 
                 }
 
@@ -139,16 +138,136 @@ public class Nutritionix {
         return searchResults;
     }
 
-    public ArrayList<String> returnFoodListString(){
-        ArrayList<String> stringList = new ArrayList<String>();
+    public boolean loadFoodSearch(String queryText){
+        Log.v(TAG, "Starting food search");
+        //init values
+        URL url;
 
-        for(Food f : searchResults){
-            stringList.add(f.getName());
+        // Build the URL to query against
+        try{
+            url = new URL(baseURL + queryText + searchFilters + searchTags + apiInfo);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            //
         }
+
+        InputStream in = null;
+        String dataString = "";
+        //LIMIT TRY CATCH TO CODE THAT CAN FAIL
+        try {
+            // Make Connection attempt
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            in = urlConnection.getInputStream();
+            InputStreamReader isw = new InputStreamReader(in);
+
+            int data = isw.read();
+            while (data != -1) {
+                char current = (char)data;
+                data = isw.read();
+                dataString = dataString.concat(Character.toString(current));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            Log.v(TAG, "Finally...");
+            Log.v(TAG, dataString);
+        }
+
+        // Parse JSON
+        ArrayList<Food> foods = buildJSON(dataString);
+        this.searchResults = foods;
+
+        Log.v(TAG, foods.toString());
+
+        return true;
+    }
+
+    public ArrayList<Food> returnFoodListAsFood(){
+        ArrayList<Food> foodList = new ArrayList<Food>();
+
+        for(Food f : this.searchResults){
+            foodList.add(f);
+        }
+
+        return foodList;
+    }
+
+    public static ArrayList<String> convertFoodListToString(ArrayList<Food> foods){
+        ArrayList<String> stringList = new ArrayList<String>();
+        try{
+            for(Food f : foods){
+                stringList.add(f.get(Food.name));
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
 
         return stringList;
     }
 
+    ///////////// PRIVATE METHODS
 
+    private ArrayList<Food> buildJSON(String data){
+        ArrayList<Food> foods = new ArrayList<Food>();
+        try {
+
+            // Build a reader to handle parsing
+            JSONObject reader = new JSONObject(data);
+            // Collect the array of resolts
+            JSONArray json = reader.getJSONArray("hits");
+
+            //Build a food object to hold results
+            Food food;
+            //iterate across the results a specific number of times
+            for (int i = 0; i < this.numberOfResults; i++) {
+                food = new Food();
+
+                //This is the food as a JSON object
+                JSONObject foodJSON = json.getJSONObject(i);
+                // This is the fields we want
+                JSONObject foodField = foodJSON.getJSONObject("fields");
+
+                for(String nutritionValue: this.nutritionValues){
+                    food.set(nutritionValue, foodField.getString(nutritionValue));
+                }
+
+                /*if(checkForRepeat(foods, food)){
+                    i--;
+                }else{
+                    foods.add(food);
+                }*/
+
+                foods.add(food);
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            for (Food f: foods) {
+                Log.v(TAG, f.get(Food.name) + "");
+            }
+        }
+
+        return foods;
+
+    }
+
+    private boolean checkForRepeat(ArrayList<Food> foods, Food food){
+        for(Food f: foods){
+            if(f.get(Food.name).equals(food.get(Food.name))){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }

@@ -10,11 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class EditShoppingListActivity extends AppCompatActivity {
-    private static final String TAG = "MyActivity";
 
     private EditText foodNameText;
-    private EditText foodCalText;
-    private EditText foodCarbText;
+    private EditText foodQuantityText;
+    private EditText foodCostText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +22,33 @@ public class EditShoppingListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ////////////////////// UI Stuff
+        // Collecting Views
         foodNameText = (EditText) findViewById(R.id.food_name_text);
-        foodCalText = (EditText) findViewById(R.id.food_calories_text);
-        foodCarbText = (EditText) findViewById(R.id.food_carbs_text);
+        foodQuantityText = (EditText) findViewById(R.id.food_calories_text);
+        foodCostText = (EditText) findViewById(R.id.food_carbs_text);
 
+        // Return
         Button button = (Button) findViewById(R.id.add_fooditem);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItemToList(v);
+            }
+        });
 
     }
 
     /** Called when the user touches the button */
     public void addItemToList(View view) {
 
+        //todo make this add to a global state to save
+
         Intent previousScreen = new Intent(getApplicationContext(), ShoppingList.class);
         //Sending the data to RecipeList
-        Log.v(TAG, "About to pass text: " + foodNameText.getText());
         previousScreen.putExtra("foodName", foodNameText.getText()+"");
-        previousScreen.putExtra("foodCalories", foodCalText.getText()+"");
-        previousScreen.putExtra("foodCarbs", foodCarbText.getText()+"");
+        previousScreen.putExtra("foodQuantity", foodQuantityText.getText()+"");
+        previousScreen.putExtra("foodCost", foodCostText.getText()+"");
         setResult(2000, previousScreen);
 
         finish();

@@ -17,17 +17,6 @@ public class RecipeList {
         this.list.add(recipe);
     }
 
-    //todo remove this in favor of removeRecipe()
-    public boolean removeItem(Recipe recipe){
-        if(this.list.contains(recipe)){
-            this.list.remove(recipe);
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
     public boolean removeRecipe(Recipe recipe){
         if(this.list.contains(recipe)){
             this.list.remove(recipe);
@@ -42,12 +31,6 @@ public class RecipeList {
         this.list.clear();
         //there is no need to give it a return value if it *always* returns true
         return true;
-    }
-
-    public void printListContents(){
-        for(Recipe recipeItem : this.list){
-            Log.v(TAG, recipeItem.getName());
-        }
     }
 
     public ArrayList<String> getRecipeNames(){

@@ -14,10 +14,13 @@ import android.widget.TextView;
 
 public class ViewShopListItemActivity extends AppCompatActivity {
 
-    private static final String TAG = "MyActivity";
+    // Fields for UI stuff
     private TextView foodNameText;
-    private TextView foodCalText;
-    private TextView foodCarbText;
+    private TextView foodQuantityText;
+    private TextView foodCostText;
+
+    //Fields for Global User Interface
+    private OpenItemsMenuHandler openItemsMenuHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +30,23 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId4);
 
+        //////////////// Menu Bar Stuff
+        this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
+
+        //////////////// UI stuff
+        // Collect references to UI objects
         foodNameText = (TextView) findViewById(R.id.food_name_received);
-        foodCalText = (TextView) findViewById(R.id.food_calories_received);
-        foodCarbText = (TextView) findViewById(R.id.food_carbs_received);
-
-        String s = getIntent().getStringExtra("foodName");
-        Log.v(TAG, "Inside ViewShopListItemActivity. Food name = " + s);
-
-        foodNameText.setText(s);
-
-        s = getIntent().getStringExtra("foodCalories");
-        Log.v(TAG, "Inside ViewShopListItemActivity. Food calories = " + s);
-
-        foodCalText.setText(s);
-
-        s = getIntent().getStringExtra("foodCarbs");
-        Log.v(TAG, "Inside ViewShopListItemActivity. Food carbs = " + s);
-
-        foodCarbText.setText(s);
-
+        foodQuantityText = (TextView) findViewById(R.id.food_calories_received);
+        foodCostText = (TextView) findViewById(R.id.food_carbs_received);
+        // Collect data
+        String foodName = getIntent().getStringExtra("foodName");
+        String foodQuantity = getIntent().getStringExtra("foodQuantity");
+        String foodCost = getIntent().getStringExtra("foodCost");
+        // push to UI
+        foodNameText.setText(foodName);
+        foodQuantityText.setText(foodQuantity);
+        foodCostText.setText(foodCost);
+        // Button stuff
         Button doneButton = (Button)findViewById(R.id.add_fooditem);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,6 @@ public class ViewShopListItemActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -66,22 +66,10 @@ public class ViewShopListItemActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_home :
-                Intent intent = new Intent(ViewShopListItemActivity.this, SearchScreenActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_recipe :
-                Intent intent2 = new Intent(ViewShopListItemActivity.this, RecipeListActivity.class);
-                startActivity(intent2);
-                return true;
-            case R.id.action_shoppingList :
-                Intent intent3 = new Intent(ViewShopListItemActivity.this, ShoppingListActivity.class);
-                startActivity(intent3);
-                return true;
-
-            default :
-                return super.onOptionsItemSelected(item);
+        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
         }
     }
 }

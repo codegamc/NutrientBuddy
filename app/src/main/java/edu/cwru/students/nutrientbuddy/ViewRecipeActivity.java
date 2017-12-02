@@ -19,36 +19,41 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     private TextView recipeNameText;
-    private TextView recipeIngrText;
-    private TextView recipeDirText;
+    private TextView recipeIngredientsText;
+    private TextView recipeDirectionsText;
+
+    //Fields for Global User Interface
+    private OpenItemsMenuHandler openItemsMenuHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //////////////// Initialization stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_recipe);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId4);
 
+        //////////////// Menu Bar Stuff
+        this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
+
+        //////////////// User interface stuff
+        // Collecting the UI
         recipeNameText = (TextView) findViewById(R.id.recipe_name_received);
-        recipeIngrText = (TextView) findViewById(R.id.recipe_ingr_received);
-        recipeDirText = (TextView) findViewById(R.id.recipe_dir_received);
+        recipeIngredientsText = (TextView) findViewById(R.id.recipe_ingr_received);
+        recipeDirectionsText = (TextView) findViewById(R.id.recipe_dir_received);
 
-        String s = getIntent().getStringExtra("recipeName");
-        Log.v(TAG, "Inside ViewRecipeActivity. Recipe name = " + s);
+        // Collecting the Data
+        String recipeName = getIntent().getStringExtra("recipeName");
+        String recipeIngredients = getIntent().getStringExtra("recipeIngredients");
+        String recipeDirections = getIntent().getStringExtra("recipeDirections");
 
-        recipeNameText.setText(s);
+        // Setting the UI text
+        recipeNameText.setText(recipeName);
+        recipeIngredientsText.setText(recipeIngredients);
+        recipeDirectionsText.setText(recipeDirections);
 
-        s = getIntent().getStringExtra("recipeIngredients");
-        Log.v(TAG, "Inside ViewRecipeActivity. Recipe ingredients = " + s);
-
-        recipeIngrText.setText(s);
-
-        s = getIntent().getStringExtra("recipeDirections");
-        Log.v(TAG, "Inside ViewRecipeActivity. Recipe directions = " + s);
-
-        recipeDirText.setText(s);
-
+        //
         Button doneButton = (Button)findViewById(R.id.create_recipe);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +62,6 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -69,22 +73,10 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_home :
-                Intent intent = new Intent(ViewRecipeActivity.this, SearchScreenActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_recipe :
-                Intent intent2 = new Intent(ViewRecipeActivity.this, RecipeListActivity.class);
-                startActivity(intent2);
-                return true;
-            case R.id.action_shoppingList :
-                Intent intent3 = new Intent(ViewRecipeActivity.this, ShoppingListActivity.class);
-                startActivity(intent3);
-                return true;
-
-            default :
-                return super.onOptionsItemSelected(item);
+        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
         }
     }
 

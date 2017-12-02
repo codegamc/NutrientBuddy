@@ -1,6 +1,8 @@
 package edu.cwru.students.nutrientbuddy;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -22,39 +24,60 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     private ShoppingList list;
 
-   // private static final String TAG = "MyActivity";
-    private ArrayList<String> shopListNames;
+    private ShoppingDatabaseHelper shoppingDatabaseHelper;
 
-    ListView listView;
+    //Fields for displaying the Shopping List
+    ListView shoppingListView;
 
     private static final String TAG = "ShoppingListActivity";
+
+    //Fields for Global User Interface
+    private OpenItemsMenuHandler openItemsMenuHandler;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
+        shoppingDatabaseHelper = new ShoppingDatabaseHelper(this);
+
+        //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId2);
 
-        this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
-        Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
-        Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
-        Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
-        this.list.addItem(apple);
-        this.list.addItem(banana);
-        this.list.addItem(pear);
+        //////////////// Menu Stuff
+        this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
-        shopListNames = list.getItemNames();
-        ArrayList<String> shopListNames = this.list.getItemNames();
 
-        listView = new ListView(getApplicationContext());
-        listView = (ListView)findViewById(R.id.list_results);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shopListNames);
-        listView.setAdapter(arrayAdapter);
+        this.list = new ShoppingList();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //////// Testing add item
+       // ShoppingListItem shop = new ShoppingListItem("1", "2", "3");
+        //this.list.addItem(shop);
+
+
+        // DB stuff
+        Cursor c = shoppingDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+
+        while(c.moveToNext()){
+            String col_name = c.getString(c.getColumnIndex("name"));
+            String col_quantity = c.getString(c.getColumnIndex("quantity"));
+            String col_cost = c.getString((c.getColumnIndex("cost")));
+
+            ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+
+            list.addItem(s);
+        }
+
+
+        //////////////// UI Stuff
+        this.shoppingListView = new ListView(getApplicationContext());
+        this.shoppingListView = (ListView)findViewById(R.id.list_results);
+
+        this.shoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ShoppingListActivity.this, ViewShopListItemActivity.class);
@@ -65,13 +88,15 @@ public class ShoppingListActivity extends AppCompatActivity {
 
 
                 intent.putExtra("foodName", list.getShopItems().get(position).getName());
-                intent.putExtra("foodCalories", list.getShopItems().get(position).getCalories());
-                intent.putExtra("foodCarbs", list.getShopItems().get(position).getCarbs());
+                intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
+                intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
                 startActivity(intent);
             }
         });
 
+
+        //todo rename this!!
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabs);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +106,23 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });
 
+        //////////////// Shopping List Stuff
+        //this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
+
+       /* if(false){ //todo access shared preferences to toggle debug
+            Food apple = new Food("Apple", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
+            Food banana = new Food("Banana", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
+            Food pear = new Food("Pear", "cal", "fat", "sodium", "carbs", "sugar", "sodium");
+
+            this.list.addItem(apple);
+            this.list.addItem(banana);
+            this.list.addItem(pear);
+        }*/
+
+
+
+        // Setting the list view to be the shopping list
+        setShoppingListView();
     }
 
     @Override
@@ -88,21 +130,44 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+        //todo move this to debug only
         String foodName = data.getStringExtra("foodName");
-        String foodCalories = data.getStringExtra("foodCalories");
-        String foodCarbs = data.getStringExtra("foodCarbs");
+        String foodQuantity = data.getStringExtra("foodQuantity");
+        String foodCost = data.getStringExtra("foodCost");
 
-        Log.v(TAG, "Food name found: " + foodName);
-        Log.v(TAG, "Food calories found: " + foodCalories);
-        Log.v(TAG, "Food carbs found: " + foodCarbs);
+        addNewListItemDB(foodName, foodQuantity, foodCost);
 
-        list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+        list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
 
-        shopListNames = list.getItemNames();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) shopListNames);
 
-        listView.setAdapter(arrayAdapter);
+       //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+
+        setShoppingListView();
+    }
+
+    private void setShoppingListView(){
+        // Setting the list view to be the shopping list
+        ArrayList<String> shoppingListNames = this.list.getItemNames();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shoppingListNames);
+        this.shoppingListView.setAdapter(arrayAdapter);
+    }
+
+    private void addNewListItemDB(String name, String quantity, String cost){
+        ContentValues values = new ContentValues();
+        if(name != null) {
+            values.put(ShoppingDatabaseHelper.COL_NAME, name);
+        }
+        if(quantity != null){
+            values.put(ShoppingDatabaseHelper.COL_QUANTITY, quantity);
+        }
+
+        if(cost != null){
+            values.put(ShoppingDatabaseHelper.COL_COST, cost);
+        }
+
+        shoppingDatabaseHelper.insert(DatabaseHelper.TABLE_USERS, values);
+
     }
 
     @Override
@@ -114,18 +179,10 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_home :
-                Intent intent = new Intent(ShoppingListActivity.this, SearchScreenActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.action_recipe :
-                Intent intent2 = new Intent(ShoppingListActivity.this, RecipeListActivity.class);
-                startActivity(intent2);
-                return true;
-
-            default :
-                return super.onOptionsItemSelected(item);
+        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
         }
     }
 }
