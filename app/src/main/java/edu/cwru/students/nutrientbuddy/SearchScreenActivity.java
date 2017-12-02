@@ -204,6 +204,8 @@ public class SearchScreenActivity extends AppCompatActivity{
                         filterMetric = new ProteinFilter();
                         break;
                 }
+
+                updateDisplay();
             }
 
             @Override
@@ -256,7 +258,8 @@ public class SearchScreenActivity extends AppCompatActivity{
     }
 
     private ArrayList<Food> sortList(ArrayList<Food> list){
-        return this.searchMetric.sort(list);
+
+        return this.filterMetric.filter(this.searchMetric.sort(list));
     }
 
     private class FoodSearchAgent extends AsyncTask<String, Void, Void> {
