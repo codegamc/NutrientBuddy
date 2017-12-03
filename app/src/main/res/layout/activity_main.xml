@@ -10,7 +10,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#1aa89e">
 
         <TextView
             android:id="@+id/recipe_ingr_received"
@@ -18,8 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="69dp"
-            android:text="Search for food item"
+            android:layout_marginTop="115dp"
+            android:text="Search for food item:"
+            android:textColor="#1b4057"
             android:textAlignment="center"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -38,11 +40,12 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextMain"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:onClick="addRecipeToList"
             android:text="SEARCH"
-            android:layout_below="@+id/editText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp" />
+            android:background="#d1e9f4"/>
 
     </RelativeLayout>
 
