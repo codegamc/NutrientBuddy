@@ -73,6 +73,10 @@ public class Nutritionix {
         //setting the config info
         this.numberOfResults = numberOfResults;
 
+        if(this.numberOfResults > 20){
+            this.numberOfResults = 20;
+        }
+
         this.searchResults = new ArrayList<Food>();
     }
 
@@ -211,6 +215,11 @@ public class Nutritionix {
         return stringList;
     }
 
+    public ArrayList<Food> searchUPC(String upcCode){
+        //todo
+        return null;
+    }
+
     ///////////// PRIVATE METHODS
 
     //todo : we should ensure that we check the NumberOFResultsToReturn againt the number of results the API has returned to us
@@ -221,7 +230,7 @@ public class Nutritionix {
 
             // Build a reader to handle parsing
             JSONObject reader = new JSONObject(data);
-            // Collect the array of resolts
+            // Collect the array of results
             JSONArray json = reader.getJSONArray("hits");
 
             //Build a food object to hold results
