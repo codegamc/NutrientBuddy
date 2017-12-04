@@ -66,7 +66,7 @@ public class SearchScreenActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //////////////// Menu Bar Stuff
+        // Menu Bar Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
         /////////// LIST VIEW STUFF ///////////
@@ -98,9 +98,18 @@ public class SearchScreenActivity extends AppCompatActivity{
 
         });
 
+
+
         /////////// SEARCHING STUFF ///////////
         //todo rename this search area
         final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getBoolean("Text Entered")){
+            String searchEntered = bundle.getString("Search Entered");
+            searchView.setQuery(searchEntered, true);
+        }
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -225,10 +234,28 @@ public class SearchScreenActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
-            return true;
-        }else{
-            return super.onOptionsItemSelected(item);
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_shoppingList:
+                intent = new Intent(SearchScreenActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_barcode:
+                intent = new Intent(SearchScreenActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe:
+                intent = new Intent(SearchScreenActivity.this, RecipeListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(SearchScreenActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

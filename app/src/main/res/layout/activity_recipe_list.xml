@@ -5,29 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.cwru.students.nutrientbuddy.RecipeListActivity"
-    android:id="@+id/layoutId">
+    tools:context="edu.cwru.students.nutrientbuddy.SearchScreenActivity"
+    android:id="@+id/layoutId"
+    android:background="#d1e9f4">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        android:background="@color/colorPrimary"/>
-
-    <ListView
-        android:id="@+id/recipe_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"/>
+        android:background="#1aa89e"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/recipeListFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:onClick="addRecipe"/>
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:backgroundTint="#1b4057"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/recipe_title"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:text="Your Recipes"
+            android:textAlignment="center"
+            android:textColor="#1aa89e"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listofrecipes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recipe_title"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 

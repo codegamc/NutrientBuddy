@@ -59,6 +59,11 @@
             android:label="ViewRecipeActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".BarcodeActivity"
+            android:label="BarcodeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

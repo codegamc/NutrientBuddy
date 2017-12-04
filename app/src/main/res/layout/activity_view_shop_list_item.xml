@@ -4,30 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.cwru.students.nutrientbuddy.ViewShopListItemActivity">
+    android:fitsSystemWindows="true"
+    tools:context="edu.cwru.students.nutrientbuddy.ViewShopListItemActivity"
+    android:id="@+id/shoplistitemlayout"
+    android:background="#d1e9f4">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="#1aa89e"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/shopItem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="NAME"
+            android:textAlignment="center"
+            android:textColor="#1aa89e"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <include layout="@layout/content_view_shop_list_item" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/shopItem_name"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="23dp"
+            android:text="Quantity: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"
+            android:id="@+id/quantity" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:id="@+id/numQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/quantity"
+            android:layout_toEndOf="@+id/quantity"
+            android:text="numCalories"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/quantity"
+            android:layout_below="@+id/quantity"
+            android:text="Expected Price: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/numPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantity"
+            android:layout_toEndOf="@+id/price"
+            android:text="numPrice"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <Button
+            android:id="@+id/shoplistitemdone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="72dp"
+            android:text="Done"
+            android:background="#1b4057"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

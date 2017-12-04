@@ -2,6 +2,7 @@ package edu.cwru.students.nutrientbuddy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -15,28 +16,37 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 import android.os.StrictMode;
+import android.widget.Button;
+import android.widget.EditText;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ////////////////
-        //
-
-
-
-        //////////////// This transitions to the Search Screen Activity
-        //
-        Intent intent = new Intent(this, SearchScreenActivity.class);
-        startActivity(intent);
+        Button button = (Button) findViewById(R.id.search);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editText = (EditText) findViewById(R.id.editTextMain);
+                result = editText.getText().toString();
+                boolean textEntered = true;
+                Intent intent = new Intent(MainActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Search Entered", result);
+                intent.putExtra("Text Entered", textEntered);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -48,17 +58,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch(item.getItemId()) {
+            case R.id.action_home :
+                Intent intent = new Intent(MainActivity.this, SearchScreenActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe :
+                Intent intent2 = new Intent(MainActivity.this, RecipeListActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.action_shoppingList :
+                Intent intent3 = new Intent(MainActivity.this, ShoppingListActivity.class);
+                startActivity(intent3);
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            default :
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
-
 }
