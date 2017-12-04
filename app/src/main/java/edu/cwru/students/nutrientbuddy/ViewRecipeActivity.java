@@ -73,10 +73,28 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
-            return true;
-        }else{
-            return super.onOptionsItemSelected(item);
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_shoppingList:
+                intent = new Intent(ViewRecipeActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_barcode:
+                intent = new Intent(ViewRecipeActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe:
+                intent = new Intent(ViewRecipeActivity.this, RecipeListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(ViewRecipeActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
