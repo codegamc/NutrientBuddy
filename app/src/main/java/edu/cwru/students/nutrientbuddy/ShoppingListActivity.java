@@ -3,6 +3,7 @@ package edu.cwru.students.nutrientbuddy;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.icu.text.StringSearch;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -35,6 +36,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     //Fields for Global User Interface
     private OpenItemsMenuHandler openItemsMenuHandler;
+
+    private ArrayList<String> shoppingListNames;
 
 
     @Override
@@ -112,17 +115,25 @@ public class ShoppingListActivity extends AppCompatActivity {
         }*/
 
         // Setting the list view to be the shopping list
-        setShoppingListView();
-
+        this.shoppingListNames = this.list.getItemNames();
+        setShoppingListView(shoppingListNames);
 
         Button sortShopAlpha = (Button) findViewById(R.id.shopButtonAlpha);
         sortShopAlpha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> newList = list.getItemNames();
-                Collections.sort(newList);
-                Collections.reverse(newList);
-                setShoppingListView();
+                Collections.sort(shoppingListNames);
+                setShoppingListView(shoppingListNames);
+            }
+        });
+
+        Button sortShopRevAlpha = (Button) findViewById(R.id.shopButtonRevAlpha);
+        sortShopRevAlpha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(shoppingListNames);
+                Collections.reverse(shoppingListNames);
+                setShoppingListView(shoppingListNames);
             }
         });
 
@@ -155,13 +166,13 @@ public class ShoppingListActivity extends AppCompatActivity {
         Log.v(TAG, "About to add new item: " + foodName);
        // this.list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
 
-        setShoppingListView();
+        ArrayList<String> shoppingListNames = this.list.getItemNames();
+        setShoppingListView(shoppingListNames);
     }
 
-    private void setShoppingListView(){
+    private void setShoppingListView(ArrayList<String> shopListNames){
         // Setting the list view to be the shopping list
-        ArrayList<String> shoppingListNames = this.list.getItemNames();
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shoppingListNames);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, shopListNames);
         this.shoppingListView.setAdapter(arrayAdapter);
     }
 
