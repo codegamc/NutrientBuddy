@@ -4,31 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.cwru.students.nutrientbuddy.EditShoppingListActivity">
+    android:fitsSystemWindows="true"
+    tools:context="edu.cwru.students.nutrientbuddy.ViewNutritionActivity"
+    android:id="@+id/layoutId"
+    android:background="#d1e9f4">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="#1aa89e"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="Add Item"
+            android:textAlignment="center"
+            android:textColor="#1aa89e"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <include layout="@layout/content_edit_shoplist" />
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="31dp"
+            android:layout_toStartOf="@+id/title"
+            android:text="Item Name: "
+            android:textColor="#1aa89e"
+            android:textSize="20sp" />
 
+        <EditText
+            android:id="@+id/itemNameEdit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/itemName"
+            android:layout_toEndOf="@+id/itemName" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/itemName"
+            android:layout_below="@+id/itemName"
+            android:layout_marginTop="21dp"
+            android:text="Quantity: "
+            android:textColor="#1aa89e"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/quantityEdit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemName"
+            android:layout_toEndOf="@+id/quantity" />
+
+        <TextView
+            android:id="@+id/expectedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/quantity"
+            android:layout_below="@+id/quantity"
+            android:layout_marginTop="23dp"
+            android:text="Expected Price: "
+            android:textColor="#1aa89e"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/expectedPriceEdit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/expectedPrice"
+            android:layout_toEndOf="@+id/expectedPrice" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="66dp"
+            android:text=" Add "
+            android:background="#1b4057"
+            android:textColor="#ffffff"
+            android:id="@+id/add_fooditem"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

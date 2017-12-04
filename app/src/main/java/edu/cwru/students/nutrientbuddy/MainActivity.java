@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.editTextMain);
                 result = editText.getText().toString();
+                boolean textEntered = true;
                 Intent intent = new Intent(MainActivity.this, SearchScreenActivity.class);
                 intent.putExtra("Search Entered", result);
+                intent.putExtra("Text Entered", textEntered);
                 startActivity(intent);
             }
         });

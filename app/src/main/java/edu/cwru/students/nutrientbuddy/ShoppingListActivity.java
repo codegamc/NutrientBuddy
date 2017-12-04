@@ -45,11 +45,18 @@ public class ShoppingListActivity extends AppCompatActivity {
         //////////////// Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId2);
 
         //////////////// Menu Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.shopListFAB);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingListActivity.this, EditShoppingListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         this.list = new ShoppingList();
 
@@ -75,7 +82,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         //////////////// UI Stuff
         this.shoppingListView = new ListView(getApplicationContext());
-        this.shoppingListView = (ListView)findViewById(R.id.list_results);
+        this.shoppingListView = (ListView)findViewById(R.id.shop_list_results);
 
         this.shoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,16 +102,6 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });
 
-
-        //todo rename this!!
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabs);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent nextScreen = new Intent(getApplicationContext(), EditShoppingListActivity.class);
-                startActivityForResult(nextScreen,2000);
-            }
-        });
 
         //////////////// Shopping List Stuff
         //this.list = new ShoppingList();  // Currently will probably override whatever previous list we made.
@@ -179,10 +176,28 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(this.openItemsMenuHandler.onOptionsItemSelected(item.getItemId())){
-            return true;
-        }else{
-            return super.onOptionsItemSelected(item);
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_shoppingList:
+                intent = new Intent(ShoppingListActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_barcode:
+                intent = new Intent(ShoppingListActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe:
+                intent = new Intent(ShoppingListActivity.this, RecipeListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(ShoppingListActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

@@ -24,9 +24,9 @@ public class EditShoppingListActivity extends AppCompatActivity {
 
         ////////////////////// UI Stuff
         // Collecting Views
-        foodNameText = (EditText) findViewById(R.id.food_name_text);
-        foodQuantityText = (EditText) findViewById(R.id.food_calories_text);
-        foodCostText = (EditText) findViewById(R.id.food_carbs_text);
+        foodNameText = (EditText) findViewById(R.id.itemNameEdit);
+        foodQuantityText = (EditText) findViewById(R.id.quantityEdit);
+        foodCostText = (EditText) findViewById(R.id.expectedPriceEdit);
 
         // Return
         Button button = (Button) findViewById(R.id.add_fooditem);
@@ -45,7 +45,6 @@ public class EditShoppingListActivity extends AppCompatActivity {
         //todo make this add to a global state to save
 
         Intent previousScreen = new Intent(getApplicationContext(), ShoppingList.class);
-        //Sending the data to RecipeList
         previousScreen.putExtra("foodName", foodNameText.getText()+"");
         previousScreen.putExtra("foodQuantity", foodQuantityText.getText()+"");
         previousScreen.putExtra("foodCost", foodCostText.getText()+"");
