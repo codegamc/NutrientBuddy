@@ -2,6 +2,7 @@ package edu.cwru.students.nutrientbuddy;
 
 import edu.cwru.students.nutrientbuddy.Filtering.CaloryFilter;
 import edu.cwru.students.nutrientbuddy.Filtering.CarbohydrateFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.DuplicationFilter;
 import edu.cwru.students.nutrientbuddy.Filtering.FatFilter;
 import edu.cwru.students.nutrientbuddy.Filtering.NoFilter;
 import edu.cwru.students.nutrientbuddy.Filtering.ProteinFilter;
@@ -258,6 +259,8 @@ public class SearchScreenActivity extends AppCompatActivity{
     }
 
     private ArrayList<Food> sortList(ArrayList<Food> list){
+        DuplicationFilter fl = new DuplicationFilter();
+        list = fl.filter(list);
 
         return this.filterMetric.filter(this.searchMetric.sort(list));
     }
