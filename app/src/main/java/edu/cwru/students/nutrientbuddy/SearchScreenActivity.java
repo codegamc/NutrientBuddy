@@ -41,7 +41,7 @@ public class SearchScreenActivity extends AppCompatActivity{
     private ListView listview;
 
     // Global Fields related to Search
-    private boolean dynamicUpdate = false;      //Defaults to false  //todo add a way to make it true in oncreate()
+    private boolean dynamicUpdate = true;      //Defaults to false  //todo add a way to make it true in oncreate()
     private ArrayList<Food> foods;
     private ArrayList<String> foodString;
 

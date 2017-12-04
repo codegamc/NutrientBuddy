@@ -10,20 +10,17 @@
         <item>Carbs Low to High</item>
         <item>Fat Low to High</item>
     </string-array>
-
-<<<<<<< HEAD
     <string-array name="filter">
         <item>Filter</item>
         <item>Calory Less Than 300 kcal</item>
         <item>Carbohydrate Less Than 18.0g </item>
         <item>Fat Less Than 15.0g </item>
         <item>Protein More Than 8.0g </item>
-=======
+    </string-array>
     <string-array name="sortRecipes">
         <item>Sort</item>
         <item>Alphabetical(A to Z)</item>
         <item>Alphabetical(Z to A)</item>
->>>>>>> master
     </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

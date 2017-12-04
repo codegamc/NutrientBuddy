@@ -22,8 +22,6 @@
         android:layout_marginTop="55dp"
         android:orientation="vertical">
 
-<<<<<<< HEAD
-=======
         <Spinner
             android:id="@+id/sort_spinner"
             android:layout_width="100dp"
@@ -31,7 +29,15 @@
             android:layout_alignEnd="@+id/search_label"
             android:layout_alignStart="@+id/search_label"
             android:layout_below="@+id/search_label"/>
->>>>>>> master
+
+        <Spinner
+            android:id="@+id/filter_spinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/search_label"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="135dp"
+            android:layout_toEndOf="@+id/search_label" />
 
         <TextView
             android:id="@+id/search_label"
@@ -59,38 +65,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/search_text_area"/>
-
     </RelativeLayout>
 
-<<<<<<< HEAD
-    <Spinner
-        android:id="@+id/filter_spinner"
-        android:layout_width="179dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/search_label"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="135dp"
-        android:layout_toEndOf="@+id/search_label" />
 
-    <Spinner
-        android:id="@+id/sort_spinner"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/search_label"
-        android:layout_marginTop="135dp"
-        android:layout_toEndOf="@+id/search_label" />
 
-    <ListView
-        android:id="@+id/search_results"
-        android:layout_width="match_parent"
-        android:layout_height="412dp"
-        android:layout_marginTop="160dp"
-        tools:layout_editor_absoluteY="93dp">
 
-    </ListView>
+<!---
+        <Spinner
+            android:id="@+id/filter_spinner"
+            android:layout_width="179dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/search_label"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="135dp"
+            android:layout_toEndOf="@+id/search_label" />
 
-=======
->>>>>>> master
+        <Spinner
+            android:id="@+id/sort_spinner"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/search_label"
+            android:layout_marginTop="135dp"
+            android:layout_toEndOf="@+id/search_label" />
+
+        <ListView
+            android:id="@+id/search_results"
+            android:layout_width="match_parent"
+            android:layout_height="412dp"
+            android:layout_marginTop="160dp"
+            tools:layout_editor_absoluteY="93dp"/> -->
+
 </android.support.design.widget.CoordinatorLayout>
 
 
