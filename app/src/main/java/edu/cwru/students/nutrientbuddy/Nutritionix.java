@@ -181,7 +181,7 @@ public class Nutritionix {
         ArrayList<Food> foods = buildJSON(dataString);
         this.searchResults = foods;
 
-        Log.v(TAG, foods.toString());
+        //Log.v(TAG, foods.toString());
 
         return true;
     }
@@ -213,6 +213,8 @@ public class Nutritionix {
 
     ///////////// PRIVATE METHODS
 
+    //todo : we should ensure that we check the NumberOFResultsToReturn againt the number of results the API has returned to us
+
     private ArrayList<Food> buildJSON(String data){
         ArrayList<Food> foods = new ArrayList<Food>();
         try {
@@ -225,7 +227,7 @@ public class Nutritionix {
             //Build a food object to hold results
             Food food;
             //iterate across the results a specific number of times
-            for (int i = 0; i < this.numberOfResults; i++) {
+            for (int i = 0; i < this.numberOfResults -1; i++) {
                 food = new Food();
 
                 //This is the food as a JSON object
