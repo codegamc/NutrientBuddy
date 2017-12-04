@@ -62,7 +62,7 @@ public class SearchScreenActivity extends AppCompatActivity{
         //setting the context
         setContentView(R.layout.activity_search_screen);
 
-        //////////////// Tool Bar Stuff
+        // Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
