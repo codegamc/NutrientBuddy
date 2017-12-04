@@ -23,14 +23,11 @@ public class AlphabeticSorting implements SearchMetric {
             if(food1 == null){
                 Log.v("Alphabetical Sorting", "True");
             }
-            float first = Float.parseFloat(food1.get(Food.name)+"");
-            Log.v("Alphabetical Sorting", "" + first);
-            float second = Float.parseFloat(food2.get(Food.name)+"");
-            Log.v("Alphabetical Sorting", "" + second);
-            if(first==second){
+
+            if(food1.getName().compareToIgnoreCase(food2.getName()) == 0){
                 return 0;
             }else{
-                if(first < second){
+                if(food1.getName().compareToIgnoreCase(food2.getName()) < 0){
                     return -1;
                 }else{
                     return 1;
