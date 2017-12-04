@@ -84,6 +84,7 @@ public class ViewNutritionActivity extends AppCompatActivity {
                 return true;
             case R.id.action_home:
                 intent = new Intent(ViewNutritionActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
                 startActivity(intent);
                 return true;
 
