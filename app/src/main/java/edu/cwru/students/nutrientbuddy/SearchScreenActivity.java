@@ -1,5 +1,11 @@
 package edu.cwru.students.nutrientbuddy;
 
+import edu.cwru.students.nutrientbuddy.Filtering.CaloryFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.CarbohydrateFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.DuplicationFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.FatFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.NoFilter;
+import edu.cwru.students.nutrientbuddy.Filtering.ProteinFilter;
 import edu.cwru.students.nutrientbuddy.Sorting.*;
 
 import android.content.Context;
@@ -35,12 +41,13 @@ public class SearchScreenActivity extends AppCompatActivity{
     private ListView listview;
 
     // Global Fields related to Search
-    private boolean dynamicUpdate = false;      //Defaults to false  //todo add a way to make it true in oncreate()
+    private boolean dynamicUpdate = true;      //Defaults to false  //todo add a way to make it true in oncreate()
     private ArrayList<Food> foods;
     private ArrayList<String> foodString;
 
-    // Global Fields related to Sorting
+    // Global Fields related to Sorting and filtering
     private SearchMetric searchMetric;
+    private FilterMetric filterMetric;
 
     //Fields for Global User Interface
     private OpenItemsMenuHandler openItemsMenuHandler;
@@ -71,7 +78,8 @@ public class SearchScreenActivity extends AppCompatActivity{
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SearchScreenActivity.this, ViewNutritionActivity.class);
+                Intent intent = new Intent(SearchScreenActivity.this,
+                        ViewNutritionActivity.class);
 
                 // todo make food serializable to simplify this + future changes (eg. image?)
                 intent.putExtra("searchResult",     listview.getItemAtPosition(position).toString());
@@ -126,7 +134,7 @@ public class SearchScreenActivity extends AppCompatActivity{
         });
 
         /////////// SORTING STUFF ///////////
-        this.searchMetric = (SearchMetric) (new NoSort());
+        this.searchMetric = (SearchMetric)(new NoSort());
 
         /////////// Setting up Spinner
         Spinner sortingSpinner = (Spinner) findViewById(R.id.sort_spinner);
@@ -171,6 +179,48 @@ public class SearchScreenActivity extends AppCompatActivity{
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 //searchMetric = new NoSort();
+            }
+        });
+
+        ///////////  FILTERING  ////////////
+        this.filterMetric = new NoFilter();
+
+        ////////// Setting up Spinner
+        Spinner filtSpinner = (Spinner)findViewById(R.id.filter_spinner);
+        ArrayAdapter<String> filtAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.filter));
+        filtAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filtSpinner.setAdapter(filtAdapter);
+        filtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0: // No filter
+                        filterMetric = new NoFilter();
+                        break;
+                    case 1: // Calories Filtering
+                        filterMetric = new CaloryFilter();
+                        break;
+
+                    case 2: // Carbohydrate Filtering
+                        filterMetric = new CarbohydrateFilter();
+                        break;
+
+                    case 3: // Fat Filtering
+                        filterMetric = new FatFilter();
+                        break;
+
+                    case 4: // Protein Filtering
+                        filterMetric = new ProteinFilter();
+                        break;
+                }
+
+                updateDisplay();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
@@ -236,14 +286,17 @@ public class SearchScreenActivity extends AppCompatActivity{
     }
 
     private ArrayList<Food> sortList(ArrayList<Food> list){
-        return this.searchMetric.sort(list);
+        DuplicationFilter fl = new DuplicationFilter();
+        list = fl.filter(list);
+
+        return this.filterMetric.filter(this.searchMetric.sort(list));
     }
 
     private class FoodSearchAgent extends AsyncTask<String, Void, Void> {
 
         @Override
         protected Void doInBackground(String... strings) {
-            Nutritionix nutritionix = new Nutritionix(10);
+            Nutritionix nutritionix = new Nutritionix(75);
             nutritionix.loadFoodSearch(strings[0]);
             foods = nutritionix.returnFoodListAsFood();
 

@@ -51,14 +51,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         //////////////// Menu Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.shopListFAB);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ShoppingListActivity.this, EditShoppingListActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         this.list = new ShoppingList();
 
@@ -121,6 +114,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         // Setting the list view to be the shopping list
         setShoppingListView();
 
+<<<<<<< HEAD
 //        Button sortShopAlpha = (Button) findViewById(R.id.shopButtonAlpha);
 //        sortShopAlpha.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -131,6 +125,16 @@ public class ShoppingListActivity extends AppCompatActivity {
 //                setShoppingListView();
 //            }
 //        });
+=======
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.shopListFAB);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingListActivity.this, EditShoppingListActivity.class);
+                startActivityForResult(intent,2000);
+            }
+        });
+>>>>>>> 2fda8e5a3a2e6deb7ca6e2d9c12bf5ccd4c8a417
     }
 
     @Override
@@ -145,9 +149,14 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         addNewListItemDB(foodName, foodQuantity, foodCost);
 
+<<<<<<< HEAD
         list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
 
        //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+=======
+        Log.v(TAG, "About to add new item: " + foodName);
+        this.list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+>>>>>>> 2fda8e5a3a2e6deb7ca6e2d9c12bf5ccd4c8a417
 
         setShoppingListView();
     }
