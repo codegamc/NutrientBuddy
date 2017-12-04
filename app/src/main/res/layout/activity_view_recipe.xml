@@ -64,6 +64,7 @@
             android:layout_alignStart="@+id/directionsTitle"
             android:layout_below="@+id/directionsTitle"
             android:text="Ingredients: "
+            android:layout_alignTop="@+id/ingredients"
             android:textSize="20sp"
             android:textColor="#1aa89e"/>
 
@@ -71,7 +72,7 @@
             android:id="@+id/ingredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/directionsTitle"
+            android:layout_below="@+id/directions"
             android:layout_toEndOf="@+id/ingredientsTitle"
             android:text="ingredients"
             android:textSize="20sp"
@@ -81,10 +82,10 @@
             android:id="@+id/viewrecipedone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ingredientsTitle"
+            android:layout_below="@+id/ingredients"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="72dp"
             android:text="Done"
+            android:layout_marginTop="20dp"
             android:background="#1b4057"
             android:textColor="#ffffff"/>
 
