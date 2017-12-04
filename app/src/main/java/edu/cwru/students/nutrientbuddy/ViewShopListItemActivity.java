@@ -28,16 +28,16 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_shop_list_item);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layoutId4);
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.shoplistitemlayout);
 
         //////////////// Menu Bar Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
         //////////////// UI stuff
         // Collect references to UI objects
-        foodNameText = (TextView) findViewById(R.id.food_name_received);
-        foodQuantityText = (TextView) findViewById(R.id.food_calories_received);
-        foodCostText = (TextView) findViewById(R.id.food_carbs_received);
+        foodNameText = (TextView) findViewById(R.id.shopItem_name);
+        foodQuantityText = (TextView) findViewById(R.id.numQuantity);
+        foodCostText = (TextView) findViewById(R.id.numPrice);
         // Collect data
         String foodName = getIntent().getStringExtra("foodName");
         String foodQuantity = getIntent().getStringExtra("foodQuantity");
@@ -47,7 +47,7 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         foodQuantityText.setText(foodQuantity);
         foodCostText.setText(foodCost);
         // Button stuff
-        Button doneButton = (Button)findViewById(R.id.add_fooditem);
+        Button doneButton = (Button)findViewById(R.id.shoplistitemdone);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

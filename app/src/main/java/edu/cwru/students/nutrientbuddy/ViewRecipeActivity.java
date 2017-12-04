@@ -39,9 +39,9 @@ public class ViewRecipeActivity extends AppCompatActivity {
 
         //////////////// User interface stuff
         // Collecting the UI
-        recipeNameText = (TextView) findViewById(R.id.recipe_name_received);
-        recipeIngredientsText = (TextView) findViewById(R.id.recipe_ingr_received);
-        recipeDirectionsText = (TextView) findViewById(R.id.recipe_dir_received);
+        recipeNameText = (TextView) findViewById(R.id.recipeItem_name);
+        recipeIngredientsText = (TextView) findViewById(R.id.ingredients);
+        recipeDirectionsText = (TextView) findViewById(R.id.directions);
 
         // Collecting the Data
         String recipeName = getIntent().getStringExtra("recipeName");
@@ -54,7 +54,7 @@ public class ViewRecipeActivity extends AppCompatActivity {
         recipeDirectionsText.setText(recipeDirections);
 
         //
-        Button doneButton = (Button)findViewById(R.id.create_recipe);
+        Button doneButton = (Button)findViewById(R.id.viewrecipedone);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
