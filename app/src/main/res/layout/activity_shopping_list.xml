@@ -29,7 +29,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="513dp"
         android:layout_marginTop="55dp"
         android:orientation="vertical">
 
@@ -46,12 +46,30 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/shopButtonAlpha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/shopButtonRevAlpha"
+            android:layout_alignBottom="@+id/shopButtonRevAlpha"
+            android:layout_toStartOf="@+id/shopButtonRevAlpha"
+            android:text="A-Z" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/shopList"
+            android:layout_below="@+id/shopList"
+            android:layout_marginEnd="50dp"
+            android:text="Z-A"
+            android:id="@+id/shopButtonRevAlpha"/>
+
         <ListView
             android:id="@+id/shop_list_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/shopList" />
+            android:layout_below="@+id/shopButtonRevAlpha" />
 
     </RelativeLayout>
 

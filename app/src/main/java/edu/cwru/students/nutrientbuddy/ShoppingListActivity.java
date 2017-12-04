@@ -15,9 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity {
@@ -116,10 +118,19 @@ public class ShoppingListActivity extends AppCompatActivity {
             this.list.addItem(pear);
         }*/
 
-
-
         // Setting the list view to be the shopping list
         setShoppingListView();
+
+//        Button sortShopAlpha = (Button) findViewById(R.id.shopButtonAlpha);
+//        sortShopAlpha.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ArrayList<String> newList = list.getItemNames();
+//                Collections.sort(newList);
+//                Collections.reverse(newList);
+//                setShoppingListView();
+//            }
+//        });
     }
 
     @Override
@@ -135,8 +146,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         addNewListItemDB(foodName, foodQuantity, foodCost);
 
         list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
-
-
 
        //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
 

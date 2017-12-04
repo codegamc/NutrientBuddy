@@ -26,11 +26,13 @@ import android.app.SearchManager;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import android.app.Activity;
 import android.database.Cursor;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 
 public class RecipeListActivity extends AppCompatActivity {
 
@@ -53,13 +55,8 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recipeDatabaseHelper = new DatabaseHelper(this);
 
-
-
             // Testing purposes: clear the database:
           //   recipeDatabaseHelper.removeAll(DatabaseHelper.TABLE_USERS);
-
-
-
 
 
         ///////////////// UI Stuff
@@ -111,6 +108,47 @@ public class RecipeListActivity extends AppCompatActivity {
             ArrayAdapter<String> recipeListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
             this.recipeListView.setAdapter(recipeListAdapter);
         }
+
+//        Spinner spinner = (Spinner) findViewById(R.id.sortRecipe_spinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+//                R.array.sortRecipes, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+//        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                switch (position){
+//                    case 0: // No Sort
+//                        break;
+//                    case 1: // Alphabetical Sorting
+//
+//                        break;
+//                    case 2: // Reverse Alphabetical Sorting
+//
+//                        break;
+//                }
+//                //need to update UI here
+//            }
+//        });
+
+        Button sortAlpha = (Button) findViewById(R.id.buttonAZ);
+        sortAlpha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(recipeNames);
+                updateRecipeUI(recipeNames, recipeList);
+            }
+        });
+
+        Button sortReverseAlpha = (Button) findViewById(R.id.buttonZA);
+        sortReverseAlpha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(recipeNames);
+                Collections.reverse(recipeNames);
+                updateRecipeUI(recipeNames, recipeList);
+            }
+        });
 
         recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -194,6 +232,12 @@ public class RecipeListActivity extends AppCompatActivity {
         int[] to = {android.R.id.text1};
         SimpleCursorAdapter adapter1 = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, c, from, to, 0);
         recipeListView.setAdapter(adapter1);*/
+    }
+
+    public void updateRecipeUI(ArrayList<String> recipeNames, RecipeList recipeLists){
+        this.recipeNames = this.recipeList.getRecipeNames();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+        this.recipeListView.setAdapter(arrayAdapter);
     }
 
     @Override

@@ -27,7 +27,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="513dp"
         android:layout_marginTop="55dp"
         android:orientation="vertical">
 
@@ -44,11 +44,38 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!--<Spinner-->
+        <!--android:id="@+id/sortRecipe_spinner"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/recipe_title"-->
+        <!--android:layout_alignStart="@+id/recipe_title"-->
+        <!--android:layout_below="@+id/recipe_title"/>-->
+
+        <Button
+            android:id="@+id/buttonAZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/buttonZA"
+            android:layout_alignBottom="@+id/buttonZA"
+            android:layout_toStartOf="@+id/buttonZA"
+            android:text="A-Z" />
+
+        <Button
+            android:id="@+id/buttonZA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/recipe_title"
+            android:layout_below="@+id/recipe_title"
+            android:layout_marginEnd="51dp"
+            android:text="Z-A" />
+
         <ListView
             android:id="@+id/listofrecipes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recipe_title"/>
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/buttonAZ" />
 
     </RelativeLayout>
 

@@ -1,6 +1,8 @@
 package edu.cwru.students.nutrientbuddy;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import android.util.Log;
 
 public class RecipeList {
