@@ -4,30 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.cwru.students.nutrientbuddy.ViewRecipeActivity">
+    android:fitsSystemWindows="true"
+    tools:context="edu.cwru.students.nutrientbuddy.ViewRecipeActivity"
+    android:id="@+id/viewRecipeLayout"
+    android:background="#d1e9f4">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="#1aa89e"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/recipeItem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="NAME"
+            android:textAlignment="center"
+            android:textColor="#1aa89e"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <include layout="@layout/content_view_recipe" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/recipeItem_name"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="23dp"
+            android:text="Directions: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"
+            android:id="@+id/directionsTitle" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:id="@+id/directions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/directionsTitle"
+            android:layout_toEndOf="@+id/directionsTitle"
+            android:text="directions"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/ingredientsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/directionsTitle"
+            android:layout_below="@+id/directionsTitle"
+            android:text="Ingredients: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/directionsTitle"
+            android:layout_toEndOf="@+id/ingredientsTitle"
+            android:text="ingredients"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <Button
+            android:id="@+id/viewrecipedone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ingredientsTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="72dp"
+            android:text="Done"
+            android:background="#1b4057"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

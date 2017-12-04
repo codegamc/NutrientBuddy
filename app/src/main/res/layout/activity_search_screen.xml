@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="edu.cwru.students.nutrientbuddy.SearchScreenActivity"
-    android:id="@+id/layoutId">
+    android:id="@+id/layoutId"
+    android:background="#d1e9f4">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        android:background="@color/colorPrimary"/>
+        android:background="#1aa89e"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,37 +26,38 @@
             android:id="@+id/sort_spinner"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/search_label"
-            android:layout_toEndOf="@+id/search_label" />
+            android:layout_alignEnd="@+id/search_label"
+            android:layout_alignStart="@+id/search_label"
+            android:layout_below="@+id/search_label"/>
 
         <TextView
             android:id="@+id/search_label"
             android:layout_width="280dp"
             android:layout_height="30dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
             android:text="Search for food item or recipe: "
             android:textAlignment="center"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#1aa89e"/>
 
         <SearchView
             android:id="@+id/search_text_area"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/sort_spinner"
+            android:layout_alignStart="@+id/sort_spinner"
+            android:layout_below="@+id/sort_spinner"/>
+
+        <ListView
+            android:id="@+id/search_results"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_weight="1">
-
-
-        </SearchView>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_text_area"/>
 
     </RelativeLayout>
-
-    <ListView
-        android:id="@+id/search_results"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

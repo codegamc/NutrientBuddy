@@ -4,30 +4,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.cwru.students.nutrientbuddy.ViewNutritionActivity">
+    android:fitsSystemWindows="true"
+    tools:context="edu.cwru.students.nutrientbuddy.ViewNutritionActivity"
+    android:id="@+id/layoutId"
+    android:background="#d1e9f4">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="#1aa89e"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical">
 
-    </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:text="NAME"
+            android:textAlignment="center"
+            android:textColor="#1aa89e"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <include layout="@layout/content_view_nutrition" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/food_name"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="23dp"
+            android:text="Calories: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"
+            android:id="@+id/calories" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:id="@+id/numCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/calories"
+            android:layout_toEndOf="@+id/calories"
+            android:text="numCalories"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/calories"
+            android:layout_below="@+id/calories"
+            android:text="Fat: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/numFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calories"
+            android:layout_toEndOf="@+id/fat"
+            android:text="numFat"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/fat"
+            android:layout_below="@+id/fat"
+            android:text="Carbs: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/numCarbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/carbs"
+            android:layout_alignBottom="@+id/carbs"
+            android:layout_toEndOf="@+id/carbs"
+            android:text="numCarbs"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/carbs"
+            android:layout_below="@+id/carbs"
+            android:text="Protein: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/numProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/protein"
+            android:layout_alignBottom="@+id/protein"
+            android:layout_toEndOf="@+id/protein"
+            android:text="numProtein"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/protein"
+            android:layout_below="@+id/protein"
+            android:text="Sugar: "
+            android:textSize="20sp"
+            android:textColor="#1aa89e"/>
+
+        <TextView
+            android:id="@+id/numSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sugar"
+            android:layout_alignBottom="@+id/sugar"
+            android:layout_toEndOf="@+id/sugar"
+            android:text="numSugar"
+            android:textSize="20sp"
+            android:textColor="#1b4057"/>
+
+        <TextView
+            android:id="@+id/sodium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sugar"
+            android:layout_below="@+id/sugar"
+            android:text="Sodium: "
+            android:textColor="#1aa89e"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/numSodium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/sodium"
+            android:layout_alignBottom="@+id/sodium"
+            android:layout_toEndOf="@+id/sodium"
+            android:text="numSodium"
+            android:textColor="#1b4057"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
+
+

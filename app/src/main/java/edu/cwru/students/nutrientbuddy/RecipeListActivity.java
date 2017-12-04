@@ -66,7 +66,7 @@ public class RecipeListActivity extends AppCompatActivity {
         // Recipe List View
         this.recipes = new ArrayList<Recipe>();
         this.recipeList = new RecipeList();
-        this.recipeListView = (ListView) findViewById(R.id.recipe_list);
+        this.recipeListView = (ListView) findViewById(R.id.listofrecipes);
 
 
        /* if(false){ //todo use the savedUserPreferences to toggle a debug mode
@@ -129,7 +129,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
 
         //todo rename all this
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.recipeListFAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -205,17 +205,27 @@ public class RecipeListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_home :
-                Intent intent = new Intent(RecipeListActivity.this, SearchScreenActivity.class);
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_shoppingList:
+                intent = new Intent(RecipeListActivity.this, ShoppingListActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.action_shoppingList :
-                Intent intent2 = new Intent(RecipeListActivity.this, ShoppingListActivity.class);
-                startActivity(intent2);
+            case R.id.action_barcode:
+                intent = new Intent(RecipeListActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe:
+                intent = new Intent(RecipeListActivity.this, RecipeListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(RecipeListActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
+                startActivity(intent);
                 return true;
 
-            default :
+            default:
                 return super.onOptionsItemSelected(item);
         }
     }

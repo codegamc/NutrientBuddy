@@ -55,11 +55,11 @@ public class SearchScreenActivity extends AppCompatActivity{
         //setting the context
         setContentView(R.layout.activity_search_screen);
 
-        //////////////// Tool Bar Stuff
+        // Tool Bar Stuff
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //////////////// Menu Bar Stuff
+        // Menu Bar Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
         /////////// LIST VIEW STUFF ///////////
@@ -90,9 +90,18 @@ public class SearchScreenActivity extends AppCompatActivity{
 
         });
 
+
+
         /////////// SEARCHING STUFF ///////////
         //todo rename this search area
         final SearchView searchView = (SearchView) findViewById(R.id.search_text_area);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getBoolean("Text Entered")){
+            String searchEntered = bundle.getString("Search Entered");
+            searchView.setQuery(searchEntered, true);
+        }
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -164,8 +173,6 @@ public class SearchScreenActivity extends AppCompatActivity{
                 //searchMetric = new NoSort();
             }
         });
-
-        //
     }
 
     @Override
@@ -193,6 +200,7 @@ public class SearchScreenActivity extends AppCompatActivity{
                 return true;
             case R.id.action_home:
                 intent = new Intent(SearchScreenActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
                 startActivity(intent);
                 return true;
 
