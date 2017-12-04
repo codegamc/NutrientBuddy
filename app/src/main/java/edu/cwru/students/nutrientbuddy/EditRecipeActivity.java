@@ -51,8 +51,6 @@ public class EditRecipeActivity extends AppCompatActivity {
     /** Called when the user touches the button */
     public void addRecipeToList(View view) {
 
-        // this is not the best way to handle this
-
         Intent intent = new Intent(getApplicationContext(), RecipeList.class);
         //Sending the data to RecipeList
         intent.putExtra("recipeName", recipeNameText.getText()+"");

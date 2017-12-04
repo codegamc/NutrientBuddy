@@ -17,6 +17,8 @@ public class EditShoppingListActivity extends AppCompatActivity {
     private EditText foodQuantityText;
     private EditText foodCostText;
 
+    private static final String TAG = "EditShoppingListActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class EditShoppingListActivity extends AppCompatActivity {
         //todo make this add to a global state to save
 
         Intent previousScreen = new Intent(getApplicationContext(), ShoppingList.class);
+        Log.v(TAG, "Inside Edit. About to add new item: " + foodNameText.getText());
         previousScreen.putExtra("foodName", foodNameText.getText()+"");
         previousScreen.putExtra("foodQuantity", foodQuantityText.getText()+"");
         previousScreen.putExtra("foodCost", foodCostText.getText()+"");

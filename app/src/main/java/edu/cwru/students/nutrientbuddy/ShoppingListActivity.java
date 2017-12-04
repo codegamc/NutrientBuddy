@@ -49,14 +49,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         //////////////// Menu Stuff
         this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
 
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.shopListFAB);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ShoppingListActivity.this, EditShoppingListActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         this.list = new ShoppingList();
 
@@ -120,6 +113,15 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         // Setting the list view to be the shopping list
         setShoppingListView();
+
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.shopListFAB);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingListActivity.this, EditShoppingListActivity.class);
+                startActivityForResult(intent,2000);
+            }
+        });
     }
 
     @Override
@@ -134,11 +136,8 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         addNewListItemDB(foodName, foodQuantity, foodCost);
 
-        list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
-
-
-
-       //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
+        Log.v(TAG, "About to add new item: " + foodName);
+        this.list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
 
         setShoppingListView();
     }
