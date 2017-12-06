@@ -195,6 +195,10 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     }
 
+    private void removeRecipeDB(long listItem_ID){
+        shoppingDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, listItem_ID);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
