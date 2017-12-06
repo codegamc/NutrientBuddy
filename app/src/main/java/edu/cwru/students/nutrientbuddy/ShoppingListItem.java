@@ -2,11 +2,14 @@ package edu.cwru.students.nutrientbuddy;
 
 import android.util.Log;
 
-public class ShoppingListItem {
+import java.io.Serializable;
+
+public class ShoppingListItem implements Serializable{
 
     private String name;
     private String quantity;
     private String cost;
+    private long id;
 
     private static final String TAG = "SHOPPING_LIST_ITEM";
 
@@ -42,6 +45,12 @@ public class ShoppingListItem {
         return this.cost;
     }
 
-
+    public long getId(){
+        return this.id;
+    }
+    
+    public void setID(long uniqueID){
+        this.id = uniqueID;
+    }
 
 }
