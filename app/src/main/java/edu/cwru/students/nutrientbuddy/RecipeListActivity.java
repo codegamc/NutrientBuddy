@@ -245,11 +245,25 @@ public class RecipeListActivity extends AppCompatActivity {
 
             addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
 
-            Recipe r = new Recipe(recipeName, recipeIngredients, recipeDirections);
+            this.recipeList.clearList();
+
+            Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+            while (c.moveToNext()) {
 
 
+                String col_name = c.getString(c.getColumnIndex("name"));
+                String col_ingredients = c.getString(c.getColumnIndex("ingredients"));
+                String col_directions = c.getString((c.getColumnIndex("directions")));
 
-            this.recipeList.addItem(r);
+                Log.v(TAG, "Index of " + col_name + c.getLong(c.getColumnIndex("_id")));
+
+                Recipe r = new Recipe(col_name, col_ingredients, col_directions);
+
+                r.setID(c.getLong(c.getColumnIndex("_id")));
+
+                recipeList.addItem(r);
+            }
 
             this.recipeNames = this.recipeList.getRecipeNames();
 
