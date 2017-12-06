@@ -245,7 +245,11 @@ public class RecipeListActivity extends AppCompatActivity {
 
             addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
 
-            this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
+            Recipe r = new Recipe(recipeName, recipeIngredients, recipeDirections);
+
+
+
+            this.recipeList.addItem(r);
 
             this.recipeNames = this.recipeList.getRecipeNames();
 

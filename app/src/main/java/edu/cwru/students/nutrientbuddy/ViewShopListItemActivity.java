@@ -40,6 +40,7 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         foodQuantityText = (TextView) findViewById(R.id.numQuantity);
         foodCostText = (TextView) findViewById(R.id.numPrice);
         // Collect data
+        shoppingListItem = (ShoppingListItem)getIntent().getSerializableExtra("shoppingListItemObject");
         String foodName = getIntent().getStringExtra("foodName");
         String foodQuantity = getIntent().getStringExtra("foodQuantity");
         String foodCost = getIntent().getStringExtra("foodCost");
@@ -58,15 +59,16 @@ public class ViewShopListItemActivity extends AppCompatActivity {
         });
 
         Button deleteButton = (Button)findViewById(R.id.delete_item);
-        doneButton.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("recipeID", shoppingListItem.getId()+"");
+                intent.putExtra("shoppingListItemID", shoppingListItem.getId()+"");
 
                 setResult(RESULT_OK, intent);
 
                 finish();
+
             }
         });
 
