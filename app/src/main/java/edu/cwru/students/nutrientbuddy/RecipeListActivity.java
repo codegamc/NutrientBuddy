@@ -80,17 +80,27 @@ public class RecipeListActivity extends AppCompatActivity {
        // addNewRecipeDB("Name3", "Ingredients3", "Directions3");
 
 
+        // DELETE ME (TESTING ONLY):
+        // removeRecipeDB(26);
 
 
         Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
 
 
         while(c.moveToNext()){
+
+
             String col_name = c.getString(c.getColumnIndex("name"));
             String col_ingredients = c.getString(c.getColumnIndex("ingredients"));
             String col_directions = c.getString((c.getColumnIndex("directions")));
 
+            Log.v(TAG,"Index of " + col_name + c.getLong(c.getColumnIndex("_id")));
+
             Recipe r = new Recipe(col_name, col_ingredients, col_directions);
+
+            r.setID(c.getLong(c.getColumnIndex("_id")));
+
+            Log.v(TAG, "Just added new recipe: " + r.getName() + " with ID = " + r.getId());
 
             recipeList.addItem(r);
         }
@@ -157,11 +167,13 @@ public class RecipeListActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(RecipeListActivity.this, ViewRecipeActivity.class);
 
+                intent.putExtra("recipeObject", recipeList.getRecipeItems().get(position));
                 intent.putExtra("recipeName",           recipeList.getRecipeItems().get(position).getName());
                 intent.putExtra("recipeIngredients",    recipeList.getRecipeItems().get(position).getIngredients());
                 intent.putExtra("recipeDirections",     recipeList.getRecipeItems().get(position).getDirections());
 
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent, 4000);
             }
         });
 
@@ -204,28 +216,82 @@ public class RecipeListActivity extends AppCompatActivity {
 
     }
 
+    private void removeRecipeDB(long recipe_ID){
+        recipeDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, recipe_ID);
+    }
+
+    /*private void removeRecipeDB(Recipe recipe){
+        ContentValues values = new ContentValues();
+
+        recipeDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, )
+    }*/
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
+        //super.onActivityResult(requestCode, resultCode, data);
 
-        String recipeName = data.getStringExtra("recipeName");
-        String recipeIngredients = data.getStringExtra("recipeIngredients");
-        String recipeDirections = data.getStringExtra("recipeDirections");
+        Log.v(TAG, "The request code is: " + requestCode);
 
-        Log.v(TAG, "Recipe name found: " + recipeName);
-        Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
-        Log.v(TAG, "Recipe directions found: " + recipeDirections);
+        if(requestCode==2000) {
 
-        addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
+            String recipeName = data.getStringExtra("recipeName");
+            String recipeIngredients = data.getStringExtra("recipeIngredients");
+            String recipeDirections = data.getStringExtra("recipeDirections");
 
-        this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
+            Log.v(TAG, "Recipe name found: " + recipeName);
+            Log.v(TAG, "Recipe ingredients found: " + recipeIngredients);
+            Log.v(TAG, "Recipe directions found: " + recipeDirections);
 
-        this.recipeNames = this.recipeList.getRecipeNames();
+            addNewRecipeDB(recipeName, recipeIngredients, recipeDirections);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+            this.recipeList.addItem(new Recipe(recipeName, recipeIngredients, recipeDirections));
 
-        this.recipeListView.setAdapter(arrayAdapter);
+            this.recipeNames = this.recipeList.getRecipeNames();
+
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+
+            this.recipeListView.setAdapter(arrayAdapter);
+        }else if(requestCode == 4000){
+
+            Log.v(TAG, "Inside here!");
+
+            if(resultCode == RESULT_OK) {
+
+                Log.v(TAG, "String received: " + data.getStringExtra("recipeID"));
+
+                long num = Long.parseLong(data.getStringExtra("recipeID"));
+                Log.v(TAG, "received ID = " + num);
+                removeRecipeDB(num);
+                this.recipeList.clearList();
+
+                Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+
+                while (c.moveToNext()) {
+
+
+                    String col_name = c.getString(c.getColumnIndex("name"));
+                    String col_ingredients = c.getString(c.getColumnIndex("ingredients"));
+                    String col_directions = c.getString((c.getColumnIndex("directions")));
+
+                    Log.v(TAG, "Index of " + col_name + c.getLong(c.getColumnIndex("_id")));
+
+                    Recipe r = new Recipe(col_name, col_ingredients, col_directions);
+
+                    r.setID(c.getLong(c.getColumnIndex("_id")));
+
+                    recipeList.addItem(r);
+                }
+
+                this.recipeNames = this.recipeList.getRecipeNames();
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, (List) recipeNames);
+
+                this.recipeListView.setAdapter(arrayAdapter);
+            }
+
+        }
 
         /*Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
         String[] from = new String[]{DatabaseHelper.COL_NAME};

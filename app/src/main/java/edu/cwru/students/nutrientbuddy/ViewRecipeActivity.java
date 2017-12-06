@@ -18,6 +18,7 @@ import android.widget.EditText;
 public class ViewRecipeActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
+    private Recipe recipe;
     private TextView recipeNameText;
     private TextView recipeIngredientsText;
     private TextView recipeDirectionsText;
@@ -44,6 +45,7 @@ public class ViewRecipeActivity extends AppCompatActivity {
         recipeDirectionsText = (TextView) findViewById(R.id.directions);
 
         // Collecting the Data
+        recipe = (Recipe)getIntent().getSerializableExtra("recipeObject");
         String recipeName = getIntent().getStringExtra("recipeName");
         String recipeIngredients = getIntent().getStringExtra("recipeIngredients");
         String recipeDirections = getIntent().getStringExtra("recipeDirections");
@@ -62,6 +64,24 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button deleteButton = (Button) findViewById(R.id.delete_recipe);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Log.v(TAG, "About to send over the ID: " + recipe.getId());
+                intent.putExtra("recipeID", recipe.getId()+"");
+                //setResult(4000, intent);
+                //startActivity(intent);
+                setResult(RESULT_OK, intent);
+
+                finish();
+
+            }
+        });
+
+
     }
 
     @Override

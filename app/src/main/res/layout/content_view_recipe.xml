@@ -97,6 +97,16 @@
             android:onClick="addRecipeToList"
             android:text="Done" />
 
+        <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/delete_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/create_recipe"
+            android:layout_alignBottom="@+id/create_recipe"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@+id/create_recipe"
+            android:text="Delete" />
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

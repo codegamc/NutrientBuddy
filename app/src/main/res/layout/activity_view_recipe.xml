@@ -89,6 +89,17 @@
             android:background="#1b4057"
             android:textColor="#ffffff"/>
 
+        <Button
+            android:id="@+id/delete_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewrecipedone"
+            android:layout_centerHorizontal="true"
+            android:text="Delete"
+            android:layout_marginTop="20dp"
+            android:background="#1b4057"
+            android:textColor="#ffffff"/>
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
