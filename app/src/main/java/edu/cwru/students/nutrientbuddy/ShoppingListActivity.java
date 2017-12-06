@@ -96,7 +96,9 @@ public class ShoppingListActivity extends AppCompatActivity {
                 intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
                 intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
-                startActivity(intent);
+                //startActivity(intent);
+
+                startActivityForResult(intent, 4000);
             }
         });
 

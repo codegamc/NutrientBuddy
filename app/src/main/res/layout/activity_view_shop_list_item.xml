@@ -78,13 +78,24 @@
             android:textColor="#1b4057"/>
 
         <Button
-            android:id="@+id/shoplistitemdone"
+        android:id="@+id/shoplistitemdone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="Done"
+        android:background="#1b4057"
+        android:textColor="#ffffff"/>
+
+        <Button
+            android:id="@+id/delete_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/price"
+            android:layout_below="@+id/shoplistitemdone"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="72dp"
-            android:text="Done"
+            android:layout_marginTop="30dp"
+            android:text="Delete"
             android:background="#1b4057"
             android:textColor="#ffffff"/>
 

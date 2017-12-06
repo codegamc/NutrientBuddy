@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class ViewShopListItemActivity extends AppCompatActivity {
 
+    private ShoppingListItem shoppingListItem;
     // Fields for UI stuff
     private TextView foodNameText;
     private TextView foodQuantityText;
@@ -55,6 +56,20 @@ public class ViewShopListItemActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button deleteButton = (Button)findViewById(R.id.delete_item);
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("recipeID", shoppingListItem.getId()+"");
+
+                setResult(RESULT_OK, intent);
+
+                finish();
+            }
+        });
+
     }
 
     @Override
