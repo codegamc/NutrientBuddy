@@ -37,9 +37,9 @@ public class DisplayNutritionInformationTest {
         // Hit back button and return
 
         // verify existing list
-        onView(withId(R.id.list_results)).perform();
+        //onView(withId(R.id.list_results)).perform();
 
-        onView(withId(R.id.list_results)).perform(click());
+        //onView(withId(R.id.list_results)).perform(click());
 
         //// TODO: 11/16/17
 
