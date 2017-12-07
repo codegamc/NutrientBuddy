@@ -97,8 +97,6 @@ public class ShoppingListActivity extends AppCompatActivity {
                 intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
                 intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
-                //startActivity(intent);
-
                 startActivityForResult(intent, 4000);
             }
         });
@@ -179,10 +177,6 @@ public class ShoppingListActivity extends AppCompatActivity {
 
                 list.addItem(s);
             }
-
-
-            //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
-            // this.list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
 
             ArrayList<String> shoppingListNames = this.list.getItemNames();
             setShoppingListView(shoppingListNames);

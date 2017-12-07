@@ -72,8 +72,6 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 Log.v(TAG, "About to send over the ID: " + recipe.getId());
                 intent.putExtra("recipeID", recipe.getId()+"");
-                //setResult(4000, intent);
-                //startActivity(intent);
                 setResult(RESULT_OK, intent);
 
                 finish();

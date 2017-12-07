@@ -74,15 +74,6 @@ public class RecipeListActivity extends AppCompatActivity {
 
         }*/
 
-        // addNewRecipeDB(null, null, 0);
-       // addNewRecipeDB("NAME!", "Ingredients1", "Directions1");
-       // addNewRecipeDB("Name2", "Ingredients2", "Directions2");
-       // addNewRecipeDB("Name3", "Ingredients3", "Directions3");
-
-
-        // DELETE ME (TESTING ONLY):
-        // removeRecipeDB(26);
-
 
         Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
 
@@ -172,7 +163,6 @@ public class RecipeListActivity extends AppCompatActivity {
                 intent.putExtra("recipeIngredients",    recipeList.getRecipeItems().get(position).getIngredients());
                 intent.putExtra("recipeDirections",     recipeList.getRecipeItems().get(position).getDirections());
 
-                //startActivity(intent);
                 startActivityForResult(intent, 4000);
             }
         });
@@ -193,7 +183,6 @@ public class RecipeListActivity extends AppCompatActivity {
     }
 
     public void addRecipe(View view) {
-        //startActivityForResult(new Intent(this, EditRecipeActivity.class), 0);
 
         Intent nextScreen = new Intent(getApplicationContext(), EditRecipeActivity.class);
         startActivityForResult(nextScreen,2000);
@@ -219,12 +208,6 @@ public class RecipeListActivity extends AppCompatActivity {
     private void removeRecipeDB(long recipe_ID){
         recipeDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, recipe_ID);
     }
-
-    /*private void removeRecipeDB(Recipe recipe){
-        ContentValues values = new ContentValues();
-
-        recipeDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, )
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -311,11 +294,6 @@ public class RecipeListActivity extends AppCompatActivity {
 
         }
 
-        /*Cursor c = recipeDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
-        String[] from = new String[]{DatabaseHelper.COL_NAME};
-        int[] to = {android.R.id.text1};
-        SimpleCursorAdapter adapter1 = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, c, from, to, 0);
-        recipeListView.setAdapter(adapter1);*/
     }
 
     public void updateRecipeUI(ArrayList<String> recipeNames, RecipeList recipeLists){
