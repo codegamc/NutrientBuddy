@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +34,31 @@ public class HelpActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_help);
+
+
+        TextView searchAnswer = (TextView) findViewById(R.id.search_answer);
+        TextView recipeAnswer = (TextView) findViewById(R.id.recipe_answer);
+        TextView shoppingAnswer = (TextView) findViewById(R.id.shopping_answer);
+        TextView barcodeAnswer = (TextView) findViewById(R.id.barcode_answer);
+
+        searchAnswer.setText("Use the menu bar to navigate to the Home page. Select the search bar and start typing " +
+                "the name of a food you enjoy - like \"Apple\" and click on one of the results to view the nutritional content.");
+
+        recipeAnswer.setText("Use the menu bar to navigate to the Recipes page. Click the Add Recipe button (+) to " +
+                "navigate to the Recipe Editor. Fill in text for the name of the recipe, the ingredients needed, and the " +
+                "instructions for how to make it! When you're finished, hit Done, and find your new recipe in the Recipe List. " +
+                "To view the recipe details, select it from the list to see more information. You can also click the Delete button " +
+                "to remove the recipe from your list.");
+
+        shoppingAnswer.setText("Use the menu bar to navigate to the Shopping List page. Click the Add Item button (+) to " +
+                "navigate to the Shopping List Editor. Fill in text for the name of the item, and optionally the estimated cost and " +
+                "quantity! When you're finished, hit Done, and find your new item in your Shopping List. " +
+                "To view the item details, select it from the list to see more information. You can also click the Delete button " +
+                "to remove the item from your list.");
+
+        barcodeAnswer.setText("Use the menu bar to navigate to the Barcode Scanning page. Click the Scan button to open " +
+                "your phone's camera. Hold your camera in front of the food item's barcode - it should be a white image with black " +
+                "lines. Then view the corresponding details as the app identifies the food and pulls up the nutrition facts!");
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
