@@ -23,13 +23,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/food_name"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="26dp"
-            android:text="NAME"
+            android:text="FAQ"
             android:textAlignment="center"
             android:textColor="#1aa89e"
             android:textSize="24sp"
@@ -39,127 +39,76 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/food_name"
-            android:layout_marginStart="23dp"
+            android:layout_below="@+id/title"
+
             android:layout_marginTop="23dp"
-            android:text="Calories: "
+            android:text="How do I search for a food?"
             android:textSize="20sp"
             android:textColor="#1aa89e"
-            android:id="@+id/calories" />
+            android:id="@+id/search_question" />
 
         <TextView
-            android:id="@+id/numCalories"
+            android:id="@+id/search_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/calories"
-            android:layout_toEndOf="@+id/calories"
-            android:text="numCalories"
+            android:layout_below="@+id/search_question"
+            android:text="..."
             android:textSize="20sp"
             android:textColor="#1b4057"/>
 
         <TextView
-            android:id="@+id/fat"
+            android:id="@+id/recipe_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/calories"
-            android:layout_below="@+id/calories"
-            android:text="Fat: "
+            android:layout_below="@+id/search_answer"
+            android:text="How do I add a recipe?"
             android:textSize="20sp"
             android:textColor="#1aa89e"/>
 
         <TextView
-            android:id="@+id/numFat"
+            android:id="@+id/recipe_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/calories"
-            android:layout_toEndOf="@+id/fat"
-            android:text="numFat"
+            android:layout_below="@+id/recipe_question"
+            android:text="..."
             android:textSize="20sp"
             android:textColor="#1b4057"/>
 
         <TextView
-            android:id="@+id/carbs"
+            android:id="@+id/shopping_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/fat"
-            android:layout_below="@+id/fat"
-            android:text="Carbs: "
+            android:layout_below="@+id/recipe_answer"
+            android:text="How do I use my shopping list?"
             android:textSize="20sp"
             android:textColor="#1aa89e"/>
 
         <TextView
-            android:id="@+id/numCarbs"
+            android:id="@+id/shopping_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/carbs"
-            android:layout_alignBottom="@+id/carbs"
-            android:layout_toEndOf="@+id/carbs"
-            android:text="numCarbs"
+            android:layout_below="@+id/shopping_question"
+            android:text="..."
             android:textSize="20sp"
             android:textColor="#1b4057"/>
 
         <TextView
-            android:id="@+id/protein"
+            android:id="@+id/barcode_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/carbs"
-            android:layout_below="@+id/carbs"
-            android:text="Protein: "
+            android:layout_below="@+id/shopping_answer"
+            android:text="How do I use the barcode scanner?"
             android:textSize="20sp"
             android:textColor="#1aa89e"/>
 
         <TextView
-            android:id="@+id/numProtein"
+            android:id="@+id/barcode_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/protein"
-            android:layout_alignBottom="@+id/protein"
-            android:layout_toEndOf="@+id/protein"
-            android:text="numProtein"
+            android:layout_below="@+id/barcode_question"
+            android:text="..."
             android:textSize="20sp"
             android:textColor="#1b4057"/>
-
-        <TextView
-            android:id="@+id/sugar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/protein"
-            android:layout_below="@+id/protein"
-            android:text="Sugar: "
-            android:textSize="20sp"
-            android:textColor="#1aa89e"/>
-
-        <TextView
-            android:id="@+id/numSugar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sugar"
-            android:layout_alignBottom="@+id/sugar"
-            android:layout_toEndOf="@+id/sugar"
-            android:text="numSugar"
-            android:textSize="20sp"
-            android:textColor="#1b4057"/>
-
-        <TextView
-            android:id="@+id/sodium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/sugar"
-            android:layout_below="@+id/sugar"
-            android:text="Sodium: "
-            android:textColor="#1aa89e"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/numSodium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/sodium"
-            android:layout_alignBottom="@+id/sodium"
-            android:layout_toEndOf="@+id/sodium"
-            android:text="numSodium"
-            android:textColor="#1b4057"
-            android:textSize="20sp" />
 
     </RelativeLayout>
 
