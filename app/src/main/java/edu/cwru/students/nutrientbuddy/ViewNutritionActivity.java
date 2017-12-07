@@ -48,14 +48,15 @@ public class ViewNutritionActivity extends AppCompatActivity {
         String foodProtein = getIntent().getStringExtra("foodProtein");
         String foodSugar = getIntent().getStringExtra("foodSugar");
         String foodSodium = getIntent().getStringExtra("foodSodium");
+        
 
         itemName.setText(foodName);
-        numCalories.setText(foodCalories);
-        numFat.setText(foodTotalFat);
-        numCarbs.setText(foodTotalCarbs);
-        numProtein.setText(foodProtein);
-        numSugar.setText(foodSugar);
-        numSodium.setText(foodSodium);
+        numCalories.setText(foodCalories + " kcal");
+        numFat.setText(foodTotalFat + " g");
+        numCarbs.setText(foodTotalCarbs + " g");
+        numProtein.setText(foodProtein + " g");
+        numSugar.setText(foodSugar + " g");
+        numSodium.setText(foodSodium + " mg");
 
     }
 
