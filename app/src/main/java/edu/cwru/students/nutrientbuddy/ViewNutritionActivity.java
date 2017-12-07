@@ -48,7 +48,25 @@ public class ViewNutritionActivity extends AppCompatActivity {
         String foodProtein = getIntent().getStringExtra("foodProtein");
         String foodSugar = getIntent().getStringExtra("foodSugar");
         String foodSodium = getIntent().getStringExtra("foodSodium");
-        
+
+        if(foodCalories == null) {
+            foodCalories = "0";
+        }
+        if(foodTotalFat == null){
+            foodTotalFat = "0";
+        }
+        if(foodTotalCarbs == null){
+            foodTotalCarbs = "0";
+        }
+        if(foodProtein == null){
+            foodProtein = "0";
+        }
+        if(foodSugar == null){
+            foodSugar = "0";
+        }
+        if(foodSodium == null){
+            foodSodium = "0";
+        }
 
         itemName.setText(foodName);
         numCalories.setText(foodCalories + " kcal");
