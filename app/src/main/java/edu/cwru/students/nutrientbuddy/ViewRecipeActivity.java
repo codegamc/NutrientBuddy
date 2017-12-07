@@ -110,6 +110,10 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 intent.putExtra("Text Entered", false);
                 startActivity(intent);
                 return true;
+            case R.id.action_help:
+                intent = new Intent(ViewRecipeActivity.this, HelpActivity.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

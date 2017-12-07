@@ -271,6 +271,10 @@ public class ShoppingListActivity extends AppCompatActivity {
                 intent.putExtra("Text Entered", false);
                 startActivity(intent);
                 return true;
+            case R.id.action_help:
+                intent = new Intent(ShoppingListActivity.this, HelpActivity.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

@@ -26,4 +26,55 @@ import java.util.List;
 
 public class HelpActivity extends AppCompatActivity{
 
+    private OpenItemsMenuHandler openItemsMenuHandler;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_help);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //////////////// Menu Bar Stuff
+        this.openItemsMenuHandler = new OpenItemsMenuHandler(this);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_shoppingList:
+                intent = new Intent(HelpActivity.this, ShoppingListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_barcode:
+                intent = new Intent(HelpActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_recipe:
+                intent = new Intent(HelpActivity.this, RecipeListActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(HelpActivity.this, SearchScreenActivity.class);
+                intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

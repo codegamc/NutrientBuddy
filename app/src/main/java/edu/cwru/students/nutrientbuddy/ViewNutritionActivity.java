@@ -87,6 +87,10 @@ public class ViewNutritionActivity extends AppCompatActivity {
                 intent.putExtra("Text Entered", false);
                 startActivity(intent);
                 return true;
+            case R.id.action_help:
+                intent = new Intent(ViewNutritionActivity.this, HelpActivity.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
