@@ -50,7 +50,7 @@ public class DisplayNutritionInformationTest {
     @Test
     public void verifyBackFunctionality() throws Exception {
         // Make search
-        onView(withId(R.id.list_results)).perform();
+        //onView(withId(R.id.list_results)).perform();
 
         // Click the selection (somehow?)
 

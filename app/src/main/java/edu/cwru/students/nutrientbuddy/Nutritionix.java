@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -248,6 +249,36 @@ public class Nutritionix {
 
         return foods;
 
+    }
+
+    private ArrayList<Food> buildFoodFromJSON(String data){
+        Food food = new Food();
+
+        JSONObject reader = null;
+        try {
+            reader = new JSONObject(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject foodField = null;
+        try {
+            foodField = reader.getJSONObject("fields");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        for(String nutritionValue: this.nutritionValues){
+            try {
+                food.set(nutritionValue, foodField.getString(nutritionValue));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayList<Food> foods = new ArrayList<Food>(1);
+        foods.add(food);
+        return null;
     }
 
     private boolean checkForRepeat(ArrayList<Food> foods, Food food){
