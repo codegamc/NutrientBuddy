@@ -146,6 +146,21 @@ public class ShoppingListActivity extends AppCompatActivity {
                 startActivityForResult(intent,2000);
             }
         });
+
+        FloatingActionButton emailButton = (FloatingActionButton) findViewById(R.id.shopListemailfab);
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Shopping List");
+
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, shoppingListNames.toString());
+
+                startActivity(Intent.createChooser(emailIntent, "Send your email in:"));
+
+            }
+        });
     }
 
     @Override
