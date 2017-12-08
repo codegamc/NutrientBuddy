@@ -25,4 +25,11 @@
         android:title="Barcode"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="100"
+        android:title="Help"
+        app:showAsAction="never" />
+
+
 </menu>

@@ -73,6 +73,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             String col_cost = c.getString((c.getColumnIndex("cost")));
 
             ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+            s.setID(c.getLong(c.getColumnIndex("_id")));
 
             list.addItem(s);
         }
@@ -91,12 +92,12 @@ public class ShoppingListActivity extends AppCompatActivity {
                 Log.v(TAG, "Selected food: " + list.getShopItems().get(position));
                 Log.v(TAG, "Selected food from items: " + list.getShopItems().get(position).getName());
 
-
+                intent.putExtra("shoppingListItemObject", list.getShopItems().get(position));
                 intent.putExtra("foodName", list.getShopItems().get(position).getName());
                 intent.putExtra("foodQuantity", list.getShopItems().get(position).getQuantity());
                 intent.putExtra("foodCost", list.getShopItems().get(position).getCost());
 
-                startActivity(intent);
+                startActivityForResult(intent, 4000);
             }
         });
 
@@ -145,29 +146,89 @@ public class ShoppingListActivity extends AppCompatActivity {
                 startActivityForResult(intent,2000);
             }
         });
+
+        FloatingActionButton emailButton = (FloatingActionButton) findViewById(R.id.shopListemailfab);
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Shopping List");
+
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, shoppingListNames.toString());
+
+                startActivity(Intent.createChooser(emailIntent, "Send your email in:"));
+
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
+       // super.onActivityResult(requestCode, resultCode, data);
 
-        //todo move this to debug only
-        String foodName = data.getStringExtra("foodName");
-        String foodQuantity = data.getStringExtra("foodQuantity");
-        String foodCost = data.getStringExtra("foodCost");
+        if(requestCode == 2000) {
+            Log.v(TAG, "In here");
 
-        addNewListItemDB(foodName, foodQuantity, foodCost);
+            //todo move this to debug only
+            String foodName = data.getStringExtra("foodName");
+            String foodQuantity = data.getStringExtra("foodQuantity");
+            String foodCost = data.getStringExtra("foodCost");
+
+            addNewListItemDB(foodName, foodQuantity, foodCost);
+
+            list.clearList();
+
+            Cursor c = shoppingDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
+
+            while(c.moveToNext()){
+                String col_name = c.getString(c.getColumnIndex("name"));
+                String col_quantity = c.getString(c.getColumnIndex("quantity"));
+                String col_cost = c.getString((c.getColumnIndex("cost")));
+
+                ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+                s.setID(c.getLong(c.getColumnIndex("_id")));
+
+                list.addItem(s);
+            }
+
+            ArrayList<String> shoppingListNames = this.list.getItemNames();
+            setShoppingListView(shoppingListNames);
+
+        }else if(requestCode == 4000) {
+
+            Log.v(TAG, "Inside here!");
+
+            if (resultCode == RESULT_OK) {
+
+                Log.v(TAG, "String received: " + data.getStringExtra("shoppingListItemID"));
+
+                long num = Long.parseLong(data.getStringExtra("shoppingListItemID"));
+                Log.v(TAG, "received ID = " + num);
+                removeListItemDB(num);
+                this.list.clearList();
+
+                Cursor c = shoppingDatabaseHelper.query(DatabaseHelper.TABLE_USERS, DatabaseHelper.COL_NAME);
 
 
-        list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+                while(c.moveToNext()){
+                    String col_name = c.getString(c.getColumnIndex("name"));
+                    String col_quantity = c.getString(c.getColumnIndex("quantity"));
+                    String col_cost = c.getString((c.getColumnIndex("cost")));
 
-       //list.addItem(new Food(foodName, foodCalories, "fat", "sodium", foodCarbs, "sugar", "sodium"));
-        Log.v(TAG, "About to add new item: " + foodName);
-       // this.list.addItem(new ShoppingListItem(foodName, foodQuantity, foodCost));
+                    ShoppingListItem s = new ShoppingListItem(col_name, col_quantity, col_cost);
+                    s.setID(c.getLong(c.getColumnIndex("_id")));
 
-        ArrayList<String> shoppingListNames = this.list.getItemNames();
-        setShoppingListView(shoppingListNames);
+                    list.addItem(s);
+                }
+
+
+                this.shoppingListNames = this.list.getItemNames();
+
+                setShoppingListView(shoppingListNames);
+            }
+        }
     }
 
     private void setShoppingListView(ArrayList<String> shopListNames){
@@ -191,6 +252,10 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         shoppingDatabaseHelper.insert(DatabaseHelper.TABLE_USERS, values);
 
+    }
+
+    private void removeListItemDB(long listItem_ID){
+        shoppingDatabaseHelper.delete(DatabaseHelper.TABLE_USERS, listItem_ID);
     }
 
     @Override
@@ -219,6 +284,10 @@ public class ShoppingListActivity extends AppCompatActivity {
             case R.id.action_home:
                 intent = new Intent(ShoppingListActivity.this, SearchScreenActivity.class);
                 intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+            case R.id.action_help:
+                intent = new Intent(ShoppingListActivity.this, HelpActivity.class);
                 startActivity(intent);
                 return true;
 

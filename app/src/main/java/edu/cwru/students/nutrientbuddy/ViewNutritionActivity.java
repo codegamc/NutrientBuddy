@@ -49,13 +49,32 @@ public class ViewNutritionActivity extends AppCompatActivity {
         String foodSugar = getIntent().getStringExtra("foodSugar");
         String foodSodium = getIntent().getStringExtra("foodSodium");
 
+        if(foodCalories == null) {
+            foodCalories = "0";
+        }
+        if(foodTotalFat == null){
+            foodTotalFat = "0";
+        }
+        if(foodTotalCarbs == null){
+            foodTotalCarbs = "0";
+        }
+        if(foodProtein == null){
+            foodProtein = "0";
+        }
+        if(foodSugar == null){
+            foodSugar = "0";
+        }
+        if(foodSodium == null){
+            foodSodium = "0";
+        }
+
         itemName.setText(foodName);
-        numCalories.setText(foodCalories);
-        numFat.setText(foodTotalFat);
-        numCarbs.setText(foodTotalCarbs);
-        numProtein.setText(foodProtein);
-        numSugar.setText(foodSugar);
-        numSodium.setText(foodSodium);
+        numCalories.setText(foodCalories + " kcal");
+        numFat.setText(foodTotalFat + " g");
+        numCarbs.setText(foodTotalCarbs + " g");
+        numProtein.setText(foodProtein + " g");
+        numSugar.setText(foodSugar + " g");
+        numSodium.setText(foodSodium + " mg");
 
     }
 
@@ -85,6 +104,10 @@ public class ViewNutritionActivity extends AppCompatActivity {
             case R.id.action_home:
                 intent = new Intent(ViewNutritionActivity.this, SearchScreenActivity.class);
                 intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+            case R.id.action_help:
+                intent = new Intent(ViewNutritionActivity.this, HelpActivity.class);
                 startActivity(intent);
                 return true;
 

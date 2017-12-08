@@ -18,6 +18,7 @@ import android.widget.EditText;
 public class ViewRecipeActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
+    private Recipe recipe;
     private TextView recipeNameText;
     private TextView recipeIngredientsText;
     private TextView recipeDirectionsText;
@@ -44,6 +45,7 @@ public class ViewRecipeActivity extends AppCompatActivity {
         recipeDirectionsText = (TextView) findViewById(R.id.directions);
 
         // Collecting the Data
+        recipe = (Recipe)getIntent().getSerializableExtra("recipeObject");
         String recipeName = getIntent().getStringExtra("recipeName");
         String recipeIngredients = getIntent().getStringExtra("recipeIngredients");
         String recipeDirections = getIntent().getStringExtra("recipeDirections");
@@ -62,6 +64,39 @@ public class ViewRecipeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button deleteButton = (Button) findViewById(R.id.delete_recipe);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Log.v(TAG, "About to send over the ID: " + recipe.getId());
+                intent.putExtra("recipeID", recipe.getId()+"");
+                setResult(RESULT_OK, intent);
+
+                finish();
+
+            }
+        });
+
+        FloatingActionButton emailRecipeButton = (FloatingActionButton) findViewById(R.id.emailrecipefab);
+        emailRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My recipe");
+
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Name: "+ recipeNameText);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Ingredients: "+ recipeIngredientsText);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Directions: "+ recipeDirectionsText);
+
+                startActivity(Intent.createChooser(emailIntent, "Send your email in:"));
+
+            }
+        });
+
+
     }
 
     @Override
@@ -90,6 +125,10 @@ public class ViewRecipeActivity extends AppCompatActivity {
             case R.id.action_home:
                 intent = new Intent(ViewRecipeActivity.this, SearchScreenActivity.class);
                 intent.putExtra("Text Entered", false);
+                startActivity(intent);
+                return true;
+            case R.id.action_help:
+                intent = new Intent(ViewRecipeActivity.this, HelpActivity.class);
                 startActivity(intent);
                 return true;
 

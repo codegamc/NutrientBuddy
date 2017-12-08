@@ -2,11 +2,14 @@ package edu.cwru.students.nutrientbuddy;
 
 import android.util.Log;
 
-public class Recipe {
+import java.io.Serializable;
+
+public class Recipe implements Serializable{
 
     private String name;
     private String ingredients;
     private String directions;
+    private long id;
 
     private static final String TAG = " RECIPE";
 
@@ -40,6 +43,13 @@ public class Recipe {
 
     public String getDirections(){
         return this.directions;
+    }
+
+    public long getId(){
+        return this.id;
+    }
+    public void setID(long uniqueID){
+        this.id = uniqueID;
     }
 
 
