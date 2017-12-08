@@ -56,9 +56,6 @@ public class Nutritionix {
     private String[] nutritionValues = {Food.name, Food.totalCalories,Food.totalFat,Food.sodium,
             Food.totalCarbs,Food.totalCalories,Food.protein};
 
-    // do not keep this - its for testing
-    private Food f;
-
     public Nutritionix(int numberOfResults){
 
         baseURL = "https://api.nutritionix.com/v1_1/";
@@ -156,7 +153,7 @@ public class Nutritionix {
 
     public ArrayList<Food> searchUPC(String upcCode){
         URL url;
-
+        String dataString = "{}";
         // Build the URL to query against
         try{
             url = new URL(this.baseURL + "item?upc=" + upcCode + this.apiInfo);
@@ -165,7 +162,7 @@ public class Nutritionix {
 
 
             InputStream in = null;
-            String dataString = "";
+            dataString = "";
 
             try {
                 // Make Connection attempt
@@ -190,14 +187,12 @@ public class Nutritionix {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            //return false;
+            //return false;`
         } finally {
             //
         }
 
-
-
-        return null;
+        return buildFoodFromJSON(dataString);
     }
 
     ///////////// PRIVATE METHODS
