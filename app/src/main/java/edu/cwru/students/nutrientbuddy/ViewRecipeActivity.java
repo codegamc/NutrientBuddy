@@ -79,6 +79,23 @@ public class ViewRecipeActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton emailRecipeButton = (FloatingActionButton) findViewById(R.id.emailrecipefab);
+        emailRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My recipe");
+
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Name: "+ recipeNameText);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Ingredients: "+ recipeIngredientsText);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Recipe Directions: "+ recipeDirectionsText);
+
+                startActivity(Intent.createChooser(emailIntent, "Send your email in:"));
+
+            }
+        });
+
 
     }
 
