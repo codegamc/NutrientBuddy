@@ -63,7 +63,10 @@ public class BarcodeActivity extends AppCompatActivity{
             nutritionix.loadFoodSearch(strings[0]);
             ArrayList<Food> foods = nutritionix.returnFoodListAsFood();
 
-            i 
+            Intent intent = new Intent(BarcodeActivity.this, SearchScreenActivity.class);
+            intent.putExtra("Search Entered", foods.get(0).get(Food.name));
+            intent.putExtra("Text Entered", true);
+            startActivity(intent);
 
             return null;
         }
